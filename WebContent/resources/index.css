@@ -1,0 +1,89 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);	
+background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+body, ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+input {
+    padding: 7px 39px;
+    border: 1px solid #dfdfdf;
+}
+/*노멀라이징*/
+.con {
+    width: 500px;
+    height: 400px;
+    text-align: center;
+    border: 2px solid #dfdfdf;
+    margin: 250px auto;
+    background-color: rgba(100,100,100,0.3);
+
+    }
+.con .login {
+    width: 100%;
+    height: 100px;
+}
+.con .login >h1 {
+    padding-top: 30px;
+}
+.con .input_box {
+    width: 100%;
+    height: 100px;
+}
+.con .input_box >div {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.con .input_box > div > input {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px !important;
+}
+.con .login_box {
+    width: 100%;
+    height: 40px;
+}
+.con .login_box >div {
+    width: 222px;
+    height: 49px;
+    background-color: #000;
+    color: #fff;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 7px;
+}
+.con .login_box >div > a > p{
+    line-height: 40px;
+}
+.con .sub {
+    width: 100%;
+    height: 100px;
+}
+.con .sub ul li {
+    display: inline-block;
+    padding: 8px;
+    padding-top: 20px;
+}
+.con .sub ul li > a {
+    font-size: 0.8rem;
+}
+.con .sub ul li > a:active {
+    color: pink;
+}

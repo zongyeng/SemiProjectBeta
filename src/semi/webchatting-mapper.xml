@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webchattingmapper">
+
+<select id ="chatting_selectOne" resultType="dto">
+	SELECT USERINFO_SEQ, USERINFO_CONTROLNO, USERINFO_NAME, USERINFO_NICKNAME, USERINFO_SEX, USERINFO_PHONNUMBER, USERINFO_EMAIL
+	FROM USERINFO
+	WHERE USERINFO_SEQ=#{seq}
+</select>
+
+</mapper>
