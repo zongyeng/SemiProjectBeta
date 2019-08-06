@@ -30,7 +30,7 @@
 					 vertical-align : middle;
 					 display : flex;}
 	.headerdiv2divul{list-style: none;width : 100%;}	
-	.headerdiv2divulli {float : left; width : calc(20% - 1.2px); height : 50px;text-align:center;
+	.headerdiv2divulli {float : left; width : calc(25% - 1.5px); height : 50px;text-align:center;
 						border-left : 1px solid; border-left-color:rgba(200,200,200,0.5); 
 						border-bottom : solid 2px;
 						border-bottom-color: rgba(200,200,200,0.5);
@@ -126,26 +126,18 @@
 							</ul>
 						</li>
 						<li class = "headerdiv2divulli">
-							<a class = "headerdiv2divullia" href =""> 아티스트 </a>
-							<ul class = "headerdiv2divulliul">
-								<li><a href=""> 인기 아티스트 </a></li>
-								<li><a href=""> 추천 아티스트 </a></li>
-							</ul>
-						</li>
-						<li class = "headerdiv2divulli">
 							<a class = "headerdiv2divullia" href =""> 방송 </a>
 							<ul class = "headerdiv2divulliul">
-								<li><a href=""> TOP 10 </a></li>
 								<li><a href=""> 인기 방송 </a></li>
-								<li><a href=""> 추천 방송</a></li>
+								<li><a href=""> 추천 방송 </a></li>
+								<li><a href=""> 신규 방송</a></li>
 							</ul>
 						</li>
 						<li class = "headerdiv2divulli">	
 							<a class = "headerdiv2divullia" href =""> 공연장 </a>
 							<ul class = "headerdiv2divulliul">
-								<li><a href=""> 공연장 소개 </a></li>
-								<li><a href=""> 오시는길  </a></li>
-								<li><a href=""> 예약하기</a></li>
+								<li><a href=""> 소개 </a></li>
+								<li><a href=""> 예약하기 </a></li>
 							</ul>
 						</li>
 						<li class = "headerdiv2divulli" 
