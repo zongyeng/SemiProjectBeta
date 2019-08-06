@@ -32,12 +32,13 @@ $(function(){
 					font-weight: bold; display : table;} 
 	.section1div2div1div {display: table-cell; vertical-align: middle;
 						border-top: 2px groove gray; border-bottom:2px double gray;}
+	.section1div2div2div1divdiv1:hover { cursor : pointer; }
 	.section1div2div2 {width : 100%; height :600px; margin:20px auto;}
 	.section1div2div2div1 { display : flex; }
 	.section1div2div2div1div { display : flex-basis; width : calc(50% - 2px);
 								border : solid 1px;}
 	.section1div2div2div1divdiv1 { width : 95%; height: 190px; margin : 0 auto; border : solid 1px;}
-	.section1div2div2div1divdiv2 { width : 95%; height: 30px;text-align : center;
+	.section1div2div2div1divdiv2 { width : 100%; height: 50px;text-align : center; font-size : 30px;
 	 magin-top:5px;}
 								
 </style>
@@ -55,7 +56,7 @@ $(function(){
 			<div class = "section1div2div2div1">
 				<div class = "section1div2div2div1div">
 					<div class = "section1div2div2div1divdiv1">
-						<img src="" alt ="1:1 상담하기"/>
+						<img src="images/ServiceCenterOnetooneChatting.jpg" width="100%" alt ="1:1 상담하기"/>
 					</div>
 					<div class = "section1div2div2div1divdiv2">
 						<span> 1:1 상담하기 </span>
@@ -63,7 +64,7 @@ $(function(){
 				</div>
 				<div class = "section1div2div2div1div">
 					<div class = "section1div2div2div1divdiv1">
-						<img src="" alt ="챗봇"/>
+						<img onclick="window.open('chatbotres.jsp', 'search', 'top=100px, left=100px, height=500px, width=400px')" src="images/ServiceCenterChattingRobot.jpg" width="100%" alt ="챗봇"/>
 					</div>
 					<div class = "section1div2div2div1divdiv2">
 						<span> 챗봇</span>
