@@ -37,7 +37,7 @@ $(function(){
 	.section1div2div2div1div { display : flex-basis; width : calc(50% - 2px);
 								border : solid 1px;}
 	.section1div2div2div1divdiv1 { width : 95%; height: 190px; margin : 0 auto; border : solid 1px;}
-	.section1div2div2div1divdiv2 { width : 95%; height: 30px;text-align : center;
+	.section1div2div2div1divdiv2 { width : 100%; height: 50px;text-align : center; font-size : 30px;
 	 magin-top:5px;}
 								
 </style>
@@ -55,7 +55,9 @@ $(function(){
 			<div class = "section1div2div2div1">
 				<div class = "section1div2div2div1div">
 					<div class = "section1div2div2div1divdiv1">
-						<img src="" alt ="1:1 상담하기"/>
+						<a href = "">
+						<img src="images/ServiceCenterOnetooneChatting.jpg" width="100%" alt ="1:1 상담하기"/>
+						</a>
 					</div>
 					<div class = "section1div2div2div1divdiv2">
 						<span> 1:1 상담하기 </span>
@@ -63,7 +65,9 @@ $(function(){
 				</div>
 				<div class = "section1div2div2div1div">
 					<div class = "section1div2div2div1divdiv1">
-						<img src="" alt ="챗봇"/>
+						<a href = "">
+						<img src="images/ServiceCenterChattingRobot.jpg" width="100%" alt ="챗봇"/>
+						</a>
 					</div>
 					<div class = "section1div2div2div1divdiv2">
 						<span> 챗봇</span>
