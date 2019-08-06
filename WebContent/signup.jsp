@@ -11,6 +11,11 @@
 <title>Insert title here</title>
 <link href="resources/loginform.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/loginform.js"></script>
+<style type="text/css">
+a{
+	color:white;
+}
+</style>
 </head>
 <body>
 <div id="style" class="myform">
@@ -58,11 +63,14 @@
 </label>
 <input type="text" name="email" id="email" />
 
-<button type="submit">회원가입 완료</button>
+<button type="submit" id="submit">회원가입 완료</button>
+<br/><br/>
+<button type="button" onclick="location.href='login.jsp'">뒤로가기</button>
 <div class="spacer"></div>
 
 </form>
 </div>
-
+<br/><br/><br/><br/><br/><br/>
+<%@ include file="./form/footer.jsp"%>
 </body>
 </html>
