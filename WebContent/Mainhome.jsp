@@ -19,7 +19,7 @@ $(function(){
 			return $(this).width();
 		});
 	})
-})	
+})
 </script>
 <style type="text/css">
 	.section1 { width : 100%; height : 1500px;}

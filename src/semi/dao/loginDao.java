@@ -30,6 +30,23 @@ private String namespace = "loginmapper.";
 		}
 		return res>0;
 	}
-	
+	public loginDto login(String id, String password) {
+		
+		SqlSession session = null;
+		loginDto dto = new loginDto();
+		
+		dto.setUserinfo_id(id);
+		dto.setUserinfo_password(password);
+		
+		try {
+			session = getSqlSessionFactory.getLoginSessionFactory().openSession();
+			dto = session.selectOne(namespace+"select",dto);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
 }
-

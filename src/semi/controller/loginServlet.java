@@ -1,7 +1,6 @@
 package semi.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import semi.biz.loginBiz;
+import semi.dto.loginDto;
 
 @WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
@@ -36,15 +39,33 @@ public class loginServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("["+command+"]");
 		
-		if(command.equals("log")) {
-				//로그인페이지
+		if(command.equals("login")) {
 			
+			response.sendRedirect("login.jsp");
 			
+		}else if(command.equals("loginres")){
+			String id = request.getParameter("id");
+			String password = request.getParameter("password");
+			loginDto dto = biz.login(id, password);
+			try{
+				dto.getUserinfo_seq();
+			} catch (NullPointerException e) {
+				//실패일시 메인페이지나 로그인페이지로 가면서 경고메세지. 아이디와 비밀번호를 확인해 주세요.
+				response.sendRedirect("login.do?command=login");
+			}
 			
-		}else if(command.equals("logres")){
-				//로그인성공시 or 실패시
+			HttpSession session=request.getSession();
+			
+			session.setAttribute("userdto", dto);
+			session.setMaxInactiveInterval(10*60);
+			
+			//성공일시 send리엑티브 또는 디스패치 포워드
+			response.sendRedirect("Mainhome.jsp");
+			
 		}else if(command.equals("signup")) {
-				// 회원가입페이지로
+			
+			response.sendRedirect("signup.jsp");
+
 		}else if(command.equals("signupres")) {
 				// 회원가입 성공시
 		}else if(command.equals("idc")) {
@@ -62,6 +83,7 @@ public class loginServlet extends HttpServlet {
 		
 		RequestDispatcher dispatch = request.getRequestDispatcher(url);
 		dispatch.forward(request, response);
+	
 	}
 
 }

@@ -2,10 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="loginmapper">
 
-
-<insert id ="insert">
-INSERT INTO USERINFO (USERINFO_SEQ, USERINFO_CONTROLNO, USERINFO_NAME, USERINFO_NICKNAME, USERINFO_ID, USERINFO_PASSWORD, USERINFO_SEX, USERINFO_AGE, USERINFO_PHONNUMBER, USERINFO_EMAIL) 
-	VALUES(USERINFOSEQ.NEXTVAL,'#{dto.userinfo_controlno}','#{dto.userinfo_name}','#{dto.userinfo_nickname}','#{dto.userinfo_id}','#{dto.userinfo_password}','#{dto.userinfo_sex}','#{dto.userinfo_age}','#{dto.userinfo_phonnumber}','#{dto.userinfo_email}');
-</insert>
+<select id="select" parameterType="dto" resultType="dto">
+SELECT USERINFO_SEQ, USERINFO_CONTROLNO, USERINFO_NAME, USERINFO_NICKNAME,
+	USERINFO_ID, USERINFO_PASSWORD, USERINFO_SEX, USERINFO_AGE, USERINFO_PHONNUMBER, 
+	USERINFO_EMAIL,USERINFO_SIGNDATE, USERINFO_ENABLE, USERINFO_CACHE 
+FROM USERINFO WHERE USERINFO_ID = #{userinfo_id} AND USERINFO_PASSWORD = #{userinfo_password}
+</select>
 
 </mapper>

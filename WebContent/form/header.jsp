@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>header design</title>
+<script type="text/javascript" src="js/loginform.js"></script>
 <style type="text/css">
 	*{ padding : 0px; margin : 0px;}
 	.header{ width : 100%; height : 154px; 

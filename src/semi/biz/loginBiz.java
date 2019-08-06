@@ -1,6 +1,8 @@
 package semi.biz;
 
 import semi.dao.loginDao;
+import semi.dto.chattingDto;
+import semi.dto.loginDto;
 
 
 public class loginBiz {
@@ -12,5 +14,9 @@ public class loginBiz {
 			char userinfo_sex,int userinfo_age,int userinfo_phonnumber,String userinfo_email) {
 		return dao.signup(userinfo_controlno, userinfo_name, userinfo_nickname, userinfo_id, userinfo_password, userinfo_sex, userinfo_age, userinfo_phonnumber, userinfo_email);
 	}
-	
+	public loginDto login(String id , String password) {
+		return dao.login(id, password);
+	}
 }
+
+	
