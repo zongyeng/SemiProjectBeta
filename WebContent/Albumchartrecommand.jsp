@@ -5,6 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	var num=0;
+	function select1(){
+		document.getElementById("popular").style.background="rgba(0,0,0,0.6)";
+		document.getElementById("popular").style.color = "white";
+		document.getElementById("recommand").style.background ="rgba(0,0,0,0)";
+		document.getElementById("recommand").style.color = "black";
+	}
+	
+	function select2(){
+		document.getElementById("popular").style.background ="rgba(0,0,0,0)";
+		document.getElementById("popular").style.color = "black";
+		document.getElementById("recommand").style.background ="rgba(0,0,0,0.6)";
+		document.getElementById("recommand").style.color = "white";
+	}
+</script>
 <style type="text/css">
 	.wholesection{width : 100%; height:7700px; margin-top : 40px;}
 	.section1 {width:100%; height : 1300px;}
@@ -69,69 +86,61 @@
 				position : relative; left : -6px;}
 	.weekbtn:hover { background-color: rgba(0,0,0,0.6); color : white;  cursor: pointer;}
 	.monthbtn:hover {cursor: pointer;}
-	.buttongroupdiv2 {float : left; width : 170px; height: 40px;}
+	
+	.buttongroup {height: 120px; margin : 0 auto;}
+	.buttongroupdiv1 button {  width : 49%; height : 40px; 	
+				border-style: none;
+				border: 1px solid black;
+				background-color: rgba(0,0,0,0); color : black; padding : 5px;}
+	.buttongroupdiv1 {width : 90%; height: 60px; margin: 0 auto;}
+	.buttongroupdiv1 button:hover { background-color: rgba(0,0,0,0.6); color : white; cursor: pointer;}
 </style>
 </head>
 <body>	
 <%@ include file="./form/header.jsp"%>
-<aside class = "asidemenu">
-		<ul>
-			<li onclick="loction.href=''"> TOP100</li>
-			<li onclick="loction.href=''"> 장르별 음악</li>
-			<li onclick="loction.href=''"> 인기 음악</li>
-			<li onclick="loction.href=''"> 추천 음악</li>		
-		</ul>
-	</aside>
+
 <section class ="wholesection">
-	<section class ="section1"> <!-- 뮤직 탑 100/ 테이블로 (인기음악) -->
+	<section class ="section1"> 
 		<div class = "section1div">
-		<h1>100개 한번에 보여줄지 페이징 쓸지 고민할것</h1>
 		<div class="buttongroup"> 
 			<div class = "buttongroupwrap">
-				<div class="buttongroupdiv2">
-					<button class="weekbtn">주간</button>
-					<button class="monthbtn">월간</button>
+				<div class="buttongroupdiv1">
+					<div class="buttongroupdiv1">
+					<button id="popular" style = "border-top-left-radius: 5px;
+							border-bottom-left-radius:5px;" onclick="select1()"> popular </button>
+					<button id="recommand" style="border-bottom-right-radius:5px; 
+					border-top-right-radius: 5px; background : rgba(0,0,0,0.6);
+							color:white;" onclick="select2()">recommand</button>
+					</div>
 				</div>
 			</div>
 		</div>
 			<div class = "section1divtablediv" onclick ="location.href('')">
-					<p> 뮤즈 차트 </p> 
+					<p> 뮤즈 앨범 차트 </p> 
 			</div>
 			<table class = "section1divtable" border= "1" >
 				<colgroup>
-					<col width = "4%"> <!-- 순위-->
-					<col width = "10%"> <!-- 앨범이미지  -->
-					<col width = "60%"> <!-- 곡 이름 -->
-					<col width = "10%"> <!-- 작곡가 이름 -->
-					<col width = "10%"> <!-- 앨범 이름 -->
-					<col width = "2%"> <!-- 재생 버튼 -->
-					<col width = "2%"> <!-- 담기 버튼 -->
-					<col width = "2%"> <!-- 좋아요 버튼 -->
+					<col width = "5%"> <!-- 순위-->
+					<col width = "15%"> <!-- 앨범이미지  -->
+					<col width = "60%"> <!-- 앨범 이름 -->
+					<col width = "20%"> <!-- 작곡가 이름 -->
 				</colgroup>
 				<thead>
 					<tr style="color: rgba(0,0,0,0.6); font-size: 8px;"  height = 30px;>
 						<td>순위</td>
 						<td>앨범이미지</td>
-						<td>곡</td>
-						<td>작곡가</td>
 						<td>앨범이름</td>
-						<td>재생</td>
-						<td>담기</td>
-						<td>♡</td>
+						<td>작곡가</td>
 						
 					</tr>
 				</thead>
 				<tbody> <!-- 100개 까지만 출력 -->
-				<% for(int a=1; a<=100; a++) {%>
-					<tr height = 70px;>
-						<td>순위<%= a %></td>
+				<% for(int a=1; a<=10; a++) {%>
+					<tr height = 100px;>
+						<td><%= a %></td>
 						<td>앨범이미지<%= a %></td>
-						<td>곡 이름출력<%= a %></td>
-						<td>작곡가이름<%= a %></td>
 						<td>앨범이름<%= a %></td>
-						<td>재생</td>
-						<td>담기</td>
-						<td>좋아</td>
+						<td>작곡가<%= a %></td>
 					</tr>
 				<%}%>
 				</tbody>

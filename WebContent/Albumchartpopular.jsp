@@ -5,6 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	var num=0;
+	function select1(){
+		document.getElementById("popular").style.background="rgba(0,0,0,0.6)";
+		document.getElementById("popular").style.color = "white";
+		document.getElementById("recommand").style.background ="rgba(0,0,0,0)";
+		document.getElementById("recommand").style.color = "black";
+	}
+	
+	function select2(){
+		document.getElementById("popular").style.background ="rgba(0,0,0,0)";
+		document.getElementById("popular").style.color = "black";
+		document.getElementById("recommand").style.background ="rgba(0,0,0,0.6)";
+		document.getElementById("recommand").style.color = "white";
+	}
+</script>
 <style type="text/css">
 	.wholesection{width : 100%; height:7700px; margin-top : 40px;}
 	.section1 {width:100%; height : 1300px;}
@@ -69,21 +86,30 @@
 				position : relative; left : -6px;}
 	.weekbtn:hover { background-color: rgba(0,0,0,0.6); color : white;  cursor: pointer;}
 	.monthbtn:hover {cursor: pointer;}
-	.buttongroupdiv2 {float : left; width : 170px; height: 40px;}
+	
+	.buttongroup {height: 120px; margin : 0 auto;}
+	.buttongroupdiv1 button {  width : 49%; height : 40px; 	
+				border-style: none;
+				border: 1px solid black;
+				background-color: rgba(0,0,0,0); color : black; padding : 5px;}
+	.buttongroupdiv1 {width : 90%; height: 60px; margin: 0 auto;}
+	.buttongroupdiv1 button:hover { background-color: rgba(0,0,0,0.6); color : white; cursor: pointer;}
 </style>
 </head>
 <body>	
 <%@ include file="./form/header.jsp"%>
 
 <section class ="wholesection">
-	<section class ="section1"> <!-- 뮤직 탑 100/ 테이블로 (인기음악) -->
+	<section class ="section1"> 
 		<div class = "section1div">
-		<h1>100개 한번에 보여줄지 페이징 쓸지 고민할것</h1>
 		<div class="buttongroup"> 
 			<div class = "buttongroupwrap">
-				<div class="buttongroupdiv2">
-					<button class="weekbtn">주간</button>
-					<button class="monthbtn">월간</button>
+				<div class="buttongroupdiv1">
+					<button id="popular" style = "border-top-left-radius: 5px;
+							border-bottom-left-radius:5px;background : rgba(0,0,0,0.6);
+							color:white;" onclick="select1()"> popular </button>
+					<button id="recommand" style="border-bottom-right-radius:5px; 
+					border-top-right-radius: 5px;" onclick="select2()">recommand</button>
 				</div>
 			</div>
 		</div>
