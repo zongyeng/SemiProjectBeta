@@ -5,7 +5,7 @@
 
 <insert id ="insert">
 INSERT INTO USERINFO (USERINFO_SEQ, USERINFO_CONTROLNO, USERINFO_NAME, USERINFO_NICKNAME, USERINFO_ID, USERINFO_PASSWORD, USERINFO_SEX, USERINFO_AGE, USERINFO_PHONNUMBER, USERINFO_EMAIL) 
-	VALUES(USERINFOSEQ.NEXTVAL,'#{dto.userinfo_controlno}','#{dto.userinfo_name}','#{dto.userinfo_nickname}','#{dto.userinfo_id}','#{dto.userinfo_password}','#{dto.userinfo_sex}','#{dto.userinfo_age}','#{dto.userinfo_phonnumber}','#{dto.userinfo_email}');
+	VALUES(USERINFOSEQ.NEXTVAL,'#{dto.userinfo_controlno}','#{dto.userinfo_name}','#{dto.userinfo_nickname}','#{dto.userinfo_id}','#{dto.userinfo_password}','#{dto.userinfo_sex}','#{dto.userinfo_age}','#{dto.userinfo_phoneumber}','#{dto.userinfo_email}');
 </insert>
 
 </mapper>
