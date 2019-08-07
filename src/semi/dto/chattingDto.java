@@ -8,7 +8,7 @@ public class chattingDto {
 	private String userinfo_nickname;
 	private char userinfo_sex;
 	private int userinfo_age;
-	private String userinfo_phonnumber;
+	private String userinfo_phoneumber;
 	private String userinfo_email;
 	private Date userinfo_signdate;
 	private char userinfo_enable;
@@ -16,7 +16,7 @@ public class chattingDto {
 	public chattingDto() {};
 	
 	public chattingDto(int userinfo_seq, int userinfo_controlno, String userinfo_name, String userinfo_nickname,
-			char userinfo_sex, int userinfo_age, String userinfo_phonnumber, String userinfo_email,
+			char userinfo_sex, int userinfo_age, String userinfo_phoneumber, String userinfo_email,
 			Date userinfo_signdate, char userinfo_enable) {
 		this.userinfo_seq = userinfo_seq;
 		this.userinfo_controlno = userinfo_controlno;
@@ -24,7 +24,7 @@ public class chattingDto {
 		this.userinfo_nickname = userinfo_nickname;
 		this.userinfo_sex = userinfo_sex;
 		this.userinfo_age = userinfo_age;
-		this.userinfo_phonnumber = userinfo_phonnumber;
+		this.userinfo_phoneumber = userinfo_phoneumber;
 		this.userinfo_email = userinfo_email;
 		this.userinfo_signdate = userinfo_signdate;
 		this.userinfo_enable = userinfo_enable;
@@ -78,12 +78,12 @@ public class chattingDto {
 		this.userinfo_age = userinfo_age;
 	}
 
-	public String getUserinfo_phonnumber() {
-		return userinfo_phonnumber;
+	public String getUserinfo_phoneumber() {
+		return userinfo_phoneumber;
 	}
 
-	public void setUserinfo_phonnumber(String userinfo_phonnumber) {
-		this.userinfo_phonnumber = userinfo_phonnumber;
+	public void setUserinfo_phoneumber(String userinfo_phoneumber) {
+		this.userinfo_phoneumber = userinfo_phoneumber;
 	}
 
 	public String getUserinfo_email() {
@@ -114,7 +114,7 @@ public class chattingDto {
 	public String toString() {
 		return "UserinfoDto [userinfo_seq=" + userinfo_seq + ", userinfo_controlno=" + userinfo_controlno
 				+ ", userinfo_name=" + userinfo_name + ", userinfo_nickname=" + userinfo_nickname + ", userinfo_sex="
-				+ userinfo_sex + ", userinfo_age=" + userinfo_age + ", userinfo_phonnumber=" + userinfo_phonnumber
+				+ userinfo_sex + ", userinfo_age=" + userinfo_age + ", userinfo_phoneumber=" + userinfo_phoneumber
 				+ ", userinfo_email=" + userinfo_email + ", userinfo_signdate=" + userinfo_signdate
 				+ ", userinfo_enable=" + userinfo_enable + "]";
 	}
