@@ -12,11 +12,11 @@ public class loginDto {
 	private String userinfo_password;
 	private char userinfo_sex;
 	private int userinfo_age;
-	private String userinfo_phonnumber;
+	private String userinfo_phonenumber;
 	private String userinfo_email;
 	private Date userinfo_signdate;
 	private char userinfo_enable;
-	private int userinfo_cache;
+	private int userinfo_cash;
 
 	
 	
@@ -25,8 +25,8 @@ public class loginDto {
 
 
 	public loginDto(int userinfo_seq, int userinfo_controlno, String userinfo_name, String userinfo_nickname,
-			String userinfo_id, String userinfo_password, char userinfo_sex, int userinfo_age, String userinfo_phonnumber,
-			String userinfo_email, Date userinfo_signdate, char userinfo_enable, int userinfo_cache) {
+			String userinfo_id, String userinfo_password, char userinfo_sex, int userinfo_age, String userinfo_phonenumber,
+			String userinfo_email, Date userinfo_signdate, char userinfo_enable, int userinfo_cash) {
 		super();
 		this.userinfo_seq = userinfo_seq;
 		this.userinfo_controlno = userinfo_controlno;
@@ -36,11 +36,11 @@ public class loginDto {
 		this.userinfo_password = userinfo_password;
 		this.userinfo_sex = userinfo_sex;
 		this.userinfo_age = userinfo_age;
-		this.userinfo_phonnumber = userinfo_phonnumber;
+		this.userinfo_phonenumber = userinfo_phonenumber;
 		this.userinfo_email = userinfo_email;
 		this.userinfo_signdate = userinfo_signdate;
 		this.userinfo_enable = userinfo_enable;
-		this.userinfo_cache = userinfo_cache;
+		this.userinfo_cash = userinfo_cash;
 	}
 
 	public int getUserinfo_seq() {
@@ -107,12 +107,12 @@ public class loginDto {
 		this.userinfo_age = userinfo_age;
 	}
 
-	public String getUserinfo_phonnumber() {
-		return userinfo_phonnumber;
+	public String getUserinfo_phonenumber() {
+		return userinfo_phonenumber;
 	}
 
-	public void setUserinfo_phonnumber(String userinfo_phonnumber) {
-		this.userinfo_phonnumber = userinfo_phonnumber;
+	public void setUserinfo_phonenumber(String userinfo_phonenumber) {
+		this.userinfo_phonenumber = userinfo_phonenumber;
 	}
 
 	public String getUserinfo_email() {
@@ -139,12 +139,12 @@ public class loginDto {
 		this.userinfo_enable = userinfo_enable;
 	}
 
-	public int getUserinfo_cache() {
-		return userinfo_cache;
+	public int getUserinfo_cash() {
+		return userinfo_cash;
 	}
 
-	public void setUserinfo_cache(int userinfo_cache) {
-		this.userinfo_cache = userinfo_cache;
+	public void setUserinfo_cash(int userinfo_cash) {
+		this.userinfo_cash = userinfo_cash;
 	}
 
 	@Override
@@ -152,9 +152,9 @@ public class loginDto {
 		return "loginDto [userinfo_seq=" + userinfo_seq + ", userinfo_controlno=" + userinfo_controlno
 				+ ", userinfo_name=" + userinfo_name + ", userinfo_nickname=" + userinfo_nickname + ", userinfo_id="
 				+ userinfo_id + ", userinfo_password=" + userinfo_password + ", userinfo_sex=" + userinfo_sex
-				+ ", userinfo_age=" + userinfo_age + ", userinfo_phonnumber=" + userinfo_phonnumber
+				+ ", userinfo_age=" + userinfo_age + ", userinfo_phonenumber=" + userinfo_phonenumber
 				+ ", userinfo_email=" + userinfo_email + ", userinfo_signdate=" + userinfo_signdate
-				+ ", userinfo_enable=" + userinfo_enable + ", userinfo_cache=" + userinfo_cache + "]";
+				+ ", userinfo_enable=" + userinfo_enable + ", userinfo_cash=" + userinfo_cash + "]";
 	}
 	
 }
