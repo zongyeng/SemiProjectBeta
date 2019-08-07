@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="music_hl_time" column="MUSIC_HL_TIME" />
 		<result property="music_content" column="MUSIC_CONTENT" />
 		<result property="music_composer" column="MUSIC_COMPOSER" />
-		<result property="music_lylicist" column="MUSIC_LYLICIST" />
+		<result property="music_lyricist" column="MUSIC_LYRICIST" />
 		<result property="music_regdate" column="MUSIC_REGDATE" />
 		<result property="music_tag" column="MUSIC_TAG" />
 		<result property="music_enable" column="MUSIC_ENABLE" />
@@ -23,13 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
   <select id="selectList_music" resultType="musicDto">
   	SELECT MUSIC_SEQ,MUSIC_ARTIST,MUSIC_NO,MUSIC_TITLE,MUSIC_SIZE,MUSIC_LENGTH,MUSIC_HL_TIME,
-  		MUSIC_CONTENT,MUSIC_COMPOSER,MUSIC_LYLICIST,MUSIC_TAG,MUSIC_ENABLE,MUSIC_ALBUM 
+  		MUSIC_CONTENT,MUSIC_COMPOSER,MUSIC_LYRICIST,MUSIC_TAG,MUSIC_ENABLE,MUSIC_ALBUM 
   		FROM MUSIC ORDER BY MUSIC_SEQ DESC
   </select>
   
   <select id="selectOne_music" parameterType="int" resultMap="musicDtoMap">
   	SELECT MUSIC_SEQ,MUSIC_ARTIST,MUSIC_NO,MUSIC_TITLE,MUSIC_SIZE,MUSIC_LENGTH,MUSIC_HL_TIME,
-  		MUSIC_CONTENT,MUSIC_COMPOSER,MUSIC_LYLICIST,MUSIC_TAG,MUSIC_ENABLE,MUSIC_ALBUM 
+  		MUSIC_CONTENT,MUSIC_COMPOSER,MUSIC_LYRICIST,MUSIC_TAG,MUSIC_ENABLE,MUSIC_ALBUM 
   		FROM MUSIC WHERE MUSIC_SEQ = #{music_seq}
   </select>
     
@@ -43,11 +43,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <insert id="insert_music" parameterType="musicDto">
   	INSERT INTO MUSIC 
   		VALUES(MUSICSEQ.NEXTVAL,#{music_artist},#{music_no},#{music_title},#{music_size},#{music_length},#{music_hl_time},
-  		#{music_content},#{music_composer},#{music_lylicist},SYSDATE,#{music_tag},#{music_enable},#{music_album})
+  		#{music_content},#{music_composer},#{music_lyricist},SYSDATE,#{music_tag},#{music_enable},#{music_album})
   </insert>
-<!--   INSERT INTO MUSIC (MUSIC_SEQ, MUSIC_ARTIST, MUSIC_NO, MUSIC_TITLE, MUSIC_SIZE, MUSIC_LENGTH)
-	VALUES(MUSICSEQ.NEXTVAL,'2','2','2_SMILEDAY','12.23','0401');
- -->
+ 
   <delete id="delete_music" parameterType="int">
   	DELETE FROM MUSIC WHERE MUSIC_SEQ = #{music_seq}
   </delete>
@@ -62,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		MUSIC_HL_TIME = #{music_hl_time},
   		MUSIC_CONTENT = #{music_content},
   		MUSIC_COMPOSER = #{music_composer},
-  		MUSIC_LYLICIST = #{music_lylicist},
+  		MUSIC_LYRICIST = #{music_lyricist},
   		MUSIC_TAG = #{music_tag},
   		MUSIC_ENABLE = #{music_enable},
   		MUSIC_ALBUM = #{music_album}

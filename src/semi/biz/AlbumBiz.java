@@ -9,23 +9,23 @@ public class AlbumBiz {
 	
 	AlbumDao dao = new AlbumDao();
 
-	public List<AlbumDto> album_selectList(){
-		return dao.album_selectList();
+	public List<AlbumDto> selectList_album(){
+		return dao.selectList_album();
 	}
 	
-	public AlbumDto album_selectOne(int seq) {
-		return dao.album_selectOne(seq);
+	public AlbumDto selectOne_album(int seq) {
+		return dao.selectOne_album(seq);
 	}
 
-	public int album_insert(AlbumDto dto){
-		return dao.album_insert(dto);
+	public int insert_album(AlbumDto dto){
+		return dao.insert_album(dto);
 	}
 	
-	public int album_delete(int seq){
-		return dao.album_delete(seq);
+	public int delete_album(int seq){
+		return dao.delete_album(seq);
 	}
 	
-	public int album_update(AlbumDto dto){
-		return dao.album_update(dto);
+	public int update_album(AlbumDto dto){
+		return dao.update_album(dto);
 	}
 }

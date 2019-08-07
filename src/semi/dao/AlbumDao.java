@@ -11,7 +11,7 @@ public class AlbumDao extends SqlMapConfig_Music {
 
 	private String namespace = "album_mapper.";
 	
-	public List<AlbumDto> album_selectList(){
+	public List<AlbumDto> selectList_album(){
 		
 		SqlSession session = null;
 		List<AlbumDto> list = new ArrayList<AlbumDto>();
@@ -27,7 +27,7 @@ public class AlbumDao extends SqlMapConfig_Music {
 		return list;
 	}
 	
-	public AlbumDto album_selectOne(int seq) {
+	public AlbumDto selectOne_album(int seq) {
 		
 		SqlSession session = null;
 		AlbumDto dto = new AlbumDto();
@@ -45,7 +45,7 @@ public class AlbumDao extends SqlMapConfig_Music {
 		return dto;
 	}
 
-	public int album_insert(AlbumDto dto){
+	public int insert_album(AlbumDto dto){
 		
 		SqlSession session = null;
 		int res = 0;
@@ -58,12 +58,13 @@ public class AlbumDao extends SqlMapConfig_Music {
 			e.printStackTrace();
 			System.out.println("insert_album 실행 Error");
 		} finally {
+			session.commit();
 			session.close();
 		}
 		return res;
 	}
 	
-	public int album_delete(int seq){
+	public int delete_album(int seq){
 		
 		SqlSession session = null;
 		int res = 0;
@@ -76,12 +77,13 @@ public class AlbumDao extends SqlMapConfig_Music {
 			e.printStackTrace();
 			System.out.println("delete_album 실행 Error");
 		} finally {
+			session.commit();
 			session.close();
 		}
 		return res;
 	}
 	
-	public int album_update(AlbumDto dto){
+	public int update_album(AlbumDto dto){
 		
 		SqlSession session = null;
 		int res = 0;
@@ -94,6 +96,7 @@ public class AlbumDao extends SqlMapConfig_Music {
 			e.printStackTrace();
 			System.out.println("update_album 실행 Error");
 		} finally {
+			session.commit();
 			session.close();
 		}
 		return res;
