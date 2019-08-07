@@ -72,6 +72,8 @@
     .logindivdiv {display : flex; width:80%; margin : 0 auto;}
     .logindivdivbtn { width : 100px; height: 30px; background-color: rgba(200,200,200,0.5);
   				  margin-left: 15px;border: none; border-radius: 10px; }
+    .logindivdivbtn { width : 100px; height: 30px; background-color: rgba(200,200,200,0.5);
+  				  margin-left: 15px;border: none; border-radius: 10px; }
   	.logindivdivbtn:hover {background-color: #B6B6B6; transition: .8s; cursor: pointer;}			  
 	.logindivdivbtn:focus {outline : none;}
 </style>

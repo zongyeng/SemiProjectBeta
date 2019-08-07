@@ -41,7 +41,8 @@ public class loginServlet extends HttpServlet {
 		
 		if(command.equals("login")) {
 			
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("UserLogin.jsp");
+			
 			
 		}else if(command.equals("loginres")){
 			String id = request.getParameter("id");
@@ -64,7 +65,7 @@ public class loginServlet extends HttpServlet {
 			
 		}else if(command.equals("signup")) {
 			
-			response.sendRedirect("signup.jsp");
+			response.sendRedirect("UserSignUp.jsp");
 
 		}else if(command.equals("signupres")) {
 				// 회원가입 성공시
