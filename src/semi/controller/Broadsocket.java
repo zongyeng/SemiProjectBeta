@@ -238,7 +238,7 @@ public class Broadsocket {
 		Consultant.getBasicRemote()
 				.sendText("(SyStEm)USER[SEQ=" + dto.getUserinfo_seq() + ",NAME=" + dto.getUserinfo_name() + ",NICKNAME="
 						+ dto.getUserinfo_nickname() + ",SEX=" + dto.getUserinfo_sex() + ",PHON="
-						+ dto.getUserinfo_phoneumber() + ",EMAIL=" + dto.getUserinfo_email() + "]");
+						+ dto.getUserinfo_phonenumber() + ",EMAIL=" + dto.getUserinfo_email() + "]");
 	}
 
 	public boolean overlapNickname(Session session, chattingDto dto) {
