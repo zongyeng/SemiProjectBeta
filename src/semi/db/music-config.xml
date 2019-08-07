@@ -7,7 +7,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<properties resource="semi/db/db.properties"></properties>
 
 	<typeAliases>
-		<typeAlias type="semi.dto.MusicDto" alias="dto"></typeAlias>
+		<typeAlias type="semi.dto.MusicDto" alias="musicDto"></typeAlias>
+		<typeAlias type="semi.dto.AlbumDto" alias="albumDto"></typeAlias>
 	</typeAliases>
 	
   <environments default="development">
@@ -23,7 +24,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   </environments>
   
   <mappers>
-    <mapper resource="music/db/music-mapper.xml"/>
+    <mapper resource="semi/db/music-mapper.xml"/>
+    <mapper resource="semi/db/album-mapper.xml"/>
   </mappers>
 
 </configuration>
