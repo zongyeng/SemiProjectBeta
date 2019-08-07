@@ -2,42 +2,71 @@
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="loginmapper">
+<mapper namespace="music_mapper">
 
-  <resultMap type="com.login.dto.MemberdDto" id="dtoMap">
-		<result property="myno" column="MYNO" />
-		<result property="writer" column="WRITER" />
-		<result property="title" column="TITLE" />
-		<result property="content" column="CONTENT" />
-		<result property="regdate" column="REGDATE" />
+  <resultMap type="semi.dto.MusicDto" id="musicDtoMap">
+		<result property="music_seq" column="MUSIC_SEQ" />
+		<result property="music_artist" column="MUSIC_ARTIST" />
+		<result property="music_no" column="MUSIC_NO" />
+		<result property="music_title" column="MUSIC_TITLE" />
+		<result property="music_size" column="MUSIC_SIZE" />
+		<result property="music_length" column="MUSIC_LENGTH" />
+		<result property="music_hl_time" column="MUSIC_HL_TIME" />
+		<result property="music_content" column="MUSIC_CONTENT" />
+		<result property="music_composer" column="MUSIC_COMPOSER" />
+		<result property="music_lylicist" column="MUSIC_LYLICIST" />
+		<result property="music_regdate" column="MUSIC_REGDATE" />
+		<result property="music_tag" column="MUSIC_TAG" />
+		<result property="music_enable" column="MUSIC_ENABLE" />
+		<result property="music_album" column="MUSIC_ALBUM" />
 	</resultMap>
   
-  <select id="selectList" resultType="dto">
-  	SELECT MYNO,MYID,MYPW,MYNAME,MYADDR,MYPHONE,MYEMAIL,MYENABLED,MYROLE FROM MEMBERBOARD ORDER BY MYNO DESC
+  <select id="selectList_music" resultType="musicDto">
+  	SELECT MUSIC_SEQ,MUSIC_ARTIST,MUSIC_NO,MUSIC_TITLE,MUSIC_SIZE,MUSIC_LENGTH,MUSIC_HL_TIME,
+  		MUSIC_CONTENT,MUSIC_COMPOSER,MUSIC_LYLICIST,MUSIC_TAG,MUSIC_ENABLE,MUSIC_ALBUM 
+  		FROM MUSIC ORDER BY MUSIC_SEQ DESC
   </select>
   
-  <select id="selectOne" parameterType="int" resultMap="dtoMap">
-  	SELECT MYNO,MYID,MYPW,MYNAME,MYADDR,MYPHONE,MYEMAIL,MYENABLED,MYROLE FROM MEMBERBOARD WHERE MYNO = #{myno}
+  <select id="selectOne_music" parameterType="int" resultMap="musicDtoMap">
+  	SELECT MUSIC_SEQ,MUSIC_ARTIST,MUSIC_NO,MUSIC_TITLE,MUSIC_SIZE,MUSIC_LENGTH,MUSIC_HL_TIME,
+  		MUSIC_CONTENT,MUSIC_COMPOSER,MUSIC_LYLICIST,MUSIC_TAG,MUSIC_ENABLE,MUSIC_ALBUM 
+  		FROM MUSIC WHERE MUSIC_SEQ = #{music_seq}
   </select>
-  
-  <select id="selectLogin" parameterType="int" resultMap="dtoMap">
-  	SELECT MYNO,MYID,MYPW,MYNAME,MYADDR,MYPHONE,MYEMAIL,MYENABLED,MYROLE FROM MEMBERBOARD 
-  	WHERE MYID=#{myid} WHERE MYPW=${mypw} WHERE MYENABLED=${myenabled}
-  </select>
-  
-  <delete id="muldel" parameterType="map">
-  	DELETE FROM MDBOARD WHERE SEQ IN
-  	<foreach collection="seqs" item="seq" open="(" separator="," close=")" >
-  	#{seq}
+    
+  <delete id="muldel_music" parameterType="map">
+  	DELETE FROM MUSIC WHERE SEQ IN
+  	<foreach collection="music_seqs" item="music_seq" open="(" separator="," close=")" >
+  	#{music_seq}
   	</foreach>
   </delete>
   
-  <insert id="insert" parameterType="dto">
-  	INSERT INTO MDBOARD VALUES(MDBOARDSEQ.NEXTVAL,WRITER,TITLE,CONTENT,SYSDATE)
+  <insert id="insert_music" parameterType="musicDto">
+  	INSERT INTO MUSIC 
+  		VALUES(MUSICSEQ.NEXTVAL,#{music_artist},#{music_no},#{music_title},#{music_size},#{music_length},#{music_hl_time},
+  		#{music_content},#{music_composer},#{music_lylicist},SYSDATE,#{music_tag},#{music_enable},#{music_album})
   </insert>
-  
-  <delete id="delete" parameterType="int">
-  	DELETE FROM MDBOARD WHERE SEQ = #{seq}
+<!--   INSERT INTO MUSIC (MUSIC_SEQ, MUSIC_ARTIST, MUSIC_NO, MUSIC_TITLE, MUSIC_SIZE, MUSIC_LENGTH)
+	VALUES(MUSICSEQ.NEXTVAL,'2','2','2_SMILEDAY','12.23','0401');
+ -->
+  <delete id="delete_music" parameterType="int">
+  	DELETE FROM MUSIC WHERE MUSIC_SEQ = #{music_seq}
   </delete>
+  
+  <update id="update_music" parameterType="musicDto">
+  	UPDATE MUSIC SET 
+  		MUSIC_ARTIST = #{music_artist}, 
+  		MUSIC_NO = #{music_no},
+  		MUSIC_TITLE = #{music_title},
+  		MUSIC_SIZE = #{music_size},
+  		MUSIC_LENGTH = #{music_length},
+  		MUSIC_HL_TIME = #{music_hl_time},
+  		MUSIC_CONTENT = #{music_content},
+  		MUSIC_COMPOSER = #{music_composer},
+  		MUSIC_LYLICIST = #{music_lylicist},
+  		MUSIC_TAG = #{music_tag},
+  		MUSIC_ENABLE = #{music_enable},
+  		MUSIC_ALBUM = #{music_album}
+  		WHERE MUSIC_SEQ = #{music_seq}
+  </update>
 
 </mapper>
