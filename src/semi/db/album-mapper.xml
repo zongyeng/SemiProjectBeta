@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="album_mapper">
 
-  <resultMap type="semi.dto.AlbumdDto" id="albumDtoMap">
+  <resultMap type="semi.dto.AlbumDto" id="albumDtoMap">
 		<result property="album_seq" column="ALBUM_SEQ" />
 		<result property="album_artist" column="ALBUM_ARTIST" />
 		<result property="album_no" column="ALBUM_NO" />
