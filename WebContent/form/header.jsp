@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>header design</title>
+<script type="text/javascript" src="js/loginform.js"></script>
 <style type="text/css">
 	*{ padding : 0px; margin : 0px;}
 	.header{ width : 100%; height : 154px; 
@@ -69,6 +70,8 @@
     
     .logindiv {padding-top:35px; padding-bottom: 35px; padding-right: 5px; width : 20%;}
     .logindivdiv {display : flex; width:80%; margin : 0 auto;}
+    .logindivdivbtn { width : 100px; height: 30px; background-color: rgba(200,200,200,0.5);
+  				  margin-left: 15px;border: none; border-radius: 10px; }
     .logindivdivbtn { width : 100px; height: 30px; background-color: rgba(200,200,200,0.5);
   				  margin-left: 15px;border: none; border-radius: 10px; }
   	.logindivdivbtn:hover {background-color: #B6B6B6; transition: .8s; cursor: pointer;}			  

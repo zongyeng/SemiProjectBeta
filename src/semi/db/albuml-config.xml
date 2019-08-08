@@ -4,10 +4,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 
-	<properties resource="com/mul/db/db.properties"></properties>
+	<properties resource="semi/db/db.properties"></properties>
 
 	<typeAliases>
-		<typeAlias type="com.mul.dto.MDBoardDto" alias="dto"></typeAlias>
+		<typeAlias type="semi.dto.AlbumDto" alias="albumDto"></typeAlias>
 	</typeAliases>
 	
   <environments default="development">
@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   </environments>
   
   <mappers>
-    <mapper resource="com/mul/db/muldel-mapper.xml"/>
+    <mapper resource="semi/db/album-mapper.xml"/>
   </mappers>
 
 </configuration>

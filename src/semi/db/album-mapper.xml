@@ -2,42 +2,60 @@
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="loginmapper">
+<mapper namespace="album_mapper">
 
-  <resultMap type="com.login.dto.MemberdDto" id="dtoMap">
-		<result property="myno" column="MYNO" />
-		<result property="writer" column="WRITER" />
-		<result property="title" column="TITLE" />
-		<result property="content" column="CONTENT" />
-		<result property="regdate" column="REGDATE" />
+  <resultMap type="semi.dto.AlbumDto" id="albumDtoMap">
+		<result property="album_seq" column="ALBUM_SEQ" />
+		<result property="album_artist" column="ALBUM_ARTIST" />
+		<result property="album_no" column="ALBUM_NO" />
+		<result property="album_title" column="ALBUM_TITLE" />
+		<result property="album_tracks" column="ALBUM_TRACKS" />
+		<result property="album_length" column="ALBUM_LENGTH" />
+		<result property="album_content" column="ALBUM_CONTENT" />
+		<result property="album_regdate" column="ALBUM_REGDATE" />
+		<result property="album_tag" column="ALBUM_TAG" />
+		<result property="album_enable" column="ALBUM_ENABLE" />
 	</resultMap>
   
-  <select id="selectList" resultType="dto">
-  	SELECT MYNO,MYID,MYPW,MYNAME,MYADDR,MYPHONE,MYEMAIL,MYENABLED,MYROLE FROM MEMBERBOARD ORDER BY MYNO DESC
+  <select id="selectList_album" resultType="albumDto">
+  	SELECT ALBUM_SEQ,ALBUM_ARTIST,ALBUM_NO,ALBUM_TITLE,ALBUM_TRACKS,ALBUM_LENGTH,
+  		ALBUM_CONTENT,ALBUM_REGDATE,ALBUM_TAG,ALBUM_ENABLE 
+  		FROM ALBUM ORDER BY ALBUM_SEQ DESC
   </select>
   
-  <select id="selectOne" parameterType="int" resultMap="dtoMap">
-  	SELECT MYNO,MYID,MYPW,MYNAME,MYADDR,MYPHONE,MYEMAIL,MYENABLED,MYROLE FROM MEMBERBOARD WHERE MYNO = #{myno}
+  <select id="selectOne_album" parameterType="int" resultMap="albumDtoMap">
+  	SELECT ALBUM_SEQ,ALBUM_ARTIST,ALBUM_NO,ALBUM_TITLE,ALBUM_TRACKS,ALBUM_LENGTH,
+  		ALBUM_CONTENT,ALBUM_REGDATE,ALBUM_TAG,ALBUM_ENABLE 
+  		FROM ALBUM WHERE ALBUM_SEQ = #{album_seq}
   </select>
   
-  <select id="selectLogin" parameterType="int" resultMap="dtoMap">
-  	SELECT MYNO,MYID,MYPW,MYNAME,MYADDR,MYPHONE,MYEMAIL,MYENABLED,MYROLE FROM MEMBERBOARD 
-  	WHERE MYID=#{myid} WHERE MYPW=${mypw} WHERE MYENABLED=${myenabled}
-  </select>
-  
-  <delete id="muldel" parameterType="map">
-  	DELETE FROM MDBOARD WHERE SEQ IN
-  	<foreach collection="seqs" item="seq" open="(" separator="," close=")" >
-  	#{seq}
+  <delete id="muldel_album" parameterType="map">
+  	DELETE FROM ALBUM WHERE ALBUM_SEQ IN
+  	<foreach collection="album_seqs" item="album_seq" open="(" separator="," close=")" >
+  	#{album_seq}
   	</foreach>
   </delete>
   
-  <insert id="insert" parameterType="dto">
-  	INSERT INTO MDBOARD VALUES(MDBOARDSEQ.NEXTVAL,WRITER,TITLE,CONTENT,SYSDATE)
+  <insert id="insert_album" parameterType="albumDto">
+  	INSERT INTO ALBUM 
+  		VALUES(MUSICSEQ.NEXTVAL,#{album_artist},#{album_no},#{album_title},#{album_tracks},
+  		#{album_length},#{album_content},SYSDATE,#{album_tag},#{album_enable})
   </insert>
   
-  <delete id="delete" parameterType="int">
-  	DELETE FROM MDBOARD WHERE SEQ = #{seq}
+  <delete id="delete_album" parameterType="int">
+  	DELETE FROM ALBUM WHERE ALBUM_SEQ = #{album_seq}
   </delete>
 
+  <update id="update_album" parameterType="albumDto">
+  	UPDATE ALBUM SET 
+  		ALBUM_ARTIST = #{album_artist}, 
+  		ALBUM_NO = #{album_no},
+  		ALBUM_TITLE = #{album_title},
+  		ALBUM_TRACKS = #{album_tracks},
+  		ALBUM_LENGTH = #{album_length},
+  		ALBUM_CONTENT = #{album_content},
+  		ALBUM_TAG = #{album_tag},
+  		ALBUM_ENABLE = #{album_enable}
+  		WHERE ALBUM_SEQ = #{album_seq}
+  </update>
 </mapper>

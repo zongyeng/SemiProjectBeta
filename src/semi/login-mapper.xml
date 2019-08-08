@@ -2,10 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="loginmapper">
 
+<select id="select" parameterType="dto1" resultType="dto1">
+>>>>>>> branch 'master' of https://github.com/zongyeng/SemiProjectBeta.git
+SELECT USERINFO_SEQ, USERINFO_CONTROLNO, USERINFO_NAME, USERINFO_NICKNAME,
+	USERINFO_ID, USERINFO_PASSWORD, USERINFO_SEX, USERINFO_AGE, USERINFO_PHONENUMBER, 
+	USERINFO_EMAIL,USERINFO_SIGNDATE, USERINFO_ENABLE, USERINFO_CASH 
+FROM USERINFO WHERE USERINFO_ID = #{userinfo_id} AND USERINFO_PASSWORD = #{userinfo_password}
+</select>
 
-<insert id ="insert">
-INSERT INTO USERINFO (USERINFO_SEQ, USERINFO_CONTROLNO, USERINFO_NAME, USERINFO_NICKNAME, USERINFO_ID, USERINFO_PASSWORD, USERINFO_SEX, USERINFO_AGE, USERINFO_PHONNUMBER, USERINFO_EMAIL) 
-	VALUES(USERINFOSEQ.NEXTVAL,'#{dto.userinfo_controlno}','#{dto.userinfo_name}','#{dto.userinfo_nickname}','#{dto.userinfo_id}','#{dto.userinfo_password}','#{dto.userinfo_sex}','#{dto.userinfo_age}','#{dto.userinfo_phonnumber}','#{dto.userinfo_email}');
+
+<insert id="insert" parameterType="dto2">
+INSERT INTO USERINFO (USERINFO_SEQ  , USERINFO_CONTROLNO, USERINFO_NAME ,USERINFO_NICKNAME , USERINFO_ID , USERINFO_PASSWORD , USERINFO_SEX , USERINFO_AGE , USERINFO_PHONENUMBER , USERINFO_EMAIL )
+VALUES(USERINFOSEQ.NEXTVAL,1,#{userinfo_name}, 
+		#{userinfo_nickname}, #{userinfo_id}, #{userinfo_password}, #{userinfo_sex}, 
+		#{userinfo_age}, #{userinfo_phonenumber}, #{userinfo_email})
 </insert>
 
 </mapper>
