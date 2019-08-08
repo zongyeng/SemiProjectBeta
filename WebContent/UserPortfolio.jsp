@@ -111,9 +111,9 @@
 				<div class="buttongroupdiv1">
 					<button id="popular" style = "border-top-left-radius: 5px;
 							border-bottom-left-radius:5px;background : rgba(0,0,0,0.6);
-							color:white;" onclick="select1()"> popular </button>
+							color:white;" onclick="select1()"> portfolio </button>
 					<button id="recommand" style="border-bottom-right-radius:5px; 
-					border-top-right-radius: 5px;" onclick="select2()">recommand</button>
+					border-top-right-radius: 5px;" onclick="select2()">Timeline</button>
 				</div>
 			</div>
 		</div>
@@ -121,6 +121,7 @@
 					<p> portfolio </p> 
 			</div>
 			<div class = "section1divtablediv2">
+				<input type="button" onclick="" value="통계보기"/>
 			</div>
 			
 			<table class = "section1divtable" border= "1" >
