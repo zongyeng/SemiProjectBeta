@@ -80,7 +80,7 @@ public class MusicDao extends SqlMapConfig_Music {
 			e.printStackTrace();
 			System.out.println("delete_music 실행 Error");
 		} finally {
-			//session.commit();
+			session.commit();
 			session.close();
 		}
 		return res;
@@ -99,7 +99,7 @@ public class MusicDao extends SqlMapConfig_Music {
 			e.printStackTrace();
 			System.out.println("update_music 실행 Error");
 		} finally {
-			//session.commit();			
+			session.commit();			
 			session.close();
 		}
 		return res;

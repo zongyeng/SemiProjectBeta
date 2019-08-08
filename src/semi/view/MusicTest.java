@@ -4,16 +4,20 @@ import java.util.List;
 
 import semi.biz.AlbumBiz;
 import semi.biz.MusicBiz;
+import semi.biz.MusicBoardBiz;
 import semi.dto.AlbumDto;
+import semi.dto.MusicBoardDto;
 import semi.dto.MusicDto;
 
 public class MusicTest {
 
 	public static void main(String[] args) {
-		
-/*			MusicBiz biz = new MusicBiz();
+
+/*** Music BD Text
+		MusicBiz biz = new MusicBiz();
 		MusicDto dto = new MusicDto();
 	
+/***** Select List Music ****
 		List<MusicDto> list = biz.selectList_music();
 		System.out.println(list);
 		//for(MusicDto dto : list) {
@@ -22,7 +26,8 @@ public class MusicTest {
 				
 		dto = biz.selectOne_music(1);
 		System.out.println(dto);
-		
+
+/***** Insert Music ****
 		dto.setMusic_artist(3);
 		dto.setMusic_no(1);
 		dto.setMusic_title("다비치 - 이 사랑");
@@ -45,24 +50,15 @@ public class MusicTest {
 		
 		List<MusicDto> list1 = biz.selectList_music();
 		System.out.println(list1);
-		
-		int res1 = biz.delete_music(12);
-		if(res1 > 0) {
-			System.out.println("delete_music 성공");
-		} else {
-			System.out.println("delete_music 실패");
-		}
 
-		List<MusicDto> list2 = biz.selectList_music();
-		System.out.println(list2);
-
-		dto.setMusic_seq(1);
+/***** Update Music ****
+		dto.setMusic_seq(23);
 		dto.setMusic_artist(1);
 		dto.setMusic_no(1);
 		dto.setMusic_title("3_FUNCKEY MUSIC");
 		dto.setMusic_hl_time(30);
 		dto.setMusic_size(10);
-		dto.setMusic_length(310);
+		dto.setMusic_length(330);
 		dto.setMusic_composer("조영찬");
 		dto.setMusic_lyricist("조영찬");
 		dto.setMusic_content("FUNCKEY MUSIC");
@@ -77,19 +73,33 @@ public class MusicTest {
 			System.out.println("update_music 실패");
 		}
 
-		dto = biz.selectOne_music(1);
-		System.out.println(dto);
-*/			
+		List<MusicDto> list2 = biz.selectList_music();
+		System.out.println(list2);
 
+/***** Update Music ****
+		int res1 = biz.delete_music(23);
+		if(res1 > 0) {
+			System.out.println("delete_music 성공");
+		} else {
+			System.out.println("delete_music 실패");
+		}
+
+		List<MusicDto> list2 = biz.selectList_music();
+		System.out.println(list2);
+*/
+			
+/*** Album DB Test
 		AlbumBiz biza = new AlbumBiz();
 		AlbumDto dto = new AlbumDto(); 
-/*		 	
+		 	
+/***** Select List Album ****
 		List<AlbumDto> list = biza.selectList_album();
 		System.out.println(list);
 		//for(MusicDto dto : list) {
 		//	System.out.println(dto);
 		//}
-				
+
+/***** Select One Album ****
 		dto = biza.selectOne_album(1);
 		System.out.println(dto);
 		
@@ -101,7 +111,8 @@ public class MusicTest {
 		dto.setAlbum_content("좋은노래");
 		dto.setAlbum_tag("가요");
 		dto.setAlbum_enable('Y');
-		
+
+/***** Insert Music ****
 		int res = biza.insert_album(dto);
 		if(res > 0) {
 			System.out.println("insert_music 성공");
@@ -111,14 +122,16 @@ public class MusicTest {
 		
 		List<AlbumDto> list1 = biza.selectList_album();
 		System.out.println(list1);
-		
-		dto.setAlbum_seq(3);
+
+/***** Update Music ****
+		dto.setAlbum_seq(24);
 		dto.setAlbum_artist(1);
+		dto.setAlbum_no(3);
 		dto.setAlbum_title("3_FUNCKEY MUSIC");
 		dto.setAlbum_tracks(30);
 		dto.setAlbum_length(250);
 		dto.setAlbum_content("FUNCKEY MUSIC");
-		dto.setAlbum_tag("가요");
+		dto.setAlbum_tag("FUNCK");
 		dto.setAlbum_enable('Y');
 		
 		int res21 = biza.update_album(dto);
@@ -127,11 +140,11 @@ public class MusicTest {
 		} else {
 			System.out.println("update_music 실패");
 		}
-*/
-		dto = biza.selectOne_album(3);
-		System.out.println(dto);
 
-		int res1 = biza.delete_album(3);
+		List<AlbumDto> list2 = biza.selectList_album();
+		System.out.println(list2);
+
+		int res1 = biza.delete_album(24);
 		if(res1 > 0) {
 			System.out.println("delete_music 성공");
 		} else {
@@ -140,7 +153,68 @@ public class MusicTest {
 
 		List<AlbumDto> list2 = biza.selectList_album();
 		System.out.println(list2);
+*/
+/*** Board DB Test *****/	
+		MusicBoardBiz bizb = new MusicBoardBiz();
+		MusicBoardDto dtob = new MusicBoardDto(); 
 
+/***** Select List MusicBoard ****/
+		List<MusicBoardDto> list = bizb.selectList_musicbd();
+		System.out.println(list);
+		//for(MusicDto dto : list) {
+		//	System.out.println(dto);
+		//}
+				
+		dtob = bizb.selectOne_musicbd(1);
+		System.out.println(dtob);
+/*
+/***** Insert MusicBoard ****		
+		dtob.setMusicbd_groupsq(1);
+		dtob.setMusicbd_titletab(1);
+		dtob.setMusicbd_title("본문글1");
+		dtob.setMusicbd_content("좋은노래");
+		dtob.setMusicbd_writer("User1");
+		dtob.setMusicbd_delflag('N');
+		
+		int res = bizb.insert_musicbd(dtob);
+		if(res > 0) {
+			System.out.println("insert_musicbd 성공");
+		} else {
+			System.out.println("insert_musicbd 실패");
+		}
+		
+		List<MusicBoardDto> list1 = bizb.selectList_musicbd();
+		System.out.println(list1);
+		
+/***** Update MusicBoard ****
+		dtob.setMusicbd_groupsq(1);
+		dtob.setMusicbd_titletab(1);
+		dtob.setMusicbd_title("본문글1");
+		dtob.setMusicbd_content("좋은노래");
+		dtob.setMusicbd_writer("User1");
+		dtob.setMusicbd_delflag('N');
+		
+		int res21 = bizb.update_musicbd(dtob);
+		if(res21 > 0) {
+			System.out.println("update_music 성공");
+		} else {
+			System.out.println("update_music 실패");
+		}
+
+		List<MusicBoardDto> list2 = bizb.selectList_musicbd();
+		System.out.println(list2);
+
+/***** Delete MusicBoard ****
+		int res1 = bizb.delete_musicbd(24);
+		if(res1 > 0) {
+			System.out.println("delete_musicbd 성공");
+		} else {
+			System.out.println("delete_musicbd 실패");
+		}
+
+		List<MusicBoardDto> list3 = bizb.selectList_musicbd();
+		System.out.println(list3);
+*/
 	}
 
 }

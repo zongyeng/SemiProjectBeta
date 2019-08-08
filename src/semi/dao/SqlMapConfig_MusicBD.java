@@ -7,12 +7,11 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-
-public class SqlMapConfig_Album {
-	
+public class SqlMapConfig_MusicBD {
 	private SqlSessionFactory sqlSessionFactory;
 	
 	public SqlSessionFactory getSqlSessionFactory() {
+		
 		String resource = "semi/db/music-config.xml";
 		InputStream inputStream;
 		
@@ -20,7 +19,6 @@ public class SqlMapConfig_Album {
 			inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			
-		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
