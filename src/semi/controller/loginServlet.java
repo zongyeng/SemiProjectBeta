@@ -1,6 +1,7 @@
 package semi.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,7 +52,7 @@ public class loginServlet extends HttpServlet {
 			try{
 				dto.getUserinfo_seq();
 			} catch (NullPointerException e) {
-				//실패일시 메인페이지나 로그인페이지로 가면서 경고메세지. 아이디와 비밀번호를 확인해 주세요.
+				
 				response.sendRedirect("login.do?command=login");
 			}
 			
@@ -68,6 +69,30 @@ public class loginServlet extends HttpServlet {
 			response.sendRedirect("UserSignUp.jsp");
 
 		}else if(command.equals("signupres")) {
+			
+			String id = request.getParameter("id");
+			String name = request.getParameter("name");
+			String nickname = request.getParameter("nickname");
+			String password = request.getParameter("password");
+			char sex = request.getParameter("sex").charAt(0);
+			int age = Integer.parseInt(request.getParameter("age"));
+			String phone = request.getParameter("phone");
+			String email = request.getParameter("email");
+			boolean check = biz.signup(name, nickname,id,password,sex,age,phone,email);
+
+			PrintWriter out = response.getWriter();
+			if(check) {
+				out.println("<script>");
+				out.println("alert('회원가입 성공')");
+				out.println("location.href='login.do?command=login'");
+				out.println("</script>");
+			}else {
+				out.println("<script>");
+				out.println("alert('회원가입 실패')");
+				out.println("location.href='login.do?command=signup'");
+				out.println("</script>");
+			}
+			
 				// 회원가입 성공시
 		}else if(command.equals("idc")) {
 			

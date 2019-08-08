@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="album_mapper">
 
-  <resultMap type="semi.dto.AlbumdDto" id="albumDtoMap">
+  <resultMap type="semi.dto.AlbumDto" id="albumDtoMap">
 		<result property="album_seq" column="ALBUM_SEQ" />
 		<result property="album_artist" column="ALBUM_ARTIST" />
 		<result property="album_no" column="ALBUM_NO" />
@@ -20,34 +20,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="selectList_album" resultType="albumDto">
   	SELECT ALBUM_SEQ,ALBUM_ARTIST,ALBUM_NO,ALBUM_TITLE,ALBUM_TRACKS,ALBUM_LENGTH,
   		ALBUM_CONTENT,ALBUM_REGDATE,ALBUM_TAG,ALBUM_ENABLE 
-  		FROM MUSIC ORDER BY MYNO DESC
+  		FROM ALBUM ORDER BY ALBUM_SEQ DESC
   </select>
   
   <select id="selectOne_album" parameterType="int" resultMap="albumDtoMap">
   	SELECT ALBUM_SEQ,ALBUM_ARTIST,ALBUM_NO,ALBUM_TITLE,ALBUM_TRACKS,ALBUM_LENGTH,
   		ALBUM_CONTENT,ALBUM_REGDATE,ALBUM_TAG,ALBUM_ENABLE 
-  		FROM MUSIC WHERE ALBUM_SEQ = #{album_seq}
+  		FROM ALBUM WHERE ALBUM_SEQ = #{album_seq}
   </select>
   
   <delete id="muldel_album" parameterType="map">
-  	DELETE FROM MUSIC WHERE ALBUM_SEQ IN
+  	DELETE FROM ALBUM WHERE ALBUM_SEQ IN
   	<foreach collection="album_seqs" item="album_seq" open="(" separator="," close=")" >
   	#{album_seq}
   	</foreach>
   </delete>
   
   <insert id="insert_album" parameterType="albumDto">
-  	INSERT INTO MUSIC 
+  	INSERT INTO ALBUM 
   		VALUES(MUSICSEQ.NEXTVAL,#{album_artist},#{album_no},#{album_title},#{album_tracks},
   		#{album_length},#{album_content},SYSDATE,#{album_tag},#{album_enable})
   </insert>
   
   <delete id="delete_album" parameterType="int">
-  	DELETE FROM MUSIC WHERE ALBUM_SEQ = #{album_seq}
+  	DELETE FROM ALBUM WHERE ALBUM_SEQ = #{album_seq}
   </delete>
 
   <update id="update_album" parameterType="albumDto">
-  	UPDATE MUSIC SET 
+  	UPDATE ALBUM SET 
   		ALBUM_ARTIST = #{album_artist}, 
   		ALBUM_NO = #{album_no},
   		ALBUM_TITLE = #{album_title},

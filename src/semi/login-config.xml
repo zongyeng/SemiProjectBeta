@@ -4,7 +4,8 @@
 <properties resource="semi/db.properties"></properties>
 
 <typeAliases>
-	<typeAlias type = "semi.dto.loginDto" alias="dto"/>
+	<typeAlias type = "semi.dto.loginDto" alias="dto1"/>
+	<typeAlias type = "semi.dto.signupDto" alias="dto2"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
