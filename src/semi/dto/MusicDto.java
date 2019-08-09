@@ -13,7 +13,7 @@ public class MusicDto {
 	private int music_hl_time;
 	private String music_content;
 	private String music_composer;
-	private String music_lylicist;
+	private String music_lyricist;
 	private Date music_regdate;
 	private String music_tag;
 	private char music_enable;
@@ -21,7 +21,7 @@ public class MusicDto {
 	
 	public MusicDto() { }
 	public MusicDto(int seq, int artist, int no, String title, int size, int length,
-			int hl_time, String content, String composer, String lylicist, 
+			int hl_time, String content, String composer, String lyricist, 
 			Date regdate, String tag, char enable, int album) {
 		this.music_seq = seq;
 		this.music_artist = artist;
@@ -31,7 +31,7 @@ public class MusicDto {
 		this.music_length = length;
 		this.music_hl_time = hl_time;
 		this.music_composer = composer;
-		this.music_lylicist = lylicist;
+		this.music_lyricist = lyricist;
 		this.music_regdate = regdate;
 		this.music_tag = tag;
 		this.music_enable = enable;
@@ -107,11 +107,11 @@ public class MusicDto {
 	public void setMusic_composer(String music_composer) {
 		this.music_composer = music_composer;
 	}
-	public String getMusic_lylicist() {
-		return music_lylicist;
+	public String getMusic_lyricist() {
+		return music_lyricist;
 	}
-	public void setMusic_lylicist(String music_lylicist) {
-		this.music_lylicist = music_lylicist;
+	public void setMusic_lyricist(String music_lyricist) {
+		this.music_lyricist = music_lyricist;
 	}
 	public Date getMusic_regdate() {
 		return music_regdate;
@@ -137,17 +137,13 @@ public class MusicDto {
 	public void setMusic_album(int music_album) {
 		this.music_album = music_album;
 	}
-	
 	@Override
 	public String toString() {
 		return "MusicDto [music_seq=" + music_seq + ", music_artist=" + music_artist + ", music_no=" + music_no
 				+ ", music_title=" + music_title + ", music_size=" + music_size + ", music_length=" + music_length
 				+ ", music_hl_time=" + music_hl_time + ", music_content=" + music_content + ", music_composer="
-				+ music_composer + ", music_lylicist=" + music_lylicist + ", music_regdate=" + music_regdate
+				+ music_composer + ", music_lyricist=" + music_lyricist + ", music_regdate=" + music_regdate
 				+ ", music_tag=" + music_tag + ", music_enable=" + music_enable + ", music_album=" + music_album + "]";
 	}
 	
-	
-	
-
 }
