@@ -8,14 +8,14 @@ public class MusicBoardDto {
 	private int musicbd_groupno;
 	private int musicbd_groupsq;
 	private int musicbd_titletab;
-	private char musicbd_delflag;
+	private String musicbd_delflag;
 	private String musicbd_title;
 	private String musicbd_content;
 	private String musicbd_writer;
 	private Date musicbd_regdate;
 	
 	public MusicBoardDto() { }
-	public MusicBoardDto(int boardno, int groupno, int groupsq, int titletab,char delflag,
+	public MusicBoardDto(int boardno, int groupno, int groupsq, int titletab,String delflag,
 			String title, String content, String writer, Date regdate) {
 		this.musicbd_boardno = boardno;
 		this.musicbd_groupno = groupno;
@@ -51,10 +51,10 @@ public class MusicBoardDto {
 	public void setMusicbd_titletab(int musicbd_titletab) {
 		this.musicbd_titletab = musicbd_titletab;
 	}
-	public char getMusicbd_delflag() {
+	public String getMusicbd_delflag() {
 		return musicbd_delflag;
 	}
-	public void setMusicbd_delflag(char musicbd_delflag) {
+	public void setMusicbd_delflag(String musicbd_delflag) {
 		this.musicbd_delflag = musicbd_delflag;
 	}
 	public String getMusicbd_title() {
@@ -88,8 +88,7 @@ public class MusicBoardDto {
 				+ ", musicbd_delflag=" + musicbd_delflag + ", musicbd_title=" + musicbd_title + ", musicbd_content="
 				+ musicbd_content + ", musicbd_writer=" + musicbd_writer + ", musicbd_regdate=" + musicbd_regdate + "]";
 	}
-	
-	
+
 	
 	
 	

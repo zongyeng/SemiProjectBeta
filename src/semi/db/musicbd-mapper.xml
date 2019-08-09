@@ -5,73 +5,65 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="musicbd_mapper">
 
   <resultMap type="semi.dto.MusicBoardDto" id="musicbdDtoMap">
-		<result property="musicbd_boardno" column="MUSICBOARD_BOARDNO" />
-		<result property="musicbd_groupno" column="MUSICBOARD_GROUPNO" />
-		<result property="musicbd_groupsq" column="MUSICBOARD_GROUPSQ" />
-		<result property="musicbd_titletab" column="MUSICBOARD_TITLETAB" />
-		<result property="musicbd_delflag" column="MUSICBOARD_DELFLAG" />
-		<result property="musicbd_title" column="MUSICBOARD_TITLE" />
-		<result property="musicbd_content" column="MUSICBOARD_CONTENT" />
-		<result property="musicbd_writer" column="MUSICBOARD_WRITER" />
-		<result property="musicbd_regdate" column="MUSICBOARD_REGDATE" />
+		<result property="musicbd_boardno" column="MUSICBD_BOARDNO" />
+		<result property="musicbd_groupno" column="MUSICBD_GROUPNO" />
+		<result property="musicbd_groupsq" column="MUSICBD_GROUPSQ" />
+		<result property="musicbd_titletab" column="MUSICBD_TITLETAB" />
+		<result property="musicbd_delflag" column="MUSICBD_DELFLAG" />
+		<result property="musicbd_title" column="MUSICBD_TITLE" />
+		<result property="musicbd_content" column="MUSICBD_CONTENT" />
+		<result property="musicbd_writer" column="MUSICBD_WRITER" />
+		<result property="musicbd_regdate" column="MUSICBD_REGDATE" />
 	</resultMap>
   
-  <select id="selectList_musicbd" resultType="musicbdDto">
-  	SELECT MUSICBOARD_BOARDNO,MUSICBOARD_GROUPNO,MUSICBOARD_GROUPSQ,MUSICBOARD_TITLETAB,
-  		MUSICBOARD_DELFLAG,MUSICBOARD_TITLE,MUSICBOARD_CONTENT,MUSICBOARD_WRITER,MUSICBOARD_REGDATE 
-  		FROM MUSICBOARD ORDER BY MUSICBOARD_BOARDNO DESC, MUSICBOARD_GROUPSQ
+  <select id="selectList_musicbd" resultMap="musicbdDtoMap">
+  	SELECT MUSICBD_BOARDNO,MUSICBD_GROUPNO,MUSICBD_GROUPSQ,MUSICBD_TITLETAB,MUSICBD_DELFLAG,
+  		MUSICBD_TITLE,MUSICBD_CONTENT,MUSICBD_WRITER,MUSICBD_REGDATE 
+  		FROM MUSICBOARD ORDER BY MUSICBD_BOARDNO DESC, MUSICBD_GROUPSQ
   </select>
   
   <select id="selectOne_musicbd" parameterType="int" resultMap="musicbdDtoMap">
-  	SELECT MUSICBOARD_BOARDNO,MUSICBOARD_GROUPNO,MUSICBOARD_GROUPSQ,MUSICBOARD_TITLETAB,
-  		MUSICBOARD_DELFLAG,MUSICBOARD_TITLE,MUSICBOARD_CONTENT,MUSICBOARD_WRITER,MUSICBOARD_REGDATE
+  	SELECT MUSICBD_BOARDNO,MUSICBD_GROUPNO,MUSICBD_GROUPSQ,MUSICBD_TITLETAB,MUSICBD_DELFLAG,
+  		MUSICBD_TITLE,MUSICBD_CONTENT,MUSICBD_WRITER,MUSICBD_REGDATE
   		FROM MUSICBOARD
-  		WHERE MUSICBOARD_BOARDNO = #{musicbd_boardno}
+  		WHERE MUSICBD_BOARDNO = #{musicbd_boardno}
   </select>
     
   <insert id="insert_musicbd" parameterType="musicbdDto">
   	INSERT INTO MUSICBOARD VALUES(
   		BOARDNOSEQ.NEXTVAL,GROUPNOSEQ.NEXTVAL,#{musicbd_groupsq},#{musicbd_titletab},
-  		'N',#{musicbd_title},#{musicbd_content},#{musicbd_writer})
+  		'N',#{musicbd_title},#{musicbd_content},#{musicbd_writer},SYSDATE)
   </insert>
   
   <update id="update_musicbd" parameterType="musicbdDto">
   	UPDATE MUSICBOARD SET
-  		MUSICBOARD_TITLE = #{musicbd_title},
-  		MUSICBOARD_CONTENT = #{musicbd_content}
-  		WHERE MUSICBOARD_BOARDNO = #{musicbd_boardno}
+  		MUSICBD_TITLE = #{musicbd_title},
+  		MUSICBD_CONTENT = #{musicbd_content}
+  		WHERE MUSICBD_BOARDNO = #{musicbd_boardno}
   </update>
  
    <update id="delete_musicbd" parameterType="musicbdDto">
-  	UPDATE MUSICBOARD SET
-  		MUSICBOARD_DELFLAG = 'Y'
-  		WHERE MUSICBOARD_BOARDNO = #{musicbd_boardno}
+  	UPDATE MUSICBOARD SET MUSICBD_DELFLAG = 'Y'
+  		WHERE MUSICBD_BOARDNO = #{musicbd_boardno}
   </update>
  
+  <delete id="deleter_musicbd" parameterType="int">
+  	DELETE MUSICBOARD WHERE MUSICBD_BOARDNO = #{musicbd_boardno}
+  </delete>
+ 
    <update id="update_answer" parameterType="musicbdDto">
-  	UPDATE MUSICBOARD SET MUSICBOARD_GROUPSQ = MUSICBOARD_GROUPSQ+1
-  		WHERE MUSICBOARD_GROUPNO = (SELECT MUSICBOARD_GROUPNO FROM MUSICBOARD WHERE MUSICBOARD_BOARDNO=#{musicbd_boardno})
-  		AND MUSICBOARD_GROUPSQ > (SELECT MUSICBOARD_GROUPSQ FROM MUSICBOARD WHERE MUSICBOARD_BOARDNO=#{musicbd_boardno})
+  	UPDATE MUSICBOARD 
+  		SET MUSICBD_GROUPSQ = MUSICBD_GROUPSQ+1
+  		WHERE MUSICBD_GROUPNO = (SELECT MUSICBD_GROUPNO FROM MUSICBOARD WHERE MUSICBD_BOARDNO=#{musicbd_boardno})
+  		AND MUSICBD_GROUPSQ > (SELECT MUSICBD_GROUPSQ FROM MUSICBOARD WHERE MUSICBD_BOARDNO=#{musicbd_boardno})
   </update> 
   
   <insert id="insert_answer" parameterType="musicbdDto">
   	INSERT INTO MUSICBOARD VALUES(BOARDNOSEQ.NEXTVAL,
-  		(SELECT MUSICBOARD_GROUPNO FROM MUSICBOARD WHERE MUSICBOARD_BOARDNO=#{musicbd_boardno}),
-  		(SELECT MUSICBOARD_GROUPSQ FROM MUSICBOARD WHERE MUSICBOARD_BOARDNO=#{musicbd_boardno})+1,
-  		(SELECT MUSICBOARD_TITLETAB FROM MUSICBOARD WHERE MUSICBOARD_BOARDNO=#{musicbd_boardno})+1,
-  		#{musicbd_title},#{musicbd_content},#{musicbd_writer},SYSDATE)
-  			
+  		(SELECT MUSICBD_GROUPNO FROM MUSICBOARD WHERE MUSICBD_BOARDNO=#{musicbd_boardno}),
+  		(SELECT MUSICBD_GROUPSQ FROM MUSICBOARD WHERE MUSICBD_BOARDNO=#{musicbd_boardno})+1,
+  		(SELECT MUSICBD_TITLETAB FROM MUSICBOARD WHERE MUSICBD_BOARDNO=#{musicbd_boardno})+1,
+  		'N',#{musicbd_title},#{musicbd_content},#{musicbd_writer},SYSDATE)
   </insert>  
-  <!-- 
-  String INSERT_ANSWER_SQL = " INSERT INTO ANSWERBOARD " 
-			+ " VALUES(BOARDNOSEQ.NEXTVAL, "
-			+ "	(SELECT GROUPNO FROM ANSWERBOARD WHERE BOARDNO=?), "
-			+ "	(SELECT GROUPSQ FROM ANSWERBOARD WHERE BOARDNO=?)+1, "
-			+ "	(SELECT TITLETAB FROM ANSWERBOARD WHERE BOARDNO=?)+1, "
-			+ "	'N',?,?,?,SYSDATE) ";
-	String UPDATE_ANSWER_SQL = " UPDATE ANSWERBOARD "
-			+ " SET GROUPSQ = GROUPSQ+1 "
-			+ " WHERE GROUPNO = (SELECT GROUPNO FROM ANSWERBOARD WHERE BOARDNO=?) "
-			+ " AND GROUPSQ > (SELECT GROUPSQ FROM ANSWERBOARD WHERE BOARDNO=?) ";
-   -->
+  
 </mapper>

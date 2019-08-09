@@ -18,6 +18,7 @@ public class MusicBoardDao extends SqlMapConfig_MusicBD {
 			session = getSqlSessionFactory().openSession();
 			list = session.selectList(namespace + "selectList_musicbd");
 			System.out.println("selectList_musicbd 실행" + list.size());
+			//System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("selectList_musicbd 실행 Error");
@@ -72,7 +73,7 @@ public class MusicBoardDao extends SqlMapConfig_MusicBD {
 		
 		try {
 			session = getSqlSessionFactory().openSession();
-			res = session.update(namespace + "update_musicbd", seq);
+			res = session.delete(namespace + "delete_musicbd", seq);
 			System.out.println("delete_musicbd 실행" + res);
 		} catch (Exception e) {
 			e.printStackTrace();
