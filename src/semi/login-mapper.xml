@@ -3,7 +3,6 @@
 <mapper namespace="loginmapper">
 
 <select id="select" parameterType="dto1" resultType="dto1">
->>>>>>> branch 'master' of https://github.com/zongyeng/SemiProjectBeta.git
 SELECT USERINFO_SEQ, USERINFO_CONTROLNO, USERINFO_NAME, USERINFO_NICKNAME,
 	USERINFO_ID, USERINFO_PASSWORD, USERINFO_SEX, USERINFO_AGE, USERINFO_PHONENUMBER, 
 	USERINFO_EMAIL,USERINFO_SIGNDATE, USERINFO_ENABLE, USERINFO_CASH 
@@ -17,5 +16,11 @@ VALUES(USERINFOSEQ.NEXTVAL,1,#{userinfo_name},
 		#{userinfo_nickname}, #{userinfo_id}, #{userinfo_password}, #{userinfo_sex}, 
 		#{userinfo_age}, #{userinfo_phonenumber}, #{userinfo_email})
 </insert>
+
+<select id="idchk" parameterType="String" resultType="int">
+	SELECT COUNT(USERINFO_ID)
+	FROM USERINFO
+	WHERE USERINFO_ID = #{id}
+</select>
 
 </mapper>

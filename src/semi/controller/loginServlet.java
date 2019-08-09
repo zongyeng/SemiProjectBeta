@@ -94,13 +94,23 @@ public class loginServlet extends HttpServlet {
 			}
 			
 				// 회원가입 성공시
-		}else if(command.equals("idc")) {
+		} else if(command.equals("idchk")) {
+			String id = request.getParameter("id");
 			
-		}else if(command.equals("idc1")) {
+			PrintWriter out= response.getWriter();
 			
-		}else if(command.equals("pwc")) {
+			if(biz.idchk(id)) {
+				out.println("사용 가능한 아이디 입니다.");
+			} else if(id=="") {
+				out.println("아이디를 입력해주세요");
+			} else {
+				out.println("이미 사용한 아이디 입니다.");
+			}
 			
-		}else if(command.equals("pwc1")) {
+			
+		} else if(command.equals("pwc")) {
+			
+		} else if(command.equals("pwc1")) {
 			
 		}
 	}
