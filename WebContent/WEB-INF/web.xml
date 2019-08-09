@@ -27,4 +27,13 @@
     <url-pattern>/login.do</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>YoutubeServlet</servlet-name>
+    <servlet-class>semi.controller.YoutubeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>YoutubeServlet</servlet-name>
+    <url-pattern>/Youtube.do</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
