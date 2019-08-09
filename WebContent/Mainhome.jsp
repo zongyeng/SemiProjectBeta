@@ -269,7 +269,7 @@ $(function(){
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>.
 </section>
 <%@ include file="./form/footer.jsp"%>
 </body>

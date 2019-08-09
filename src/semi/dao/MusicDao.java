@@ -50,12 +50,20 @@ public class MusicDao extends SqlMapConfig_Music {
 	
 	public int insert_music(MusicDto dto){
 		
+		System.out.println(dto.getMusic_length());
+		
 		SqlSession session = null;
 		int res = 0;
-		
+		System.out.println(dto.getMusic_artist());
 		try {
 			session = getSqlSessionFactory().openSession();
 			res = session.insert(namespace + "insert_music", dto);
+				
+			if(res>0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
 			System.out.println("insert_music 실행" + res);
 		} catch (Exception e) {
 			e.printStackTrace();

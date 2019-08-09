@@ -25,4 +25,17 @@
     <servlet-name>loginServlet</servlet-name>
     <url-pattern>/login.do</url-pattern>
   </servlet-mapping>
+<<<<<<< HEAD
+=======
+  
+  <servlet>
+    <servlet-name>YoutubeServlet</servlet-name>
+    <servlet-class>semi.controller.YoutubeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>YoutubeServlet</servlet-name>
+    <url-pattern>/Youtube.do</url-pattern>
+  </servlet-mapping>
+  
+>>>>>>> branch 'master' of https://github.com/zongyeng/SemiProjectBeta.git
 </web-app>
