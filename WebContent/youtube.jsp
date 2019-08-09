@@ -47,7 +47,7 @@
                   
             //console.log(this.snippet.channelId);
             /* $("#get_view").append("<p class='box'><a href='https://youtube/"+this.id.videoId+"' target='_blank'><img src='"+this.snippet.thumbnails.default.url+"'><span>"+this.snippet.title+"</span></a></p>"); */
-            $("#get_view").append("<p class='box'><img src='"+this.snippet.thumbnails.default.url+"'><span>"+this.snippet.title+"</span></p>");         
+            	   $("#get_view").append("<p class='box'><a href='youtuberes2.jsp?videoid="+this.id.videoId+"'><img src='"+this.snippet.thumbnails.default.url+"'><span>"+this.snippet.title+"</span></a></p>");   
                }).promise().done(function(){
                   if(jdata.prevPageToken){
                      $("#nav_view").append("<a href='javascript:fnGetList(\""+jdata.prevPageToken+"\");'><이전페이지></a>");
@@ -66,12 +66,7 @@
             }
          });
       }
-      $(document).on("click",".box",function(){ 
-       		videoid = this.id.videoId;
-  			alert(videoid);
-  			window.opener.selectyoutubeid(videoid);
-  			self.close();
-      })
+     
      
 
    </script>

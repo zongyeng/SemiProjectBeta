@@ -14,6 +14,57 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="music_hl_time" column="MUSIC_HL_TIME" />
 		<result property="music_content" column="MUSIC_CONTENT" />
 		<result property="music_composer" column="MUSIC_COMPOSER" />
+<<<<<<< HEAD
+		<result property="music_lylicist" column="MUSIC_LYLICIST" />
+		<result property="music_regdate" column="MUSIC_REGDATE" />
+		<result property="music_tag" column="MUSIC_TAG" />
+		<result property="music_enable" column="MUSIC_ENABLE" />
+		<result property="music_album" column="MUSIC_ALBUM" />
+	</resultMap>
+  
+  <select id="selectList_music" resultType="musicDto">
+  	SELECT MUSIC_SEQ,MUSIC_ARTIST,MUSIC_NO,MUSIC_TITLE,MUSIC_SIZE,MUSIC_LENGTH,MUSIC_HL_TIME,
+  		MUSIC_CONTENT,MUSIC_COMPOSER,MUSIC_LYLICIST,MUSIC_TAG,MUSIC_ENABLE,MUSIC_ALBUM 
+  		FROM MUSIC ORDER BY MUSIC_SEQ DESC
+  </select>
+  
+  <select id="selectOne_music" parameterType="int" resultMap="musicDtoMap">
+  	SELECT MUSIC_SEQ,MUSIC_ARTIST,MUSIC_NO,MUSIC_TITLE,MUSIC_SIZE,MUSIC_LENGTH,MUSIC_HL_TIME,
+  		MUSIC_CONTENT,MUSIC_COMPOSER,MUSIC_LYLICIST,MUSIC_TAG,MUSIC_ENABLE,MUSIC_ALBUM 
+  		FROM MUSIC WHERE MUSIC_SEQ = #{music_seq}
+  </select>
+    
+  <delete id="muldel_music" parameterType="map">
+  	DELETE FROM MUSIC WHERE SEQ IN
+  	<foreach collection="music_seqs" item="music_seq" open="(" separator="," close=")" >
+  	#{music_seq}
+  	</foreach>
+  </delete>
+  
+  <insert id="insert_music" parameterType="musicDto">
+  	INSERT INTO MUSIC 
+  		VALUES(MUSICSEQ.NEXTVAL,#{music_artist},#{music_no},#{music_title},#{music_size},#{music_length},#{music_hl_time},
+  		#{music_content},#{music_composer},#{music_lylicist},SYSDATE,#{music_tag},#{music_enable},#{music_album})
+  </insert>
+<!--   INSERT INTO MUSIC (MUSIC_SEQ, MUSIC_ARTIST, MUSIC_NO, MUSIC_TITLE, MUSIC_SIZE, MUSIC_LENGTH)
+	VALUES(MUSICSEQ.NEXTVAL,'2','2','2_SMILEDAY','12.23','0401');
+ -->
+  <delete id="delete_music" parameterType="int">
+  	DELETE FROM MUSIC WHERE MUSIC_SEQ = #{music_seq}
+  </delete>
+  
+  <update id="update_music" parameterType="musicDto">
+  	UPDATE MUSIC SET 
+  		MUSIC_ARTIST = #{music_artist}, 
+  		MUSIC_NO = #{music_no},
+  		MUSIC_TITLE = #{music_title},
+  		MUSIC_SIZE = #{music_size},
+  		MUSIC_LENGTH = #{music_length},
+  		MUSIC_HL_TIME = #{music_hl_time},
+  		MUSIC_CONTENT = #{music_content},
+  		MUSIC_COMPOSER = #{music_composer},
+  		MUSIC_LYLICIST = #{music_lylicist},
+=======
 		<result property="music_lyricist" column="MUSIC_LYRICIST" />
 		<result property="music_regdate" column="MUSIC_REGDATE" />
 		<result property="music_tag" column="MUSIC_TAG" />
@@ -61,6 +112,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		MUSIC_CONTENT = #{music_content},
   		MUSIC_COMPOSER = #{music_composer},
   		MUSIC_LYRICIST = #{music_lyricist},
+>>>>>>> branch 'master' of https://github.com/zongyeng/SemiProjectBeta.git
   		MUSIC_TAG = #{music_tag},
   		MUSIC_ENABLE = #{music_enable},
   		MUSIC_ALBUM = #{music_album}
