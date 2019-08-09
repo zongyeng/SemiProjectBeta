@@ -1,14 +1,14 @@
-$(function() {
-	$("#submit").click(function() {
-		alert("축하합니다! 회원가입 되셨습니다!");
-	});
 
-	$(".logindivdivbtn").eq(0).click(function() {
-		location.href = "login.do?command=login";
-
+function idchk() {
+	var id = $("#id").val();
+	$.ajax({
+		url : "login.do?command=idchk&id="+id,
+		method : "post",
+		success : function(msg) {
+			alert(msg);
+		}, error: function(msg) {
+			alert(msg);
+		}
 	});
-	$(".logindivdivbtn").eq(1).click(function() {
-		location.href = "login.do?command=signup";
-
-	});
-})
+	
+};

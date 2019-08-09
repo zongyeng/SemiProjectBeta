@@ -63,4 +63,21 @@ private String namespace = "loginmapper.";
 		}
 		return dto;
 	}
+	public boolean idchk(String id) {
+
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory.getLoginSessionFactory().openSession();
+			res = session.selectOne(namespace+"idchk", id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return res==0;
+	}
 }
