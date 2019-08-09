@@ -6,6 +6,17 @@
 <meta charset="UTF-8">
 <title>header design</title>
 <script type="text/javascript" src="js/loginform.js"></script>
+<script type="text/javascript">
+function kiki(){
+
+	 var session = <%=(String)session.getAttribute("userdto")%>;
+	 session.removeAttribute("userdto"); 
+
+	 location.href="Mainhome.jsp";
+	
+
+}
+</script>
 <style type="text/css">
 	*{ padding : 0px; margin : 0px;}
 	.header{ width : 100%; height : 154px; 
@@ -93,13 +104,29 @@
 						</div>
 						
 						<div class="logindiv" style="float : right;">
-  							<div class="logindivdiv">
-  								<button class="logindivdivbtn">
+  							<div class="logindivdiv">   
+  							
+								<%
+								if(session.getAttribute("userdto") == null) {
+								%>
+									<button onclick="location.href='UserLogin.jsp'" class="logindivdivbtn">
      								로그인   
-   							    </button>  
-   							    <button class="logindivdivbtn">
+   									</button>
+   									<button onclick="location.href='UserSignUp.jsp'" class="logindivdivbtn">
      								회원가입
-   							    </button>    
+   									</button> 
+   							    
+						       <%}else{ %>
+									<button onclick="location.href=''" class="logindivdivbtn">
+     								내정보보기   
+   							  		</button>
+   							    	<button onclick="kiki()" class="logindivdivbtn">
+     								로그아웃
+   							    	</button>
+   							    
+   							   <% }%>
+   							  
+
  							</div>
 						</div>
 						

@@ -1,4 +1,3 @@
-
 function idchk() {
 	var id = $("#id").val();
 	$.ajax({

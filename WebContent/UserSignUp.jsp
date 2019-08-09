@@ -66,6 +66,7 @@ a {
 
 		</form>
 	</div>
-
+	<br/><br/><br/><br/><br/><br/><br/>
+	<%@ include file="./form/footer.jsp"%>
 </body>
 </html>
