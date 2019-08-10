@@ -18,6 +18,10 @@ public class loginBiz {
 	public loginDto login(String id , String password) {
 		return dao.login(id, password);
 	}
+	public boolean idchk(String id) {
+		
+		return dao.idchk(id);
+	}
 	
 }
 

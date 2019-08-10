@@ -37,6 +37,22 @@ public class MusicDto {
 		this.music_enable = enable;
 		this.music_album = album;
 	}
+	public MusicDto(int artist, int no, String title, int size, int length,
+			int hl_time, String content, String composer, String lylicist, 
+			String tag, char enable, int album) {
+		this.music_artist = artist;
+		this.music_no = no;
+		this.music_title = title;
+		this.music_size = size;
+		this.music_length = length;
+		this.music_hl_time = hl_time;
+		this.music_content = content;
+		this.music_composer = composer;
+		this.music_lylicist = lylicist;
+		this.music_tag = tag;
+		this.music_enable = enable;
+		this.music_album = album;
+	}
 	public int getMusic_seq() {
 		return music_seq;
 	}

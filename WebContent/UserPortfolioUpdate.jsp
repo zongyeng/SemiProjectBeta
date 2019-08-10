@@ -5,10 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%
+	String youtubeid="";
+%>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	var num=0;
-	var youtubeid = null;
+	var youtubeid ="";
 	function select1(){
 		document.getElementById("popular").style.background="rgba(0,0,0,0.6)";
 		document.getElementById("popular").style.color = "white";
@@ -28,7 +31,8 @@
 	}
 	
 	function selectyoutubeid(youtubeid) {
-		this.youtubeid = youtubeid; 
+		alert(youtubeid);
+		$(".videoId").val(youtubeid);
 	}
 
 </script>
@@ -131,6 +135,7 @@
 			</div>
 			<div class = "section1divtablediv2">
 				<input type="button" onclick="findyoutubeid();" value="영상 등록하기"/>
+				<input type="text" class ="videoId" value="" readonly="readonly"/>
 			</div>
 			
 			<table class = "section1divtable" border= "1" >

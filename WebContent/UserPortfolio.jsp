@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/statistics.js" ></script>
 <script type="text/javascript">
 	var num=0;
 	function select1(){
@@ -100,7 +101,7 @@
 	.buttongroupdiv1 button:hover { background-color: rgba(0,0,0,0.6); color : white; cursor: pointer;}
 </style>
 </head>
-<body>	
+<body>
 <%@ include file="./form/header.jsp"%>
 
 <section class ="wholesection">
@@ -121,7 +122,7 @@
 					<p> portfolio </p> 
 			</div>
 			<div class = "section1divtablediv2">
-				<input type="button" onclick="" value="통계보기"/>
+				<input type="button" onclick="statistics()" value="통계보기"/>
 			</div>
 			
 			<table class = "section1divtable" border= "1" >
