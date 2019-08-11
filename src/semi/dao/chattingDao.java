@@ -24,4 +24,5 @@ public class chattingDao {
 		}
 		return dto;
 	}
+	
 }
