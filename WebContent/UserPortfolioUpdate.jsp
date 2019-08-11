@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <%
 	String youtubeid="";
+	int albumamount = 0;
 %>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
@@ -119,52 +120,86 @@
 <section class ="wholesection">
 	<section class ="section1"> 
 		<div class = "section1div">
-		<div class="buttongroup"> 
-			<div class = "buttongroupwrap">
-				<div class="buttongroupdiv1">
-					<button id="popular" style = "border-top-left-radius: 5px;
-							border-bottom-left-radius:5px;background : rgba(0,0,0,0.6);
-							color:white;" onclick="select1()"> popular </button>
-					<button id="recommand" style="border-bottom-right-radius:5px; 
-					border-top-right-radius: 5px;" onclick="select2()">recommand</button>
-				</div>
-			</div>
-		</div>
 			<div class = "section1divtablediv" onclick ="location.href('')">
-					<p> portfolio </p> 
+					<p> portfolio Update </p> 
 			</div>
 			<div class = "section1divtablediv2">
-				<input type="button" onclick="findyoutubeid();" value="영상 등록하기"/>
-				<input type="text" class ="videoId" value="" readonly="readonly"/>
+				<table class = "section1divtable" border= "1" >
+					<colgroup>
+						<col width = "30%"> <!-- 순위 -->
+						<col width = "70%"> <!-- 앨범이미지  -->
+					</colgroup>
+					<tr>
+						<td>
+							<input type="button" onclick="findyoutubeid();" value="영상 등록하기"/>
+						</td>
+						<td>
+							<input type="text" class ="videoId" value="" readonly="readonly"/>
+						</td>
+					</tr>
+				</table>
 			</div>
 			
 			<table class = "section1divtable" border= "1" >
 				<colgroup>
 					<col width = "5%"> <!-- 순위-->
 					<col width = "15%"> <!-- 앨범이미지  -->
-					<col width = "60%"> <!-- 앨범 이름 -->
+					<col width = "40%"> <!-- 앨범 이름 -->
 					<col width = "20%"> <!-- 작곡가 이름 -->
+					<col width = "20%"> <!-- 등록버튼 -->
 				</colgroup>
 				<thead>
 					<tr style="color: rgba(0,0,0,0.6); font-size: 8px;"  height = 30px;>
-						<td>순위</td>
+						<td>순서</td>
 						<td>앨범이미지</td>
 						<td>앨범이름</td>
 						<td>작곡가</td>
-						
+						<td>등록버튼</td>	
 					</tr>
 				</thead>
 				<tbody>
-				<% for(int a=1; a<=10; a++) {%>
+				<!-- 여기서는 자기가 가지고 있는 앨범 수 까지 돌린다. -->
+				<% for(albumamount=1; albumamount<=5; albumamount++) {%>
 					<tr height = 100px;>
-						<td><%= a %></td>
-						<td>앨범이미지<%= a %></td>
-						<td>앨범이름<%= a %></td>
-						<td>작곡가<%= a %></td>
+						<td><%= albumamount %></td>
+						<td>
+							<img src="" alt ="앨범이미지 <%=albumamount%>"/>
+							<input type="button" onclick="updateAlbumpicture;" value="앨범이미지 수정하기"/>
+						</td>
+						<td>
+							<input type="text" class ="registalbumname" value="" readonly="readonly"/>
+							<input type="button" onclick="updateAlbumname;" value="앨범이름 수정하기"/>
+						</td>
+						<td>session.UserName</td> <!-- 여기서 작곡가는 세션 dto의 user이름  -->
+						<td>
+							<input type="button" onclick="updateAlbum;" value="수정본 등록하기"/>
+						</td>
 					</tr>
 				<%}%>
+					<tr height = 100px;>
+						<td> <%= albumamount %></td>
+						<td>
+							<img alt ="앨범이미지 <%=albumamount%>"/>
+							<input type="button" onclick="registalbumpicture;" value="앨범이미지 등록하기"/>
+						</td>
+						<td>
+							<input type="text" class ="registalbumname" value=""/>
+							<input type="button" onclick="registAlbumname;" value="앨범이름 등록하기"/>
+						</td>
+						<td>session.UserName</td> <!-- 여기서 작곡가는 세션 dto의 user이름  -->
+						<td>
+							<input type="button" onclick="registalbumpicture;" value="앨범 등록하기"/>
+						</td>
+					</tr>
+				
 				</tbody>
 			</table>
+			<div>
+				<div style="margin : 0 auto; width : 70%; height : 50px; text-align: center; ">
+					<input type ="button" onclick ="location.href=''" value = "포트폴리오 수정 완료"
+						style="font-size: 30px; margin-top : 30px; border-radius: 10px; width: 50%;">
+				</div>
+			</div>
 		</div>
 	</section>
 </section>

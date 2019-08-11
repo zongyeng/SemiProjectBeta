@@ -154,7 +154,7 @@
 		musicDto.setMusic_hl_time(1);
 		musicDto.setMusic_content(MUSIC_CONTENT);
 		musicDto.setMusic_composer(MUSIC_COMPOSER);
-		musicDto.setMusic_lylicist(MUSIC_LYRICIST);
+		musicDto.setMusic_lyricist(MUSIC_LYRICIST);
 		musicDto.setMusic_tag(MUSIC_TAG);
 		musicDto.setMusic_enable('Y');
 		musicDto.setMusic_album(1);

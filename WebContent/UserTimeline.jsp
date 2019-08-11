@@ -164,9 +164,10 @@
 			<div class = "buttongroupwrap">
 				<div class="buttongroupdiv1">
 					<button id="portfolio" style = "border-top-left-radius: 5px;
-							border-bottom-left-radius:5px;background : rgba(0,0,0,0.6);
-							color:white;" onclick="select1()"> Portfolio </button>
-					<button id="timeline" onclick="select2()"> Timeline </button>
+							border-bottom-left-radius:5px;" 
+							onclick="select1()"> Portfolio </button>
+					<button id="timeline" onclick="select2()" style="background : rgba(0,0,0,0.6);
+							color:white;"> Timeline </button>
 					<button id="graph" style="border-bottom-right-radius:5px; 
 					border-top-right-radius: 5px;" onclick="select3()">Graph</button>
 				</div>
