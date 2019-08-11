@@ -8,6 +8,7 @@
 <%
 	String youtubeid="";
 	int albumamount = 0;
+	int musicamount = 0;
 %>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
@@ -38,7 +39,7 @@
 
 </script>
 <style type="text/css">
-	.wholesection{width : 100%; height:7700px; margin-top : 40px;}
+	.wholesection{width : 100%; height:3000px; margin-top : 40px;}
 	.section1 {width:100%; height : 1300px;}
 	.section1div {width : 70%; height : 1000px;
 					margin-left : auto; margin-right : auto;}
@@ -168,13 +169,26 @@
 						</td>
 						<td>
 							<input type="text" class ="registalbumname" value="" readonly="readonly"/>
-							<input type="button" onclick="updateAlbumname;" value="앨범이름 수정하기"/>
+							<input type="button" onclick="updateAlbumname();" value="앨범이름 수정하기"/>
 						</td>
 						<td>session.UserName</td> <!-- 여기서 작곡가는 세션 dto의 user이름  -->
 						<td>
-							<input type="button" onclick="updateAlbum;" value="수정본 등록하기"/>
+							<input type="button" onclick="updateAlbum();" value="수정본 등록하기"/>
 						</td>
 					</tr>
+					
+						<% for(musicamount=1; musicamount<=5; musicamount++) {%> <!-- 해당 앨범이 들고있는 곡수만큼 돌리기 -->
+						<tr height = 30px;>
+							<td><%= musicamount %></td> <!-- 앨범 순서 알아서 들고오기~ -->
+							<td colspan="3">앨범dto가서 where 앨범번호로 이름가져오기</td>
+							<td> <input type="button" onclick="deletemusic();" value="곡 삭제하기"/> </td>
+						</tr>
+						<%}%>
+					<tr height = 30px;>
+						<td><%= musicamount %></td> <!-- 앨범 순서 알아서 들고오기~ -->
+						<td colspan ="4"> <input type="button" onclick="insertmusic();" value="곡 추가하기"/> </td>
+					</tr>
+		
 				<%}%>
 					<tr height = 100px;>
 						<td> <%= albumamount %></td>

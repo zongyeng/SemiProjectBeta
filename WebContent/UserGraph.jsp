@@ -160,67 +160,21 @@
 <section class ="wholesection">
 	<section class ="section1"> 
 		<div class = "section1div">
-		<div class="buttongroup"> 
-			<div class = "buttongroupwrap">
-				<div class="buttongroupdiv1">
-					<button id="portfolio" style = "border-top-left-radius: 5px;
-							border-bottom-left-radius:5px;" onclick="select1()"> Portfolio </button>
-					<button id="timeline" onclick="select2()"> Timeline </button>
-					<button id="graph" style="border-bottom-right-radius:5px; 
-					border-top-right-radius: 5px; background : rgba(0,0,0,0.6);
-							color:white;" onclick="select3()">Graph</button>
+			<div class="buttongroup"> 
+				<div class = "buttongroupwrap">
+					<div class="buttongroupdiv1">
+						<button id="portfolio" style = "border-top-left-radius: 5px;
+								border-bottom-left-radius:5px;" onclick="select1()"> Portfolio </button>
+						<button id="timeline" onclick="select2()"> Timeline </button>
+						<button id="graph" style="border-bottom-right-radius:5px; 
+						border-top-right-radius: 5px; background : rgba(0,0,0,0.6);
+								color:white;" onclick="select3()">Graph</button>
+					</div>
 				</div>
 			</div>
-		</div>
 			<div class = "section1divtablediv" onclick ="location.href('')">
-					<p> portfolio </p> 
+					<p> Graph </p> 
 			</div>
-			<div class = "section1divtablediv2">
-				<input type="button" onclick="" value="통계보기"/>
-			</div>
-			<table class = "section1divtable" border= "1" >
-				<colgroup>
-					<col width = "5%"> <!-- 순서-->
-					<col width = "15%"> <!-- 앨범이미지  -->
-					<col width = "60%"> <!-- 앨범 이름 -->
-					<col width = "20%"> <!-- 작곡가 이름 -->
-				</colgroup>
-				<tr>
-					<td colspan="4">
-						<p style="font-size:30px;"> portfolio 영상 </p>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4">
-						<div id="player"></div>
-					</td>
-				</tr>
-				<tr style="color: rgba(0,0,0,0.6); font-size: 8px;"  height = 30px;>
-					<td>순서</td>
-					<td>앨범이미지</td>
-					<td>앨범이름</td>
-					<td>작곡가</td>
-				</tr>
-				<tbody>
-				<% for(int a=1; a<=5; a++) {%> <!-- 자기 앨범 갯수만큼 들고오기 -->
-					<tr height = 100px;>
-						<td><%= a %></td> <!-- 앨범 순서 알아서 들고오기~ -->
-						<td>
-							<img alt="앨범이미지" src=""/>
-						</td>
-						<td>앨범dto가서 where 앨범번호로 이름가져오기</td>
-						<td>session.userid</td>
-					</tr>
-					<% for(int b=1; b<=5; b++) {%> <!-- 해당 앨범이 들고있는 곡수만큼 돌리기 -->
-						<tr height = 30px;>
-							<td><%= b %></td> <!-- 앨범 순서 알아서 들고오기~ -->
-							<td colspan="2">앨범dto가서 where 앨범번호로 이름가져오기</td>
-							<td> 재생버튼 / 플레이리스트에 담기 버튼 / 추천버튼 </td>
-						</tr>
-					<%}}%>
-
-				</tbody>
-			</table>
 		</div>
 	</section>
 </section>

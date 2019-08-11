@@ -79,9 +79,9 @@
     }
 </script>
 <style type="text/css">
-	.wholesection{width : 100%; height:7700px; margin-top : 40px;}
-	.section1 {width:100%; height : 1300px;}
-	.section1div {width : 70%; height : 1000px;
+	.wholesection{width : 100%;  margin-top : 40px;}
+	.section1 {width:100%; botton : 100px;}
+	.section1div {width : 70%;
 					margin-left : auto; margin-right : auto;}
 	.section1divtable {text-align: center; width : 100%;}
 	.section1divtablediv { height : 100px; margin-bottom:30px;
@@ -99,26 +99,6 @@
 	.section1divtablediv p {text-align: center; font-size: 30px;
 								font-weight:bold; color : white;
 								margin-top : 30px; background-color: rgba(0,0,0,0.8);}
-	
-	.section2 {width:100%; height : 400px;}
-	.section2div {width : 70%; height : 400px; margin : 0 auto;
-			     display : flex;}
-	.section2div div {width : 300px; height:300px;
-					display: flex-basis; width : 300px;
-				    margin: 0 auto;
-				     background-repeat: no-repeat;
-					 background-position: -300px;
-					 position: relative; overflow: hidden;
-					 	border: 1px solid black;}	
-	.section2div div:hover { background-color: rgba(255,255,255,0.6);
-							cursor : pointer;}	
-	.section2divdiv1 { background-image: url("images/portfoliochartpicture1.jpg");}
-	.section2divdiv2 { background-image: url("images/genrepicture1.jpg"); width : 300px; height:300px;}
-	.section2divdiv3 { background-image: url("images/graphpicture1.jpg"); width : 300px; height:300px;}
-	.section2divdivdiv { width : 100px; height : 30px;}
-	.section2divdivdiv p{ text-align: center; font-size: 30px;
-							font-weight:bold; color : white;
-							margin-top : 30px; background-color: rgba(0,0,0,0.8);  }
 	.asidemenu{ width : calc(13% - 2px); height : 20%;
 				background-color: rgb(100,100,100); 
 				position: fixed; top : 195px; left:1%;
@@ -175,9 +155,6 @@
 		</div>
 			<div class = "section1divtablediv" onclick ="location.href('')">
 					<p> portfolio </p> 
-			</div>
-			<div class = "section1divtablediv2">
-				<input type="button" onclick="statistics()" value="통계보기"/>
 			</div>
 			<table class = "section1divtable" border= "1" >
 				<colgroup>

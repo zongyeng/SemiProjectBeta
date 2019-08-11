@@ -36,46 +36,7 @@
 		document.getElementById("graph").style.background="rgba(0,0,0,0.6)";
 		document.getElementById("graph").style.color = "white";
 	}
-	// 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // 3. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '360',
-        width: '640',
-        videoId: '<%=videoid%>',
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    // 4. The API will call this function when the video player is ready.
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
-
-    // 5. The API calls this function when the player's state changes.
-    //    The function indicates that when playing a video (state=1),
-    //    the player should play for six seconds and then stop.
-    var done = false;
-    function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-      }
-    }
-    function stopVideo() {
-      player.stopVideo();
-    }
+	
 </script>
 <style type="text/css">
 	.wholesection{width : 100%; height:7700px; margin-top : 40px;}
@@ -174,11 +135,9 @@
 			</div>
 		</div>
 			<div class = "section1divtablediv" onclick ="location.href('')">
-					<p> portfolio </p> 
+					<p> Timeline </p> 
 			</div>
-			<div class = "section1divtablediv2">
-				<input type="button" onclick="" value="통계보기"/>
-			</div>
+			<div style="border : 1px;">
 			<table class = "section1divtable" border= "1" >
 				<colgroup>
 					<col width = "5%"> <!-- 순서-->
@@ -186,16 +145,6 @@
 					<col width = "60%"> <!-- 앨범 이름 -->
 					<col width = "20%"> <!-- 작곡가 이름 -->
 				</colgroup>
-				<tr>
-					<td colspan="4">
-						<p style="font-size:30px;"> portfolio 영상 </p>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4">
-						<div id="player"></div>
-					</td>
-				</tr>
 				<tr style="color: rgba(0,0,0,0.6); font-size: 8px;"  height = 30px;>
 					<td>순서</td>
 					<td>앨범이미지</td>
@@ -222,6 +171,7 @@
 
 				</tbody>
 			</table>
+			</div>
 		</div>
 	</section>
 </section>
