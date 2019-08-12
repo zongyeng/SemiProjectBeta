@@ -41,18 +41,17 @@ public class loginServlet extends HttpServlet {
 		System.out.println("["+command+"]");
 		
 		if(command.equals("login")) {
-			
 			response.sendRedirect("UserLogin.jsp");
 			
-			
 		}else if(command.equals("loginres")){
+			
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
 			loginDto dto = biz.login(id, password);
+			
 			try{
 				dto.getUserinfo_seq();
 			} catch (NullPointerException e) {
-				
 				response.sendRedirect("login.do?command=login");
 			}
 			

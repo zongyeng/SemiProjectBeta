@@ -22,7 +22,6 @@
 	font-size:21px;
 }
 .login_box{
-    
 }
 
 </style>

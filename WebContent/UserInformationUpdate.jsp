@@ -14,7 +14,6 @@
 <style type="text/css">
 a{
 	color:white;
-	
 }
 </style>
 </head>

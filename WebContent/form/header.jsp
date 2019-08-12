@@ -149,35 +149,34 @@ function kiki(){
 				<div class="headerdiv2div">
 					<ul class = "headerdiv2divul">
 						<li class = "headerdiv2divulli">
-							<a class = "headerdiv2divullia" href =""> 음악 </a>
+							<a class = "headerdiv2divullia" href ="pagemoving.do?command=musicgenre"> 음악 </a>
 							<ul class = "headerdiv2divulliul">
-								<li><a href=""> 장르별 음악 </a></li>
-								<li><a href=""> 앨범 음악</a></li>
+								<li><a href="pagemoving.do?command=musicgenre"> 장르별 음악 </a></li>
+								<li><a href="pagemoving.do?command=musicalbumpopular"> 앨범 음악</a></li>
 							</ul>
 						</li>
 						<li class = "headerdiv2divulli">
-							<a class = "headerdiv2divullia" href =""> 방송 </a>
+							<a class = "headerdiv2divullia" href ="pagemoving.do?command=broadcstingmain"> 방송 </a>
 							<ul class = "headerdiv2divulliul">
-								<li><a href=""> 인기 방송 </a></li>
-								<li><a href=""> 추천 방송 </a></li>
-								<li><a href=""> 신규 방송</a></li>
+								<li><a href="pagemoving.do?command=broadcstingtop"> 인기 방송 </a></li>
+								<li><a href="pagemoving.do?command=broadcstingrecommand"> 추천 방송 </a></li>
+								<li><a href="pagemoving.do?command=broadcstingnewest"> 신규 방송</a></li>
 							</ul>
 						</li>
 						<li class = "headerdiv2divulli">	
-							<a class = "headerdiv2divullia" href =""> 공연장 </a>
+							<a class = "headerdiv2divullia" href ="pagemoving.do?command=concerthallmain"> 공연장 </a>
 							<ul class = "headerdiv2divulliul">
-								<li><a href=""> 소개 </a></li>
-								<li><a href=""> 예약하기 </a></li>
+								<li><a href="pagemoving.do?command=concerthallmain"> 소개 </a></li>
+								<li><a href="pagemoving.do?command=concerthallreservation"> 예약하기 </a></li>
 							</ul>
 						</li>
 						<li class = "headerdiv2divulli" 
 						style = "border-right : 1px solid; border-right-color:rgba(200,200,200,0.5);">
-							<a class = "headerdiv2divullia" href ="">고객센터</a>
+							<a class = "headerdiv2divullia" href ="pagemoving.do?command=servicecenter">고객센터</a>
 							<ul class = "headerdiv2divulliul">
-								<li><a href="chattingtest.jsp"> 문의하기 </a></li>
-								<li><a href=""> 챗봇 </a></li>
-								<li><a href=""> 환불하기</a></li>
-								<li><a href=""> 결제하기</a></li>
+								<li><a href="pagemoving.do?command=servicecenter"> 문의하기 </a></li>
+								<li><a href="pagemoving.do?command=servicecenter"> 챗봇 </a></li>
+								<li><a href="pagemoving.do?command=servicepay"> 결제하기</a></li>
 							</ul>
 						</li>
 					</ul>

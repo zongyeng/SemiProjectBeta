@@ -43,28 +43,10 @@
 	.section2divdivdiv p{ text-align: center; font-size: 30px;
 							font-weight:bold; color : white;
 							margin-top : 30px; background-color: rgba(0,0,0,0.8);  }
-	.asidemenu{ width : calc(13% - 2px); height : 20%;
-				background-color: rgb(100,100,100); 
-				position: fixed; top : 195px; left:1%;
-				border: solid 2px rgba(200,200,200,0.5);
-				text-decoration: none;
-				}
-	.asidemenu ul>li{padding-left : 10px; margin-top : 10px; margin-bottom : 10px; 
-					color:#cccccc;}
-	.asidemenu ul>li:hover {color:#ffffff; cursor: pointer;}
-	.asidemenu ul { text-decoration: none; list-style: none; }
 </style>
 </head>
 <body>
 <%@ include file="./form/header.jsp"%>
-<aside class = "asidemenu">
-		<ul>
-			<li onclick="loction.href=''"> TOP100</li>
-			<li onclick="loction.href=''"> 장르별 음악</li>
-			<li onclick="loction.href=''"> 인기 음악</li>
-			<li onclick="loction.href=''"> 추천 음악</li>		
-		</ul>
-	</aside>
 <section class ="wholesection">
 	
 	<section class ="section1"> <!-- 뮤직 탑 10/ 테이블로 (인기음악) -->
@@ -92,21 +74,16 @@
 			</table>
 		</div>
 	</section>
-	<section class ="section2"> <!-- 신규음악 /추천음악 /장르음악 // 사진3개 일렬로, 누를시 링크이동-->
+	<section class ="section2"> <!-- 신규음악 /추천음악 /장르음악 // 사진2개 일렬로, 누를시 링크이동-->
 		<div class = "section2div">
 			<div class = "section2divdiv1" >
-				<div class = "section2divdivdiv" onclick ="location.href('')"> 
-					<p><span>인기 차트 </span></p>
-				</div>
-			</div>
-			<div class = "section2divdiv2">
 				<div class = "section2divdivdiv" onclick ="location.href('')"> 
 					<p><span>장르 음악 </span></p>
 				</div>
 			</div>
-			<div class = "section2divdiv3">
+			<div class = "section2divdiv2">
 				<div class = "section2divdivdiv" onclick ="location.href('')"> 
-					<p><span>추천 음악 </span></p>
+					<p><span>앨범 음악 </span></p>
 				</div>
 			</div>
 		</div>

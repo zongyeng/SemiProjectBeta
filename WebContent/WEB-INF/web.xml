@@ -43,4 +43,23 @@
     <servlet-name>YoutubeServlet</servlet-name>
     <url-pattern>/Youtube.do</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>pagemovingServlet</servlet-name>
+    <servlet-class>semi.controller.pagemovingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pagemovingServlet</servlet-name>
+    <url-pattern>/pagemoving.do</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>musicgenreServlet</servlet-name>
+    <servlet-class>semi.controller.musicgenreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>musicgenreServlet</servlet-name>
+    <url-pattern>/musicgenre.do</url-pattern>
+  </servlet-mapping>
+ 
 </web-app>
