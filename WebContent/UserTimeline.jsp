@@ -9,7 +9,6 @@
 	String videoid=request.getParameter("videoid");
 %>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="js/statistics.js" ></script>
 <script type="text/javascript">
 	var num=0;
 	function select1(){
@@ -37,51 +36,12 @@
 		document.getElementById("graph").style.background="rgba(0,0,0,0.6)";
 		document.getElementById("graph").style.color = "white";
 	}
-	// 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // 3. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '360',
-        width: '640',
-        videoId: '<%=videoid%>',
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    // 4. The API will call this function when the video player is ready.
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
-
-    // 5. The API calls this function when the player's state changes.
-    //    The function indicates that when playing a video (state=1),
-    //    the player should play for six seconds and then stop.
-    var done = false;
-    function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-      }
-    }
-    function stopVideo() {
-      player.stopVideo();
-    }
+	
 </script>
 <style type="text/css">
-	.wholesection{width : 100%;  margin-top : 40px;}
-	.section1 {width:100%; botton : 100px;}
-	.section1div {width : 70%;
+	.wholesection{width : 100%; height:7700px; margin-top : 40px;}
+	.section1 {width:100%; height : 1300px;}
+	.section1div {width : 70%; height : 1000px;
 					margin-left : auto; margin-right : auto;}
 	.section1divtable {text-align: center; width : 100%;}
 	.section1divtablediv { height : 100px; margin-bottom:30px;
@@ -99,6 +59,26 @@
 	.section1divtablediv p {text-align: center; font-size: 30px;
 								font-weight:bold; color : white;
 								margin-top : 30px; background-color: rgba(0,0,0,0.8);}
+	
+	.section2 {width:100%; height : 400px;}
+	.section2div {width : 70%; height : 400px; margin : 0 auto;
+			     display : flex;}
+	.section2div div {width : 300px; height:300px;
+					display: flex-basis; width : 300px;
+				    margin: 0 auto;
+				     background-repeat: no-repeat;
+					 background-position: -300px;
+					 position: relative; overflow: hidden;
+					 	border: 1px solid black;}	
+	.section2div div:hover { background-color: rgba(255,255,255,0.6);
+							cursor : pointer;}	
+	.section2divdiv1 { background-image: url("images/portfoliochartpicture1.jpg");}
+	.section2divdiv2 { background-image: url("images/genrepicture1.jpg"); width : 300px; height:300px;}
+	.section2divdiv3 { background-image: url("images/graphpicture1.jpg"); width : 300px; height:300px;}
+	.section2divdivdiv { width : 100px; height : 30px;}
+	.section2divdivdiv p{ text-align: center; font-size: 30px;
+							font-weight:bold; color : white;
+							margin-top : 30px; background-color: rgba(0,0,0,0.8);  }
 	.asidemenu{ width : calc(13% - 2px); height : 20%;
 				background-color: rgb(100,100,100); 
 				position: fixed; top : 195px; left:1%;
@@ -135,7 +115,7 @@
 	.buttongroupdiv1 button:hover { background-color: rgba(0,0,0,0.6); color : white; cursor: pointer;}
 </style>
 </head>
-<body>
+<body>	
 <%@ include file="./form/header.jsp"%>
 
 <section class ="wholesection">
@@ -145,17 +125,19 @@
 			<div class = "buttongroupwrap">
 				<div class="buttongroupdiv1">
 					<button id="portfolio" style = "border-top-left-radius: 5px;
-							border-bottom-left-radius:5px;background : rgba(0,0,0,0.6);
-							color:white;" onclick="select1()"> Portfolio </button>
-					<button id="timeline" onclick="select2()"> Timeline </button>
+							border-bottom-left-radius:5px;" 
+							onclick="select1()"> Portfolio </button>
+					<button id="timeline" onclick="select2()" style="background : rgba(0,0,0,0.6);
+							color:white;"> Timeline </button>
 					<button id="graph" style="border-bottom-right-radius:5px; 
 					border-top-right-radius: 5px;" onclick="select3()">Graph</button>
 				</div>
 			</div>
 		</div>
 			<div class = "section1divtablediv" onclick ="location.href('')">
-					<p> portfolio </p> 
+					<p> Timeline </p> 
 			</div>
+			<div style="border : 1px;">
 			<table class = "section1divtable" border= "1" >
 				<colgroup>
 					<col width = "5%"> <!-- 순서-->
@@ -163,16 +145,6 @@
 					<col width = "60%"> <!-- 앨범 이름 -->
 					<col width = "20%"> <!-- 작곡가 이름 -->
 				</colgroup>
-				<tr>
-					<td colspan="4">
-						<p style="font-size:30px;"> portfolio 영상 </p>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4">
-						<div id="player"></div>
-					</td>
-				</tr>
 				<tr style="color: rgba(0,0,0,0.6); font-size: 8px;"  height = 30px;>
 					<td>순서</td>
 					<td>앨범이미지</td>
@@ -199,6 +171,7 @@
 
 				</tbody>
 			</table>
+			</div>
 		</div>
 	</section>
 </section>

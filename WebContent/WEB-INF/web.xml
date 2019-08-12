@@ -36,6 +36,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>boardServlet</servlet-name>
+    <servlet-class>semi.controller.boardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>boardServlet</servlet-name>
+    <url-pattern>/board.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>YoutubeServlet</servlet-name>
     <servlet-class>semi.controller.YoutubeServlet</servlet-class>
   </servlet>
@@ -43,5 +52,5 @@
     <servlet-name>YoutubeServlet</servlet-name>
     <url-pattern>/Youtube.do</url-pattern>
   </servlet-mapping>
-  
+
 </web-app>
