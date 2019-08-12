@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="stacked_barmapper">
 
-<select id ="selectReferrals" resultType="Date">
+<select id ="selectViews" resultType="Date">
 	SELECT SONGSTATISTICS_SONGVIEW 
 	FROM SONGSTATISTICS
 	WHERE SONGSTATISTICS_SONGSEQ=#{songseq}
 </select>
 
-<select id ="selectViews" resultType="Date">
+<select id ="selectReferrals" resultType="Date">
 	SELECT FAVORITEMUSIC_DATE
 	FROM FAVORITEMUSIC
 	WHERE FAVORITEMUSIC_MUSICIANSONGSEQ=#{songseq}
@@ -30,6 +30,12 @@
 	SELECT USERINFO_NAME 
 	FROM USERINFO 
 	WHERE USERINFO_SEQ = #{userseq}
+</select>
+
+<select id="songname" resultType="String">
+	SELECT MUSIC_TITLE 
+	FROM MUSIC 
+	WHERE MUSIC_SEQ = #{songseq}
 </select>
 
 </mapper>

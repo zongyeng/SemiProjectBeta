@@ -38,7 +38,7 @@ public class MusicDto {
 		this.music_album = album;
 	}
 	public MusicDto(int artist, int no, String title, int size, int length,
-			int hl_time, String content, String composer, String lylicist, 
+			int hl_time, String content, String composer, String lyricist, 
 			String tag, char enable, int album) {
 		this.music_artist = artist;
 		this.music_no = no;
@@ -48,7 +48,7 @@ public class MusicDto {
 		this.music_hl_time = hl_time;
 		this.music_content = content;
 		this.music_composer = composer;
-		this.music_lylicist = lylicist;
+		this.music_lyricist = lyricist;
 		this.music_tag = tag;
 		this.music_enable = enable;
 		this.music_album = album;

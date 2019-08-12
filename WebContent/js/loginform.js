@@ -10,4 +10,17 @@ function idchk() {
 		}
 	});
 	
-};
+}
+
+function nicknamechk(){
+	var nickname = $("#nickname").val();
+	$.ajax({
+		url : "login.do?command=nicknamechk&nickname="+nickname,
+		method : "post",
+		success : function(msg) {
+			alert(msg);
+		}, error: function(msg) {
+			alert(msg);
+		}
+	});
+}

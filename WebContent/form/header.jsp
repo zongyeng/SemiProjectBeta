@@ -1,3 +1,4 @@
+<%@page import="semi.dto.loginDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,15 +8,15 @@
 <title>header design</title>
 <script type="text/javascript" src="js/loginform.js"></script>
 <script type="text/javascript">
-function kiki(){
 
-	 var session = <%=(String)session.getAttribute("userdto")%>;
-	 session.removeAttribute("userdto"); 
+<%
+	loginDto userinfo = (loginDto)session.getAttribute("userdto");
+%>
 
-	 location.href="Mainhome.jsp";
-	
-
+function logout(){
+	 location.href="login.do?command=logout";
 }
+
 </script>
 <style type="text/css">
 	*{ padding : 0px; margin : 0px;}
@@ -107,7 +108,7 @@ function kiki(){
   							<div class="logindivdiv">   
   							
 								<%
-								if(session.getAttribute("userdto") == null) {
+								if(userinfo == null) {
 								%>
 									<button onclick="location.href='UserLogin.jsp'" class="logindivdivbtn">
      								로그인   
@@ -117,13 +118,13 @@ function kiki(){
    									</button> 
    							    
 						       <%}else{ %>
-									<button onclick="location.href=''" class="logindivdivbtn">
-     								내정보보기   
+									<%=userinfo.getUserinfo_name()%>님 반갑습니다. 보유캐쉬 : <%=userinfo.getUserinfo_cash()%>원
+									<button onclick="location.href='UserInformation.jsp'" class="logindivdivbtn">
+     								내정보보기  
    							  		</button>
-   							    	<button onclick="kiki()" class="logindivdivbtn">
+   							    	<button onclick="logout()" class="logindivdivbtn">
      								로그아웃
    							    	</button>
-   							    
    							   <% }%>
    							  
 

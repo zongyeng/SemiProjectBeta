@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,8 +53,14 @@ public class searchMusicianSongs extends HttpServlet {
 			songReferrals = biz.selectReferrals(songseq);
 			songViews = biz.selectViews(songseq);
 
+			if(songViews.size()<10) {
+				PrintWriter out = response.getWriter();
+				out.println(songViews.size());
+				return;
+			}
+			
 			java.util.Date parsedate = songReferrals.get(0);
-
+			
 			JSONArray songjson = new JSONArray();
 
 			JSONArray songReferralsarr = new JSONArray();
@@ -87,6 +95,8 @@ public class searchMusicianSongs extends HttpServlet {
 			songReferralsob.put("y", y);
 			
 			songjson.add(songReferralsarr);
+			
+			
 			java.util.Date parsedate1 = songViews.get(0);
 			
 			JSONArray songViewsarr = new JSONArray();
@@ -123,6 +133,54 @@ public class searchMusicianSongs extends HttpServlet {
 			
 			PrintWriter out = response.getWriter();
 			out.println(songjson);
+		} else if (command.equals("multi_linesong")) {
+			int selectsongnum = Integer.parseInt(request.getParameter("selectsongs"));
+			Map<Integer, List<Date>> selectsong = new HashMap<Integer, List<Date>>();
+			String[] songsname = new String[selectsongnum];
+			
+			
+			for(int i = 1; i<selectsongnum;i++) {
+				selectsong.put(i, biz.selectViews(Integer.parseInt(request.getParameter("selectsong"+i))));
+				songsname[i] = biz.songname(Integer.parseInt(request.getParameter("selectsong"+i)));
+				songsname[i] = songsname[i].substring(songsname[i].indexOf('_')+1);
+				System.out.println(biz.selectViews(Integer.parseInt(request.getParameter("selectsong1"))));
+			}
+			
+			JSONObject songViewsob = new JSONObject();
+			JSONArray[] songViewsarr = new JSONArray[selectsongnum];
+			JSONObject songsViewsob = new JSONObject();
+			for(int I = 0; I<selectsongnum;I++) {
+				java.util.Date parsedate1 = selectsong.get(I).get(0);
+				
+				songViewsarr[I] = new JSONArray();
+				
+				int y = 1;
+				int z = 0;
+				String date = parsedate1.toString().substring(24, 28)+"-"+parseMonth(parsedate1.toString().substring(4, 7))+"-"+parsedate1.toString().substring(8, 10);
+				songViewsob.put("time", parsedate1.toString().substring(24, 28)+"-"+parseMonth(parsedate1.toString().substring(4, 7))+"-"+parsedate1.toString().substring(8, 10));
+				songViewsarr[I].add(songViewsob);
+				for(int i = 0; i<selectsong.get(I).size();i++) {
+					parsedate1 = selectsong.get(I).get(i);
+					String year = parsedate1.toString().substring(24, 28);
+					String month = parseMonth(parsedate1.toString().substring(4, 7));
+					String day = parsedate1.toString().substring(8, 10);
+				
+					if (songViewsarr[I].get(z).toString().indexOf("\"time\":" + "\""+year+"-"+month+"-"+day+"\"") != -1) {
+						y++;
+					} else {
+						songViewsob.put("y", y);
+						
+						songViewsob = new JSONObject();
+						songViewsob.put("time", parsedate1.toString().substring(24, 28)+"-"+parseMonth(parsedate1.toString().substring(4, 7))+"-"+parsedate1.toString().substring(8, 10));
+						songViewsarr[I].add(songViewsob);
+						y = 1;
+						z++;
+					}
+					songViewsob.put("y", y);
+				}
+				songsViewsob.put(songsname[I], songViewsarr[I]);
+				System.out.println(songsViewsob);
+			}
 		}
 	
 	}
