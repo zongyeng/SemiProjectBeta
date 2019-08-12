@@ -10,6 +10,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%
+	MusicBoardDto dto = new MusicBoardDto();
+%>
 </head>
 <body>
 	<h1></h1>
