@@ -195,7 +195,7 @@ public class MusicTest {
 		dtob.setMusicbd_content("좋은노래 맞아요3");
 		dtob.setMusicbd_writer("임성현");
 		
-		int res = bizb.answerProc(dtob);
+		int res = bizb.answerProc_musicbd(dtob);
 		if(res > 0) {
 			System.out.println("insert_musicbd 성공");
 		} else {

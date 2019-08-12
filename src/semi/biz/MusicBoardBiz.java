@@ -29,7 +29,7 @@ public class MusicBoardBiz {
 		return dao.update_musicbd(dto);
 	}
 	
-	public int answerProc(MusicBoardDto dto) {
+	public int answerProc_musicbd(MusicBoardDto dto) {
 		
 		int resupdate = dao.answerUpdate(dto.getMusicbd_boardno());
 		int resinsert = dao.answerInsert(dto);
