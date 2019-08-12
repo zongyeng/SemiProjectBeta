@@ -65,7 +65,7 @@ $(function(){
 			
 		}  
 		//myaudio.currentTime = 0;
-		//segEnd = 0;
+
 		//console.log(myAudio.currentTime);
 	}, false);
 	

@@ -117,7 +117,7 @@ function addList(){
 	
 	var opt = document.createElement('option');
 	//var opt = new Option(text, value);
-	
+
 	opt.value = "music/"+src;
 	opt.text = src.split('.')[0].split('_').pop();
 	$('#playlist').append(opt);
