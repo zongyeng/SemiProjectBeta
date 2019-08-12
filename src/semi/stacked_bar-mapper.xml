@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="stacked_barmapper">
+
+<select id ="selectReferrals" resultType="Date">
+	SELECT SONGSTATISTICS_SONGVIEW 
+	FROM SONGSTATISTICS
+	WHERE SONGSTATISTICS_SONGSEQ=#{songseq}
+</select>
+
+<select id ="selectViews" resultType="Date">
+	SELECT FAVORITEMUSIC_DATE
+	FROM FAVORITEMUSIC
+	WHERE FAVORITEMUSIC_MUSICIANSONGSEQ=#{songseq}
+</select>
+
+<select id="musicianseq" resultType="int">
+	SELECT USERINFO_SEQ 
+	FROM USERINFO 
+	WHERE USERINFO_NAME = #{username}
+</select>
+
+<select id="songs" resultType="semi.dto.stacked_barDto">
+	SELECT MUSIC_SEQ, MUSIC_TITLE
+	FROM MUSIC
+	WHERE MUSIC_ARTIST = #{userseq}
+</select>
+
+<select id="musicianname" resultType="String">
+	SELECT USERINFO_NAME 
+	FROM USERINFO 
+	WHERE USERINFO_SEQ = #{userseq}
+</select>
+
+</mapper>

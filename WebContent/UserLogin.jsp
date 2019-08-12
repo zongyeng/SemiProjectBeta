@@ -14,6 +14,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="resources/index.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+.ir{
+	color:white;
+	background-color: black;
+	font-size:21px;
+}
+.login_box{
+    
+}
+
+</style>
 </head>
 <body>
 	<div class="con">
@@ -30,7 +42,7 @@
 			</div>
 			<div class="login_box" style="margin-bottom: 15px;">
 				<div>
-				<input type="submit" value="로그인">
+				<input type="submit" class="ir" value="로그인"><br/>
 				</div>
 			</div>
 		</form>
@@ -63,7 +75,7 @@
 			<ul>
 				<li><a href="#">아이디 찾기</a></li>
 				<li><a href="#">비밀번호 찾기</a></li>
-				<li><a href="#" onclick="location.href='signup.jsp'">회원가입</a></li>
+				<li><a href="#" onclick="location.href='UserSignUp.jsp'">회원가입</a></li>
 
 			</ul>
 		</div>

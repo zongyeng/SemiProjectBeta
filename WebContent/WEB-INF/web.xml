@@ -17,7 +17,6 @@
     <servlet-name>chattingServlet</servlet-name>
     <url-pattern>/chatting.do</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>loginServlet</servlet-name>
     <servlet-class>semi.controller.loginServlet</servlet-class>
@@ -28,6 +27,16 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>statisticsServlet</servlet-name>
+    <servlet-class>semi.controller.statisticsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>statisticsServlet</servlet-name>
+    <url-pattern>/statistics.do</url-pattern>
+  </servlet-mapping>
+  
+<<<<<<< HEAD
+  <servlet>
     <servlet-name>boardServlet</servlet-name>
     <servlet-class>semi.controller.boardServlet</servlet-class>
   </servlet>
@@ -36,4 +45,14 @@
     <url-pattern>/board.do</url-pattern>
   </servlet-mapping>
   
+=======
+  <servlet>
+    <servlet-name>YoutubeServlet</servlet-name>
+    <servlet-class>semi.controller.YoutubeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>YoutubeServlet</servlet-name>
+    <url-pattern>/Youtube.do</url-pattern>
+  </servlet-mapping>
+>>>>>>> branch 'master' of https://github.com/zongyeng/SemiProjectBeta.git
 </web-app>
