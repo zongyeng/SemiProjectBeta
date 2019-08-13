@@ -20,9 +20,9 @@ function statistics(){
 	form.appendChild(input);
 	 
 	document.body.appendChild(form);
-	window.open('','statistics','width=800, height=540');
+	window.open('','statistics','width=800, height=560');
 
 	form.submit();
-	 
+	
 	document.body.removeChild(form);
 }

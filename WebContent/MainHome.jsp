@@ -10,7 +10,7 @@
 $(function(){
 	$(".section1div2div2div1divdiv1").each(function(){
 		$(this).css("height",function(){
-			return $(this).width();
+			return $(this).width();r
 		});
 	})
 	

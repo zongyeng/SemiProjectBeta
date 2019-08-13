@@ -19,13 +19,13 @@ background-attachment: fixed;
 	width: 450px;
 	height: 500px;
 	margin:0 auto;
-	margin-left: 26%;
+	margin-left: 20%;
 }
 #dd{
 	width: 450px;
 	height: 500px;
 	margin:0 auto;
-	margin-right:26%;
+	margin-right:20%;
 }
 	tr:nth-child(odd) {background-color: rgb(200,200,200);}
 	

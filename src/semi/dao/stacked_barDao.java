@@ -96,5 +96,21 @@ public class stacked_barDao {
 		
 		return username;
 	}
+
+	public String songname(int songseq) {
+		SqlSession session = null;
+		String songname = null;
+		
+		try {
+			session = getSqlSessionFactory.getstacked_barSessionFactory().openSession();
+			songname = session.selectOne(namespace+"songname", songseq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return songname;
+	}
 	
 }

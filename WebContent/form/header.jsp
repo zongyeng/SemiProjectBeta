@@ -1,3 +1,4 @@
+<%@page import="semi.dto.loginDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,15 +8,15 @@
 <title>header design</title>
 <script type="text/javascript" src="js/loginform.js"></script>
 <script type="text/javascript">
-function kiki(){
 
-	 var session = <%=(String)session.getAttribute("userdto")%>;
-	 session.removeAttribute("userdto"); 
+<%
+	loginDto userinfo = (loginDto)session.getAttribute("userdto");
+%>
 
-	 location.href="Mainhome.jsp";
-	
-
+function logout(){
+	 location.href="login.do?command=logout";
 }
+
 </script>
 <style type="text/css">
 	*{ padding : 0px; margin : 0px;}
@@ -98,7 +99,7 @@ function kiki(){
 				<div class="headerdiv1div">
 					<div class = "headerdiv1divdiv">
 						<div class = "headerdivwrapa">
-						<a href = "" class="headerdiv1a"><!-- 홈으로 링크 -->
+						<a href = "pagemoving.do?command=musichome" class="headerdiv1a"><!-- 홈으로 링크 -->
 							<img alt="Mutes logo" src="images/mutes2.png" width = "200px" height = "100px">
 						</a>
 						</div>
@@ -107,7 +108,7 @@ function kiki(){
   							<div class="logindivdiv">   
   							
 								<%
-								if(session.getAttribute("userdto") == null) {
+								if(userinfo == null) {
 								%>
 									<button onclick="location.href='UserLogin.jsp'" class="logindivdivbtn">
      								로그인   
@@ -117,13 +118,13 @@ function kiki(){
    									</button> 
    							    
 						       <%}else{ %>
-									<button onclick="location.href=''" class="logindivdivbtn">
-     								내정보보기   
+									<%=userinfo.getUserinfo_name()%>님 반갑습니다. 보유캐쉬 : <%=userinfo.getUserinfo_cash()%>원
+									<button onclick="location.href='pagemoving.do?command=userinformation'" class="logindivdivbtn">
+     								내정보보기  
    							  		</button>
-   							    	<button onclick="kiki()" class="logindivdivbtn">
+   							    	<button onclick="logout()" class="logindivdivbtn">
      								로그아웃
    							    	</button>
-   							    
    							   <% }%>
    							  
 
@@ -148,22 +149,22 @@ function kiki(){
 			<div class="headerdiv2">
 				<div class="headerdiv2div">
 					<ul class = "headerdiv2divul">
-						<li class = "headerdiv2divulli">
+						<li class = "headerdiv2divulli" onclick = "location.href='pagemoving.do?command=musicgenre'">
 							<a class = "headerdiv2divullia" href ="pagemoving.do?command=musicgenre"> 음악 </a>
 							<ul class = "headerdiv2divulliul">
 								<li><a href="pagemoving.do?command=musicgenre"> 장르별 음악 </a></li>
 								<li><a href="pagemoving.do?command=musicalbumpopular"> 앨범 음악</a></li>
 							</ul>
 						</li>
-						<li class = "headerdiv2divulli">
-							<a class = "headerdiv2divullia" href ="pagemoving.do?command=broadcstingmain"> 방송 </a>
+						<li class = "headerdiv2divulli" onclick = "location.href='pagemoving.do?command=broadcstingtop'">
+							<a class = "headerdiv2divullia" href ="pagemoving.do?command=broadcstingtop"> 방송 </a>
 							<ul class = "headerdiv2divulliul">
 								<li><a href="pagemoving.do?command=broadcstingtop"> 인기 방송 </a></li>
 								<li><a href="pagemoving.do?command=broadcstingrecommand"> 추천 방송 </a></li>
 								<li><a href="pagemoving.do?command=broadcstingnewest"> 신규 방송</a></li>
 							</ul>
 						</li>
-						<li class = "headerdiv2divulli">	
+						<li class = "headerdiv2divulli" onclick = "location.href='pagemoving.do?command=concerthallmain'">	
 							<a class = "headerdiv2divullia" href ="pagemoving.do?command=concerthallmain"> 공연장 </a>
 							<ul class = "headerdiv2divulliul">
 								<li><a href="pagemoving.do?command=concerthallmain"> 소개 </a></li>
@@ -171,13 +172,9 @@ function kiki(){
 							</ul>
 						</li>
 						<li class = "headerdiv2divulli" 
-						style = "border-right : 1px solid; border-right-color:rgba(200,200,200,0.5);">
+						style = "border-right : 1px solid; border-right-color:rgba(200,200,200,0.5);"
+						onclick = "location.href='pagemoving.do?command=servicecenter'">
 							<a class = "headerdiv2divullia" href ="pagemoving.do?command=servicecenter">고객센터</a>
-							<ul class = "headerdiv2divulliul">
-								<li><a href="pagemoving.do?command=servicecenter"> 문의하기 </a></li>
-								<li><a href="pagemoving.do?command=servicecenter"> 챗봇 </a></li>
-								<li><a href="pagemoving.do?command=servicepay"> 결제하기</a></li>
-							</ul>
 						</li>
 					</ul>
 				</div>

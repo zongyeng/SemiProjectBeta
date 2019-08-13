@@ -64,6 +64,14 @@ public class musicgenreServlet extends HttpServlet {
 			dispatch(request, response, "Albumchartpopular.jsp");
 		} else if (command.equals("albumrecommand")) {
 			dispatch(request, response, "Albumchartrecommand.jsp");
+		} 
+		
+		else if (command.equals("portfolio")) {
+			dispatch(request, response, "UserPortfolio.jsp");
+		}else if (command.equals("timeline")) {
+			dispatch(request, response, "UserTimeline.jsp");
+		}else if (command.equals("graph")) {
+			dispatch(request, response, "UserGraph.jsp");
 		}
 	}
 	public void dispatch(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
@@ -72,3 +80,4 @@ public class musicgenreServlet extends HttpServlet {
 		dispatch.forward(request, response);
 	}
 }
+

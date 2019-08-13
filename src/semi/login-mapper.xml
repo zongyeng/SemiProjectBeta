@@ -6,7 +6,7 @@
 SELECT USERINFO_SEQ, USERINFO_CONTROLNO, USERINFO_NAME, USERINFO_NICKNAME,
 	USERINFO_ID, USERINFO_PASSWORD, USERINFO_SEX, USERINFO_AGE, USERINFO_PHONENUMBER, 
 	USERINFO_EMAIL,USERINFO_SIGNDATE, USERINFO_ENABLE, USERINFO_CASH 
-FROM USERINFO WHERE USERINFO_ID = #{userinfo_id} AND USERINFO_PASSWORD = #{userinfo_password}
+FROM USERINFO WHERE USERINFO_ID = #{userinfo_id} AND USERINFO_PASSWORD = #{userinfo_password} AND USERINFO_ENABLE = 'Y'
 </select>
 
 
@@ -21,6 +21,24 @@ VALUES(USERINFOSEQ.NEXTVAL,1,#{userinfo_name},
 	SELECT COUNT(USERINFO_ID)
 	FROM USERINFO
 	WHERE USERINFO_ID = #{id}
+</select>
+
+<update id="update" parameterType="dto1">
+	UPDATE USERINFO
+	SET USERINFO_NAME = #{userinfo_name}, USERINFO_NICKNAME = #{userinfo_nickname}, USERINFO_ID = #{userinfo_id}, USERINFO_PASSWORD = #{userinfo_password}, USERINFO_AGE = #{userinfo_age}, USERINFO_PHONENUMBER = #{userinfo_phonenumber}, USERINFO_EMAIL = #{userinfo_email}
+	WHERE USERINFO_SEQ = #{userinfo_seq}
+</update>
+
+<update id="enableno" parameterType="int">
+	UPDATE USERINFO
+	SET USERINFO_ENABLE = 'N'
+	WHERE USERINFO_SEQ = #{userseq}
+</update>
+
+<select id="nicknamechk" parameterType="String" resultType="int">
+	SELECT COUNT(USERINFO_NICKNAME)
+	FROM USERINFO
+	WHERE USERINFO_NICKNAME = #{nickname}
 </select>
 
 </mapper>

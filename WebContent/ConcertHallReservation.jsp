@@ -60,10 +60,10 @@ $(function(){
 	<section class ="section2">
 		<div class = "section2div">
 			<div class = "section2divlabel">
-				<p><span>CONCERT HALL</span></p>
+				<p><span>RESERVATION</span></p>
 			</div>
 			<div class = "section2divdiv1" >
-				<div class = "section2divdivdiv" onclick ="location.href('pagemoving.do?command=concerthallareservation')"> 
+				<div class = "section2divdivdiv" onclick ="location.href='pagemoving.do?command=concerthallareservation'"> 
 					<p><span>신도림 디큐브 아트센터</span></p>
 					<div style="width:80%; margin:0 auto; margin-top : 20px;">
 						<img src="images/ee.jpg" width="100%">
@@ -71,7 +71,7 @@ $(function(){
 				</div>
 			</div>
 			<div class = "section2divdiv2">
-				<div class = "section2divdivdiv" onclick ="location.href('pagemoving.do?command=concerthallbreservation')"> 
+				<div class = "section2divdivdiv" onclick ="location.href='pagemoving.do?command=concerthallbreservation'"> 
 					<p><span>청담동 SAC 아트홀</span></p>
 					<div style="width:80%; margin:0 auto; margin-top : 20px;">
 						<img src="images/ff.jpg" width="100%">

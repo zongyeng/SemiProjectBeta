@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="musicbd_mapper">
+
+  <resultMap type="semi.dto.MusicBoardDto" id="musicbdDtoMap">
+		<result property="musicbd_boardno" column="MUSICBD_BOARDNO" />
+		<result property="musicbd_groupno" column="MUSICBD_GROUPNO" />
+		<result property="musicbd_groupsq" column="MUSICBD_GROUPSQ" />
+		<result property="musicbd_titletab" column="MUSICBD_TITLETAB" />
+		<result property="musicbd_delflag" column="MUSICBD_DELFLAG" />
+		<result property="musicbd_title" column="MUSICBD_TITLE" />
+		<result property="musicbd_content" column="MUSICBD_CONTENT" />
+		<result property="musicbd_writer" column="MUSICBD_WRITER" />
+		<result property="musicbd_regdate" column="MUSICBD_REGDATE" />
+	</resultMap>
+  
+  <select id="selectList_musicbd" resultMap="musicbdDtoMap">
+  	SELECT MUSICBD_BOARDNO,MUSICBD_GROUPNO,MUSICBD_GROUPSQ,MUSICBD_TITLETAB,MUSICBD_DELFLAG,
+  		MUSICBD_TITLE,MUSICBD_CONTENT,MUSICBD_WRITER,MUSICBD_REGDATE 
+  		FROM MUSICBOARD ORDER BY MUSICBD_BOARDNO DESC, MUSICBD_GROUPSQ
+  </select>
+  
+  <select id="selectOne_musicbd" parameterType="int" resultMap="musicbdDtoMap">
+  	SELECT MUSICBD_BOARDNO,MUSICBD_GROUPNO,MUSICBD_GROUPSQ,MUSICBD_TITLETAB,MUSICBD_DELFLAG,
+  		MUSICBD_TITLE,MUSICBD_CONTENT,MUSICBD_WRITER,MUSICBD_REGDATE
+  		FROM MUSICBOARD
+  		WHERE MUSICBD_BOARDNO = #{musicbd_boardno}
+  </select>
+    
+  <insert id="insert_musicbd" parameterType="musicbdDto">
+  	INSERT INTO MUSICBOARD VALUES(
+  		BOARDNOSEQ.NEXTVAL,GROUPNOSEQ.NEXTVAL,#{musicbd_groupsq},#{musicbd_titletab},
+  		'N',#{musicbd_title},#{musicbd_content},#{musicbd_writer},SYSDATE)
+  </insert>
+  
+  <update id="update_musicbd" parameterType="musicbdDto">
+  	UPDATE MUSICBOARD SET
+  		MUSICBD_TITLE = #{musicbd_title},
+  		MUSICBD_CONTENT = #{musicbd_content}
+  		WHERE MUSICBD_BOARDNO = #{musicbd_boardno}
+  </update>
+ 
+   <update id="delete_musicbd" parameterType="musicbdDto">
+  	UPDATE MUSICBOARD SET MUSICBD_DELFLAG = 'Y'
+  		WHERE MUSICBD_BOARDNO = #{musicbd_boardno}
+  </update>
+ 
+  <delete id="deleter_musicbd" parameterType="int">
+  	DELETE MUSICBOARD WHERE MUSICBD_BOARDNO = #{musicbd_boardno}
+  </delete>
+ 
+   <update id="update_answer" parameterType="musicbdDto">
+  	UPDATE MUSICBOARD 
+  		SET MUSICBD_GROUPSQ = MUSICBD_GROUPSQ+1
+  		WHERE MUSICBD_GROUPNO = (SELECT MUSICBD_GROUPNO FROM MUSICBOARD WHERE MUSICBD_BOARDNO=#{musicbd_boardno})
+  		AND MUSICBD_GROUPSQ > (SELECT MUSICBD_GROUPSQ FROM MUSICBOARD WHERE MUSICBD_BOARDNO=#{musicbd_boardno})
+  </update> 
+  
+  <insert id="insert_answer" parameterType="musicbdDto">
+  	INSERT INTO MUSICBOARD VALUES(BOARDNOSEQ.NEXTVAL,
+  		(SELECT MUSICBD_GROUPNO FROM MUSICBOARD WHERE MUSICBD_BOARDNO=#{musicbd_boardno}),
+  		(SELECT MUSICBD_GROUPSQ FROM MUSICBOARD WHERE MUSICBD_BOARDNO=#{musicbd_boardno})+1,
+  		(SELECT MUSICBD_TITLETAB FROM MUSICBOARD WHERE MUSICBD_BOARDNO=#{musicbd_boardno})+1,
+  		'N',#{musicbd_title},#{musicbd_content},#{musicbd_writer},SYSDATE)
+  </insert>  
+  
+</mapper>

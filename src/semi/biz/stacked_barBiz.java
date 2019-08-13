@@ -30,5 +30,9 @@ public class stacked_barBiz {
 	public String username(int userseq) {
 		return dao.username(userseq);
 	}
+
+	public String songname(int songseq) {
+		return dao.songname(songseq);
+	}
 	
 }

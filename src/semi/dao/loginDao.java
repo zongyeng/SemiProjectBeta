@@ -11,7 +11,7 @@ private String namespace = "loginmapper.";
 	
 	sqlMapConfig getSqlSessionFactory = new sqlMapConfig();
 	
-	public boolean signup(String userinfo_name,String userinfo_nickname, String userinfo_id, String userinfo_password,
+	public int signup(String userinfo_name,String userinfo_nickname, String userinfo_id, String userinfo_password,
 			char userinfo_sex,int userinfo_age,String userinfo_phonenumber,String userinfo_email) {
 		
 		SqlSession session = null;
@@ -37,12 +37,13 @@ private String namespace = "loginmapper.";
 			}else {
 				session.rollback();
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return res>0;
+		return res;
 	}
 	public loginDto login(String id, String password) {
 		
@@ -79,5 +80,62 @@ private String namespace = "loginmapper.";
 		}
 		
 		return res==0;
+	}
+	public int update(loginDto updatedto) {
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory.getLoginSessionFactory().openSession();
+			res = session.update(namespace+"update", updatedto);
+			if(res>0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return res;
+	}
+	public boolean nicknamechk(String nickname) {
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory.getLoginSessionFactory().openSession();
+			res = session.selectOne(namespace+"nicknamechk", nickname);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return res==0;
+	}
+	public boolean withdrawal(int userseq) {
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory.getLoginSessionFactory().openSession();
+			res = session.update(namespace+"enableno", userseq);
+			if(res>0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return res>0;
 	}
 }

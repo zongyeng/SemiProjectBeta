@@ -26,8 +26,10 @@ public class pagemovingServlet extends HttpServlet {
 		
 		String command = request.getParameter("command");
 		System.out.println("["+command+"]");
-		
-		if(command.equals("musicgenre")) {
+		if(command.equals("musichome")) {
+			dispatch(request, response, "MainHome.jsp");
+		}
+		else if(command.equals("musicgenre")) {
 			dispatch(request, response, "MusicGenreAllPopular.jsp");
 		}
 		else if(command.equals("musicalbumpopular")) {
@@ -58,13 +60,22 @@ public class pagemovingServlet extends HttpServlet {
 			dispatch(request, response, "ConcertHallB.jsp");
 		}
 		else if(command.equals("concerthallreservation")) {
-			dispatch(request, response, "concertHallReservation.jsp");
+			dispatch(request, response, "ConcertHallReservation.jsp");
 		}
 		else if(command.equals("concerthallareservation")) {
-			dispatch(request, response, "concertHallAReservation.jsp");
+			dispatch(request, response, "ConcertHallAReservation.jsp");
 		}
 		else if(command.equals("concerthallbreservation")) {
-			dispatch(request, response, "concertHallBReservation.jsp");
+			dispatch(request, response, "ConcertHallBReservation.jsp");
+		}
+		else if(command.equals("servicecenter")) {
+			dispatch(request, response, "ServiceCenter.jsp");
+		}
+		else if(command.equals("concerthallbreservation")) {
+			dispatch(request, response, "ConcertHallBReservation.jsp");
+		}
+		else if(command.equals("userinformation")) {
+			dispatch(request, response, "UserInformation.jsp");
 		}
 
 	}
