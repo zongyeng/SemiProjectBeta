@@ -99,7 +99,7 @@ function logout(){
 				<div class="headerdiv1div">
 					<div class = "headerdiv1divdiv">
 						<div class = "headerdivwrapa">
-						<a href = "" class="headerdiv1a"><!-- 홈으로 링크 -->
+						<a href = "pagemoving.do?command=musichome" class="headerdiv1a"><!-- 홈으로 링크 -->
 							<img alt="Mutes logo" src="images/mutes2.png" width = "200px" height = "100px">
 						</a>
 						</div>
@@ -119,7 +119,7 @@ function logout(){
    							    
 						       <%}else{ %>
 									<%=userinfo.getUserinfo_name()%>님 반갑습니다. 보유캐쉬 : <%=userinfo.getUserinfo_cash()%>원
-									<button onclick="location.href='UserInformation.jsp'" class="logindivdivbtn">
+									<button onclick="location.href='pagemoving.do?command=userinformation'" class="logindivdivbtn">
      								내정보보기  
    							  		</button>
    							    	<button onclick="logout()" class="logindivdivbtn">
@@ -149,37 +149,32 @@ function logout(){
 			<div class="headerdiv2">
 				<div class="headerdiv2div">
 					<ul class = "headerdiv2divul">
-						<li class = "headerdiv2divulli">
-							<a class = "headerdiv2divullia" href =""> 음악 </a>
+						<li class = "headerdiv2divulli" onclick = "location.href='pagemoving.do?command=musicgenre'">
+							<a class = "headerdiv2divullia" href ="pagemoving.do?command=musicgenre"> 음악 </a>
 							<ul class = "headerdiv2divulliul">
-								<li><a href=""> 장르별 음악 </a></li>
-								<li><a href=""> 앨범 음악</a></li>
+								<li><a href="pagemoving.do?command=musicgenre"> 장르별 음악 </a></li>
+								<li><a href="pagemoving.do?command=musicalbumpopular"> 앨범 음악</a></li>
 							</ul>
 						</li>
-						<li class = "headerdiv2divulli">
-							<a class = "headerdiv2divullia" href =""> 방송 </a>
+						<li class = "headerdiv2divulli" onclick = "location.href='pagemoving.do?command=broadcstingtop'">
+							<a class = "headerdiv2divullia" href ="pagemoving.do?command=broadcstingtop"> 방송 </a>
 							<ul class = "headerdiv2divulliul">
-								<li><a href=""> 인기 방송 </a></li>
-								<li><a href=""> 추천 방송 </a></li>
-								<li><a href=""> 신규 방송</a></li>
+								<li><a href="pagemoving.do?command=broadcstingtop"> 인기 방송 </a></li>
+								<li><a href="pagemoving.do?command=broadcstingrecommand"> 추천 방송 </a></li>
+								<li><a href="pagemoving.do?command=broadcstingnewest"> 신규 방송</a></li>
 							</ul>
 						</li>
-						<li class = "headerdiv2divulli">	
-							<a class = "headerdiv2divullia" href =""> 공연장 </a>
+						<li class = "headerdiv2divulli" onclick = "location.href='pagemoving.do?command=concerthallmain'">	
+							<a class = "headerdiv2divullia" href ="pagemoving.do?command=concerthallmain"> 공연장 </a>
 							<ul class = "headerdiv2divulliul">
-								<li><a href=""> 소개 </a></li>
-								<li><a href=""> 예약하기 </a></li>
+								<li><a href="pagemoving.do?command=concerthallmain"> 소개 </a></li>
+								<li><a href="pagemoving.do?command=concerthallreservation"> 예약하기 </a></li>
 							</ul>
 						</li>
 						<li class = "headerdiv2divulli" 
-						style = "border-right : 1px solid; border-right-color:rgba(200,200,200,0.5);">
-							<a class = "headerdiv2divullia" href ="">고객센터</a>
-							<ul class = "headerdiv2divulliul">
-								<li><a href="chattingtest.jsp"> 문의하기 </a></li>
-								<li><a href=""> 챗봇 </a></li>
-								<li><a href=""> 환불하기</a></li>
-								<li><a href=""> 결제하기</a></li>
-							</ul>
+						style = "border-right : 1px solid; border-right-color:rgba(200,200,200,0.5);"
+						onclick = "location.href='pagemoving.do?command=servicecenter'">
+							<a class = "headerdiv2divullia" href ="pagemoving.do?command=servicecenter">고객센터</a>
 						</li>
 					</ul>
 				</div>

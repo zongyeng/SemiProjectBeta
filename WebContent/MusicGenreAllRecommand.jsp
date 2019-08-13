@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>RainyRecommand</title>
+<title>AllRecommand</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/genre.js" ></script>
 <script type="text/javascript">
-var pr=1; var num=3;
+var pr=1; num=0;
 </script>
 <link href="resources/genre.css" rel="stylesheet" type="text/css">
 </head>
@@ -23,18 +24,18 @@ var pr=1; var num=3;
 					<button id="popular" style = "border-top-left-radius: 5px;
 							border-bottom-left-radius:5px;" onclick="select1()"> popular </button>
 					<button id="recommand" style="border-bottom-right-radius:5px; 
-							border-top-right-radius: 5px; background : rgba(0,0,0,0.6);
+					border-top-right-radius: 5px; background : rgba(0,0,0,0.6);
 							color:white;" onclick="select2()">recommand</button>
 				</div>
 				<div class="buttongroupdiv2">
-					<button id="ganre0" onclick="ganre0()"
+					<button id="ganre0" onclick="ganre0()" 
 							style = "border-top-left-radius: 5px;
-							border-bottom-left-radius:5px;">all</button>
+							border-bottom-left-radius:5px; 
+							background : rgba(0,0,0,0.6);
+							color:white;">all</button>
 					<button id="ganre1" onclick="ganre1()">sun</button>
 					<button id="ganre2" onclick="ganre2()">cloud</button>
-					<button id="ganre3" onclick="ganre3()" 
-							style = "background : rgba(0,0,0,0.6);
-							color:white;">rain</button>
+					<button id="ganre3" onclick="ganre3()">rain</button>
 					<button id="ganre4" onclick="ganre4()">storm</button>
 					<button id="ganre5" onclick="ganre5()">snow</button>
 					<button id="ganre6" style="border-bottom-right-radius:5px; 
@@ -74,13 +75,13 @@ var pr=1; var num=3;
 				</thead>
 				
 				<tbody> <!-- 100개 까지만 출력 -->
-				<% for(int a=1; a<=10; a++) {%>
+				<% for(int b=1; b<=10; b++) {%>
 					<tr height = 70px;>
-						<td><%= a %></td>
-						<td>앨범이미지<%= a %></td>
-						<td>곡 이름출력<%= a %></td>
-						<td>작곡가이름<%= a %></td>
-						<td>앨범이름<%= a %></td>
+						<td><%= b %></td>
+						<td>앨범이미지<%= b %></td>
+						<td>곡 이름출력<%= b %></td>
+						<td>작곡가이름<%= b %></td>
+						<td>앨범이름<%= b%></td>
 						<td>재생</td>
 						<td>담기</td>
 						<td>좋아</td>

@@ -4,125 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Strompopular</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/genre.js" ></script>
 <script type="text/javascript">
-	var num=0;
-	function select1(){
-		document.getElementById("popular").style.background="rgba(0,0,0,0.6)";
-		document.getElementById("popular").style.color = "white";
-		document.getElementById("recommand").style.background ="rgba(0,0,0,0)";
-		document.getElementById("recommand").style.color = "black";
-	}
-	
-	function select2(){
-		document.getElementById("popular").style.background ="rgba(0,0,0,0)";
-		document.getElementById("popular").style.color = "black";
-		document.getElementById("recommand").style.background ="rgba(0,0,0,0.6)";
-		document.getElementById("recommand").style.color = "white";
-	}
-	function ganre0(){
-		num=0;
-		ganre();
-	}
-	function ganre1(){
-		num=1;
-		ganre();
-	}
-	function ganre2(){
-		num=2;
-		ganre();
-	}
-	function ganre3(){
-		num=3;
-		ganre();
-	}
-	function ganre4(){
-		num=4;
-		ganre();
-	}
-	function ganre5(){
-		num=5;
-		ganre();
-	}
-	function ganre6(){
-		num=6;
-		ganre();
-	}
-	
-	
-	function ganre(){
-		for(var a=0;a<=6;a++){
-		document.getElementById("ganre"+a).style.color="black";
-		document.getElementById("ganre"+a).style.background ="rgba(0,0,0,0)";	
-		}
-		document.getElementById("ganre"+num).style.background = "rgba(0,0,0,0.6)";
-		document.getElementById("ganre"+num).style.color = "white";
-	}
-
+var pr=0; var num=4;
 </script>
-<style type="text/css">
-	.wholesection{width : 100%; height:1500px; margin-top : 40px;}
-	.section1 {width:100%; height : 1300px;}
-	.section1div {width : 70%; height : 1000px;
-					margin-left : auto; margin-right : auto;}
-	.section1divtable {text-align: center; width : 100%;}
-	.section1divtablediv {  height : 100px; margin-bottom:30px;
-								font-size: 20px; border-bottom : 1px solid black;
-								border-top : 1px solid black;
-								background-image: url("images/top10picture.jpg");
-								background-repeat: no-repeat;
-								background-position: -300px;
-								position: relative; overflow: hidden;}
-	.section1divtablediv:hover {background-color: rgba(255,255,255,0.6);
-									cursor : pointer; }							
-	.section1divtablediv p {text-align: center; font-size: 30px;
-								font-weight:bold; color : white;
-								margin-top : 30px; background-color: rgba(0,0,0,0.8);}
-	
-	.section2 {width:100%; height : 400px;}
-	.section2div {width : 70%; height : 400px; margin : 0 auto;
-			     display : flex;}
-	.section2div div {width : 300px; height:300px;
-					display: flex-basis; width : 300px;
-				    margin: 0 auto;
-				     background-repeat: no-repeat;
-					 background-position: -300px;
-					 position: relative; overflow: hidden;
-					 	border: 1px solid black;}	
-	.section2div div:hover { background-color: rgba(255,255,255,0.6);
-							cursor : pointer;}	
-	.section2divdiv1 { background-image: url("images/popularchartpicture1.jpg");}
-	.section2divdiv2 { background-image: url("images/genrepicture1.jpg"); width : 300px; height:300px;}
-	.section2divdiv3 { background-image: url("images/recommandpicture1.jpg"); width : 300px; height:300px;}
-	.section2divdivdiv { width : 100px; height : 30px;}
-	.section2divdivdiv p{ text-align: center; font-size: 30px;
-							font-weight:bold; color : white;
-							margin-top : 30px; background-color: rgba(0,0,0,0.8);  }
-	.asidemenu{ width : calc(13% - 2px); height : 20%;
-				background-color: rgb(100,100,100); 
-				position: fixed; top : 195px; left:1%;
-				border: solid 2px rgba(200,200,200,0.5);
-				text-decoration: none;
-				}
-	.asidemenu ul>li{padding-left : 10px; margin-top : 10px; margin-bottom : 10px; 
-					color:#cccccc;}
-	.asidemenu ul>li:hover {color:#ffffff; cursor: pointer;}
-	.asidemenu ul { text-decoration: none; list-style: none; }
-	.buttongroup {height: 120px; margin : 0 auto;}
-	.buttongroupdiv1 button {  width : 49%; height : 40px; 	
-				border-style: none;
-				border: 1px solid black;
-				background-color: rgba(0,0,0,0); color : black; padding : 5px;}
-	.buttongroupdiv1 {width : 90%; height: 60px; margin: 0 auto;}
-	.buttongroupdiv1 button:hover { background-color: rgba(0,0,0,0.6); color : white; cursor: pointer;}
-	.buttongroupdiv2 button {  width : 13.66%; height : 40px; 	
-				border-style: none;
-				border: 1px solid black;
-				background-color: rgba(0,0,0,0); color : black; padding : 5px;}
-	.buttongroupdiv2 button:hover { background-color: rgba(0,0,0,0.6); color : white; cursor: pointer;}
-	.buttongroupdiv2 {width : 90%; height: 60px; margin: 0 auto;}
-</style>
+<link href="resources/genre.css" rel="stylesheet" type="text/css">
 </head>
 <body>	
 <%@ include file="./form/header.jsp"%>
@@ -151,6 +39,10 @@
 					<button id="ganre5" onclick="ganre5()">snow</button>
 					<button id="ganre6" style="border-bottom-right-radius:5px; 
 					border-top-right-radius: 5px;" onclick="ganre6()">wind</button>
+				</div>
+				<div class="buttongroupdiv3">
+					<button id="ganre0" onclick="search()" 
+							style = "border-radius: 5px; ">검색</button>
 				</div>
 			</div>
 		</div>

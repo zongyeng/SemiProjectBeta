@@ -20,8 +20,13 @@
 	loginDto userinfo = (loginDto) session.getAttribute("userdto");
 %>
 <style type="text/css">
+<<<<<<< HEAD
+a{
+	color:white;
+=======
 a {
 	color: white;
+>>>>>>> branch 'master' of https://github.com/zongyeng/SemiProjectBeta.git
 }
 </style>
 </head>

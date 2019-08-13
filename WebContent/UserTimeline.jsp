@@ -7,10 +7,11 @@
 <title>Insert title here</title>
 <%
 	String videoid=request.getParameter("videoid");
+	int b =1;
 %>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	var num=0;
+	var num=1;
 	function select1(){
 		document.getElementById("portfolio").style.background="rgba(0,0,0,0.6)";
 		document.getElementById("portfolio").style.color = "white";
@@ -18,6 +19,7 @@
 		document.getElementById("timeline").style.color = "black";
 		document.getElementById("graph").style.background ="rgba(0,0,0,0)";
 		document.getElementById("graph").style.color = "black";
+		num=0;
 	}
 	
 	function select2(){
@@ -27,6 +29,7 @@
 		document.getElementById("timeline").style.color = "white";
 		document.getElementById("graph").style.background ="rgba(0,0,0,0)";
 		document.getElementById("graph").style.color = "black";
+		num=1;
 	}
 	function select3(){
 		document.getElementById("portfolio").style.background ="rgba(0,0,0,0)";
@@ -35,11 +38,26 @@
 		document.getElementById("timeline").style.color = "black";
 		document.getElementById("graph").style.background="rgba(0,0,0,0.6)";
 		document.getElementById("graph").style.color = "white";
+		num=2;
+	}
+	
+	function pagemovemove(){
+
+			switch(num){
+			case 0 : destination = "portfolio"; break;
+			case 1 : destination = "timeline"; break;
+			case 2 : destination = "graph"; break;
+			}
+	}
+	
+	function search(){
+		pagemovemove();
+		location.href ="musicgenre.do?command="+destination;
 	}
 	
 </script>
 <style type="text/css">
-	.wholesection{width : 100%; height:7700px; margin-top : 40px;}
+	.wholesection{width : 100%; height:2500px; margin-top : 40px;}
 	.section1 {width:100%; height : 1300px;}
 	.section1div {width : 70%; height : 1000px;
 					margin-left : auto; margin-right : auto;}
@@ -113,6 +131,13 @@
 				background-color: rgba(0,0,0,0); color : black; padding : 5px;}
 	.buttongroupdiv1 {width : 90%; height: 60px; margin: 0 auto;}
 	.buttongroupdiv1 button:hover { background-color: rgba(0,0,0,0.6); color : white; cursor: pointer;}
+	.buttongroupdiv3 button {  width : 99%; height : 40px; 	
+				border-style: none;
+				border: 1px solid black;
+				background-color: rgba(0,0,0,0); color : black; padding : 5px;}
+	.buttongroupdiv3 button:hover { background-color: rgba(0,0,0,0.6); color : white; cursor: pointer;}
+	.buttongroupdiv3 {width : 90%; height: 60px; margin: 0 auto;}
+	.txtarea:focus { outline : none; }
 </style>
 </head>
 <body>	
@@ -132,45 +157,74 @@
 					<button id="graph" style="border-bottom-right-radius:5px; 
 					border-top-right-radius: 5px;" onclick="select3()">Graph</button>
 				</div>
+				<div class="buttongroupdiv3">
+					<button onclick="search()" 
+							style = "border-radius: 5px; ">검색</button>
+				</div>
 			</div>
 		</div>
 			<div class = "section1divtablediv" onclick ="location.href('')">
 					<p> Timeline </p> 
 			</div>
 			<div style="border : 1px;">
-			<table class = "section1divtable" border= "1" >
+			<table class = "section1divtable" border= "1" style = "margin-bottom: 50px;" >
 				<colgroup>
-					<col width = "5%"> <!-- 순서-->
-					<col width = "15%"> <!-- 앨범이미지  -->
-					<col width = "60%"> <!-- 앨범 이름 -->
-					<col width = "20%"> <!-- 작곡가 이름 -->
+					<col width = "25%"> <!-- 작성자->
+					<col width = "25%"> <!-- 작성자 빈칸  -->
+					<col width = "25%"> <!-- 날짜 -->
+					<col width = "25%"> <!-- 날짜 빈칸 -->
 				</colgroup>
-				<tr style="color: rgba(0,0,0,0.6); font-size: 8px;"  height = 30px;>
-					<td>순서</td>
-					<td>앨범이미지</td>
-					<td>앨범이름</td>
-					<td>작곡가</td>
+				<tr height = 30px;>
+					<td>작성자</td>
+					<td>session작성자이름</td> <!--  dto 작성자 이름 -->
+					<td>작성날짜</td>
+					<td>session작성날짜</td> <!-- dto 오늘날짜 -->
 				</tr>
+				<tr height = 70px;>
+					<td>내용</td>
+					<td colspan="3"> <textarea class ="txtarea" rows="5" style="width:95%; border :0; resize:none;"></textarea>
+					<input type ="button" value="등록" style="float : right;"/>
+					</td>
+				</tr>
+			<% for(int c=0; c<5; c++) { %> <!-- 댓글 수만큼 돌리기 -->
+			</table>
+			<table class = "section1divtable" border= "1" style="margin-bottom: 20px;" >
+				<colgroup>
+					<col width = "25%"> <!-- 작성자->
+					<col width = "25%"> <!-- 작성자 빈칸  -->
+					<col width = "25%"> <!-- 날짜 -->
+					<col width = "25%"> <!-- 날짜 빈칸 -->
+				</colgroup>
+				<tr height = 30px;>
+					<td>작성자</td>
+					<td>해당 글 작성자 이름</td> <!--  dto 작성자 이름 -->
+					<td>작성날짜</td>
+					<td>해당 글 작성 날짜</td> <!-- dto 오늘날짜 -->
+				</tr>
+				<tr height = 70px;>
+					<td>내용</td>
+					<td colspan="3"> <!-- 글내용 들어올곳 --></td>
+				</tr>
+				<tr>
+					<td>댓글쓰기</td>
+					<td colspan="3"> <textarea class ="txtarea" rows="1" style="width:90%; border :0; resize:none;"></textarea>
+					<input type="button" value ="등록" style="float : right;"/></td>
+				</tr>
+				<% if(b > 0){ %> <!--  댓글이 1개이상일때 -->
+				<tr>
+					<td colspan="4"> 댓글 </td>
+				</tr>
+				<%} %>
 				<tbody>
-				<% for(int a=1; a<=5; a++) {%> <!-- 자기 앨범 갯수만큼 들고오기 -->
-					<tr height = 100px;>
-						<td><%= a %></td> <!-- 앨범 순서 알아서 들고오기~ -->
-						<td>
-							<img alt="앨범이미지" src=""/>
-						</td>
-						<td>앨범dto가서 where 앨범번호로 이름가져오기</td>
-						<td>session.userid</td>
+				<% for(int a=1; a<=5; a++) {%> <!-- 댓글갯수만큼 돌리기 / 날짜별로 정렬하기-->
+					<tr height = 30px;>
+						<td>댓글 작성자 이름</td> <!-- -->
+						<td colspan="3">댓글 내용 </td>
 					</tr>
-					<% for(int b=1; b<=5; b++) {%> <!-- 해당 앨범이 들고있는 곡수만큼 돌리기 -->
-						<tr height = 30px;>
-							<td><%= b %></td> <!-- 앨범 순서 알아서 들고오기~ -->
-							<td colspan="2">앨범dto가서 where 앨범번호로 이름가져오기</td>
-							<td> 재생버튼 / 플레이리스트에 담기 버튼 / 추천버튼 </td>
-						</tr>
-					<%}}%>
-
+				<%}%>
 				</tbody>
 			</table>
+			<%}%>
 			</div>
 		</div>
 	</section>

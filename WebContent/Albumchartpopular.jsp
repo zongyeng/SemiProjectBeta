@@ -7,20 +7,37 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	var num=0;
-	function select1(){
-		document.getElementById("popular").style.background="rgba(0,0,0,0.6)";
-		document.getElementById("popular").style.color = "white";
-		document.getElementById("recommand").style.background ="rgba(0,0,0,0)";
-		document.getElementById("recommand").style.color = "black";
-	}
-	
-	function select2(){
-		document.getElementById("popular").style.background ="rgba(0,0,0,0)";
-		document.getElementById("popular").style.color = "black";
-		document.getElementById("recommand").style.background ="rgba(0,0,0,0.6)";
-		document.getElementById("recommand").style.color = "white";
-	}
+var num=0;
+var destination="";
+$(function(){
+	pagemovemove();
+})
+function select1(){
+	document.getElementById("popular").style.background="rgba(0,0,0,0.6)";
+	document.getElementById("popular").style.color = "white";
+	document.getElementById("recommand").style.background ="rgba(0,0,0,0)";
+	document.getElementById("recommand").style.color = "black";
+	num=0;
+}
+
+function select2(){
+	document.getElementById("popular").style.background ="rgba(0,0,0,0)";
+	document.getElementById("popular").style.color = "black";
+	document.getElementById("recommand").style.background ="rgba(0,0,0,0.6)";
+	document.getElementById("recommand").style.color = "white";
+	num=1;
+}
+
+function pagemovemove(){
+		switch(num){
+		case 0 : destination = "albumpopular"; break;
+		case 1 : destination = "albumrecommand"; break;
+		}
+}
+function search(){
+	pagemovemove();
+	location.href ="musicgenre.do?command="+destination;
+}
 </script>
 <style type="text/css">
 	.wholesection{width : 100%; height:7700px; margin-top : 40px;}
@@ -94,6 +111,12 @@
 				background-color: rgba(0,0,0,0); color : black; padding : 5px;}
 	.buttongroupdiv1 {width : 90%; height: 60px; margin: 0 auto;}
 	.buttongroupdiv1 button:hover { background-color: rgba(0,0,0,0.6); color : white; cursor: pointer;}
+	.buttongroupdiv3 button {  width : 99%; height : 40px; 	
+				border-style: none;
+				border: 1px solid black;
+				background-color: rgba(0,0,0,0); color : black; padding : 5px;}
+	.buttongroupdiv3 button:hover { background-color: rgba(0,0,0,0.6); color : white; cursor: pointer;}
+	.buttongroupdiv3 {width : 90%; height: 60px; margin: 0 auto;}
 </style>
 </head>
 <body>	
@@ -111,7 +134,12 @@
 					<button id="recommand" style="border-bottom-right-radius:5px; 
 					border-top-right-radius: 5px;" onclick="select2()">recommand</button>
 				</div>
+				<div class="buttongroupdiv3">
+					<button onclick="search()" 
+							style = "border-radius: 5px; ">검색</button>
+				</div>
 			</div>
+			
 		</div>
 			<div class = "section1divtablediv" onclick ="location.href('')">
 					<p> 뮤즈 앨범 차트 </p> 
