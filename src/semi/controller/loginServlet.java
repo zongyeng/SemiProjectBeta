@@ -67,7 +67,7 @@ public class loginServlet extends HttpServlet {
 			session.setMaxInactiveInterval(10*60);
 			
 			//성공일시 send리엑티브 또는 디스패치 포워드
-			response.sendRedirect("Mainhome.jsp");
+			response.sendRedirect("MainHome.jsp");
 			
 		}else if(command.equals("signup")) {
 			
@@ -125,7 +125,7 @@ public class loginServlet extends HttpServlet {
 		} else if(command.equals("logout")) {
 			HttpSession session=request.getSession();
 			session.removeAttribute("userdto");
-			response.sendRedirect("Mainhome.jsp");
+			response.sendRedirect("MainHome.jsp");
 		} else if(command.equals("update")) {
 			int userinfo_seq = Integer.parseInt(request.getParameter("seq"));
 			String userinfo_id = request.getParameter("id");
@@ -170,7 +170,7 @@ public class loginServlet extends HttpServlet {
 				session.removeAttribute("userdto");
 				out.println("<script>");
 				out.println("alert('수정 성공');");
-				out.println("location.href='Mainhome.jsp'");
+				out.println("location.href='MainHome.jsp'");
 				out.println("</script>");
 			}
 			
@@ -192,7 +192,7 @@ public class loginServlet extends HttpServlet {
 				session.removeAttribute("userdto");
 				out.println("<script>");
 				out.println("alert('탈퇴 성공');");
-				out.println("location.href='Mainhome.jsp'");
+				out.println("location.href='MainHome.jsp'");
 				out.println("</script>");
 			} else {
 				out.println("<script>");

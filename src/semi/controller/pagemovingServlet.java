@@ -77,6 +77,15 @@ public class pagemovingServlet extends HttpServlet {
 		else if(command.equals("userinformation")) {
 			dispatch(request, response, "UserInformation.jsp");
 		}
+		else if(command.equals("portfolio")) {
+			dispatch(request, response, "UserPortfolio.jsp");
+		}
+		else if(command.equals("portfolioupdate")) {
+			dispatch(request, response, "UserPortfolioUpdate.jsp");
+		}
+		else if(command.equals("cashcharge")) {
+			dispatch(request, response, "PayRule.jsp");
+		}
 
 	}
 		public void dispatch(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {

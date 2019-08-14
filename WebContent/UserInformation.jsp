@@ -52,14 +52,16 @@ a {
 			<div>
 				<button type="submit" id="submit">수정하기</button>
 				<button type="button" onclick="location.href='login.do?command=withdrawal&seq=<%=userinfo.getUserinfo_seq()%>'">탈퇴하기</button>
-				<button type="button" onclick="window.history.go(-1); return false;" >뒤로가기</button>
+				<button type="button" onclick="window.history.go(-1); return false;" >뒤로가기</button><br/>
+				<button type="button" onclick="location.href='pagemoving.do?command=portfolio'" >내 포트폴리오 가기</button><br/>
+				<button type="button" onclick="location.href='pagemoving.do?command=portfolioupdate'" >내 포트폴리오 수정</button><br/>
+				<button type="button" onclick="location.href='pagemoving.do?command=cashcharge'" >결제하기</button>
+				
 			</div>
 			<div class="spacer"></div>
 
 		</form>
 	</div>
-	</br>
-	</br>
 	<%@ include file="./form/footer.jsp"%>
 </body>
 </html>

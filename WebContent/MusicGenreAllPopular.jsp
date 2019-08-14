@@ -5,9 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>AllPopular</title>
+<% String Musicname = ""; %>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-var num=0; var pr=0;
+	var num=0; var pr=0;
+	$(function(){
+		$(".musicstart").click(function(){
+			 var name = $(this).parent().parent().children(".musicname").html();
+			 var artist = $(this).parent().parent().children(".musicname").html();
+			 $("#throwmusic").val(name);
+			 var openwin = window.open('audio4.jsp', 'search', 'top=100px, left=100px, height=80px, width=320px');
+		}) 
+	})
+
+
 </script>
 <script type="text/javascript" src="js/genre.js" ></script>
 <link href="resources/genre.css" rel="stylesheet" type="text/css">
@@ -72,23 +83,23 @@ var num=0; var pr=0;
 						<td>♡</td>
 					</tr>
 				</thead>
-				
 				<tbody> <!-- 100개 까지만 출력 -->
 				<% for(int b=1; b<=10; b++) {%>
-					<tr height = 70px;>
+					<tr height = 70px class="musicrow">
 						<td><%= b %></td>
 						<td>앨범이미지<%= b %></td>
-						<td>곡 이름출력<%= b %></td>
+						<td class="musicname">1_ABC.mp3</td>
 						<td>작곡가이름<%= b %></td>
 						<td>앨범이름<%= b %></td>
-						<td>재생</td>
-						<td>담기</td>
-						<td>좋아</td>
+						<td><img class ="musicstart" alt =""; src="images/headseticon.png" width="30px" height="30px"></td>
+						<td><img class ="musicplus" alt =""; src="images/plusicon.jpg" width="30px" height="30px"  onclick="musiclistplus()"></td>
+						<td><a>♡</a></td>
 					</tr>
 				<%}%>
 				</tbody>
 			</table>
 		</div>
+		<input id ="throwmusic" type ="hidden" value="123"/>
 	</section>
 </section>
 <%@ include file="./form/footer.jsp"%>

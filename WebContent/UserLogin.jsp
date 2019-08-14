@@ -49,7 +49,6 @@
 			<div>
 				<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-
 				<a id="kakao-login-btn"></a> <a
 					href="http://developers.kakao.com/logout"></a>
 				<script type='text/javascript'>
