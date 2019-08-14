@@ -11,8 +11,26 @@
 <meta charset="UTF-8">
 <title>채팅 고객센터</title>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 
+<style type="text/css">
+
+	fieldset>div{
+	
+		text-align: right;
+		
+	}
+	
+	body>div{
+	
+		display: none;
+		text-align: center;
+		margin: 100px auto 100px auto;
+		
+	}
+
+</style>
+	
 </head>
 
 <%
@@ -23,14 +41,31 @@
 
 <body>
 	<fieldset>
-		<textarea id="messageWindow" rows="10" cols="50" readonly="readonly"></textarea>
+		<textarea id="messageWindow" rows="20" cols="55" readonly="readonly"></textarea>
 		<br/>
-		
-		
-		
-		<input id="inputMessage" type="text"/>
-		<input type="submit" value="보내기" onclick="send()" />
+		<p>입력창</p>
+		<div>
+			
+			<textarea id="inputMessage" rows="5" cols="55" onkeypress="if(event.keyCode==13) {send();}"></textarea>
+			<input type="submit" value="보내기" onclick="send()" />
+		</div>
 	</fieldset>
+	
+	<div id="error" >
+		<p>현재 상담 가능하지 않습니다.</p>
+		<p>보안 관계로 3초후 창이 닫힙니다.</p>
+	</div>
+	
+	<div id="wait" >
+		<p>현재 대기자는 "<strong id="waitnum" ></strong>"명 입니다.</p>
+		<p>빠른 상담을위해 최선을 다하겠습니다.</p>
+	</div>
+	
+	<div id="end" >
+		<p>상담이 종료되었습니다.</p>
+		<p>보안 관계로 3초후 창이 닫힙니다.</p>
+	</div>
+	
 </body>
 
 <script type="text/javascript">
@@ -48,7 +83,6 @@
 	};
 
 	webSocket.onmessage = function(event) {
-		
 		onMessage(event)
 	};
 	 
@@ -57,7 +91,39 @@
 	};
 	
     function onMessage(event) {
-        textarea.value += "상담원 : "+ event.data + "\n";
+    	
+    	if(event.data.indexOf("(SyStEm)EXIT[USER=ALL]")==0){
+			$("fieldset").hide();
+			$("#error").show();
+			setTimeout(function() {
+				window.close();
+			}, 3000);
+		} else if(event.data.indexOf("(SyStEm)EXIT[USER=")==0){//(SyStEm)EXIT[USER=(nickname)]
+			$("fieldset").hide();
+			$("#end").show();
+			setTimeout(function() {
+				window.close();
+			}, 3000);
+		} else if(event.data.indexOf("(SyStEm)WAIT[USER=")==0){//(SyStEm)WAIT[USER=(number)]
+			$("fieldset").hide();
+			var start = event.data.indexOf("(SyStEm)WAIT[USER=")+18;
+			var end = event.data.indexOf("]");
+			var waitnum = event.data.substring(start,end);
+			$("#waitnum").text(waitnum);
+			$("#wait").show();
+		} else if(event.data.indexOf("(SyStEm)WAIT[USER--]")==0){
+			var waitnum = $("#waitnum").text();
+			waitnum = parseInt(waitnum, 10);
+			waitnum--;
+			if(waitnum<0){
+				$("#wait").hide();
+				$("fieldset").show();
+			} else {
+				$("#waitnum").text(waitnum);
+			}
+		} else {
+			textarea.value += "상담원 : "+ event.data + "\n";
+		}
     }
  
     function onOpen(event) {

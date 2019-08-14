@@ -23,7 +23,7 @@
 	<fieldset>
 		<textarea id="messageWindow" rows="10" cols="50" readonly="readonly"></textarea>
 		<br/>
-		<input id="inputMessage" type="text"/>
+		<input id="inputMessage" type="text" onkeypress="if(event.keyCode==13) {send();}" />
 		<input type="submit" value="send" onclick="send()" />
 	</fieldset>
 
@@ -42,6 +42,7 @@
 </body>
 
 <script type="text/javascript">
+
 	var textarea = document.getElementById("messageWindow");
 
 	var webSocket = new WebSocket('ws://192.168.10.170:8787/SemiProjectBeta/broadcasting?seq=<%=dto.getUserinfo_seq()%>');
@@ -65,9 +66,7 @@
 
 	function onMessage(event) {
 		
-		if(event.data.indexOf("(SyStEm)USER")==-1) {
-			textarea.value += event.data + "\n";
-		} else if(event.data.indexOf("(SyStEm)USER[NONE]")==0){
+		if(event.data.indexOf("(SyStEm)USER[NONE]")==0){
 			document.getElementById("userinfo_seq").value = "";
 			document.getElementById("userinfo_name").value = "";
 			document.getElementById("userinfo_nickname").value = "";
@@ -89,7 +88,7 @@
 				}
 			}
 
-		}else {//(SyStEm)USER["userinfo"]
+		}else if(event.data.indexOf("(SyStEm)USER[")==0){//(SyStEm)USER["userinfo"]
 			var seqS = event.data.indexOf("[SEQ=")+5;
 			var seqE = event.data.indexOf("NAME=")-1;
 			var nameS = event.data.indexOf("NAME=")+5;
@@ -119,7 +118,9 @@
 			} else {
 				createWaitUser(seq,name,nickname,sex,phon,email);
 			}
-		}
+		} else {
+			textarea.value += event.data + "\n";
+		} 
 	}
 
 	function onOpen(event) {

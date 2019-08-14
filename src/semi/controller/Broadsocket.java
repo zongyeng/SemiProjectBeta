@@ -58,8 +58,12 @@ public class Broadsocket {
 					System.out.println("상담을 진행하지 않았습니다.Counselor=null;");
 				}
 			} else if(Counselor == session){
-				if(Consultant.isOpen()) {
-					Consultant.getBasicRemote().sendText(message);
+				try {
+					if(Consultant.isOpen()) {
+						Consultant.getBasicRemote().sendText(message);
+					}
+				} catch (NullPointerException e) {
+					System.out.println("상담준비가 안되어 있습니다.Consultant=null;");
 				}
 			}
 		}
@@ -92,6 +96,7 @@ public class Broadsocket {
 
 		try {
 			sendUserinfoForm(dto);
+			sendWaitNumber(session);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -147,6 +152,13 @@ public class Broadsocket {
 		try {
 			onMessage("(SyStEm)USER[CHANGE]", Consultant);
 			onMessage("(SyStEm)USER[CHANGE]", Counselor);
+			synchronized (clients) {
+				for(Session client : clients) {
+					if(client!=Consultant&&client!=Counselor) {
+						client.getBasicRemote().sendText("(SyStEm)WAIT[USER--]"); 
+					}
+				}
+			}
 			System.out.println("변경된 Counselor = " + nicknames.get(Counselor));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -195,6 +207,7 @@ public class Broadsocket {
 		if (clients.size() < 1 && dto.getUserinfo_controlno() != 0) {
 			System.out.println("상담 가능하지 않습니다.");
 			try {
+				onMessage("(SyStEm)EXIT[USER=ALL]", session);
 				session.close();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -239,6 +252,12 @@ public class Broadsocket {
 				.sendText("(SyStEm)USER[SEQ=" + dto.getUserinfo_seq() + ",NAME=" + dto.getUserinfo_name() + ",NICKNAME="
 						+ dto.getUserinfo_nickname() + ",SEX=" + dto.getUserinfo_sex() + ",PHON="
 						+ dto.getUserinfo_phonenumber() + ",EMAIL=" + dto.getUserinfo_email() + "]");
+	}
+	
+	public void sendWaitNumber(Session session) throws IOException {
+		if(clients.size()>2) {
+			session.getBasicRemote().sendText("(SyStEm)WAIT[USER="+String.valueOf(clients.size()-2)+"]"); 
+		}
 	}
 
 	public boolean overlapNickname(Session session, chattingDto dto) {
