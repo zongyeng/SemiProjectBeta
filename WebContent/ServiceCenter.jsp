@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>HOME</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/chatting.js" ></script>
 <script type="text/javascript">
 $(function(){
 	$(".section1div2div2div1divdiv1").each(function(){
@@ -45,6 +46,25 @@ $(function(){
 </head>
 <body>
 <%@ include file="./form/header.jsp"%>
+<%
+
+	loginDto userinfoService = (loginDto)session.getAttribute("userdto");
+
+	if(userinfoService==null){
+%>
+	
+	<input type="hidden" id="controlno" value="" />
+	<input type="hidden" id="seq" value="" />
+		
+<%		
+	} else {
+%>
+	<input type="hidden" id="controlno" value="<%=userinfoService.getUserinfo_controlno() %>" />
+	<input type="hidden" id="seq" value="<%=userinfoService.getUserinfo_seq() %>" />
+<%
+	}
+%>
+
 <section class = "section1">
 	<div class = "section1div2">
 		<div class = "section1div2div1">
@@ -56,7 +76,7 @@ $(function(){
 			<div class = "section1div2div2div1">
 				<div class = "section1div2div2div1div">
 					<div class = "section1div2div2div1divdiv1">
-						<img src="images/ServiceCenterOnetooneChatting.jpg" width="100%" alt ="1:1 상담하기"/>
+						<img onclick="supportchat()" src="images/ServiceCenterOnetooneChatting.jpg" width="100%" alt ="1:1 상담하기"/>
 					</div>
 					<div class = "section1div2div2div1divdiv2">
 						<span> 1:1 상담하기 </span>

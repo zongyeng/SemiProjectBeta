@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SearchEngine_mapper">
+
+<select id ="searchartist" parameterType="String" resultType="dto">
+	SELECT USERINFO_SEQ, USERINFO_NICKNAME
+	FROM USERINFO
+	WHERE USERINFO_NICKNAME LIKE '%'||#{searchcontent}||'%'
+</select>
+
+<select id ="searchmusic" parameterType="String" resultType="dto">
+	SELECT MUSIC_SEQ, MUSIC_TITLE
+	FROM MUSIC
+	WHERE MUSIC_TITLE LIKE '%'||#{searchcontent}||'%'
+</select>
+
+<select id ="searchalbum" parameterType="String" resultType="dto">
+	SELECT ALBUM_SEQ, ALBUM_TITLE
+	FROM ALBUM
+	WHERE ALBUM_TITLE LIKE '%'||#{searchcontent}||'%'
+</select>
+
+</mapper>

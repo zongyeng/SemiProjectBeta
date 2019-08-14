@@ -17,6 +17,11 @@ function logout(){
 	 location.href="login.do?command=logout";
 }
 
+function search(){
+	var searchcontent = document.getElementById("search").value;
+	location.href="SearchEngine.do?command=search&searchcontent="+searchcontent;
+}
+
 </script>
 <style type="text/css">
 	*{ padding : 0px; margin : 0px;}
@@ -135,7 +140,7 @@ function logout(){
   							<div class="searchbardiv">
    								<input type="text" id="search" type="text" placeholder="Search"/>
   								<button class="searchbardivbtn">
-     								<img src="images/search.png" alt="대충 돋보기이미지" width="35px" height="35px"/>     
+     								<img src="images/search.png" alt="대충 돋보기이미지" width="35px" height="35px" onclick="search()" />     
    							    </button>    
  							</div>
 						</div>

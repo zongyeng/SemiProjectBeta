@@ -8,19 +8,19 @@ function supportchat(){
 	var input = document.createElement('input');
 	input.type = 'hidden';
 	input.name = "userinfo_controlno";
-	input.value = document.getElementById("TESTcontrolno").value;
+	input.value = document.getElementById("controlno").value;
 	
 	form.appendChild(input);
 	
 	var input = document.createElement('input');
 	input.type = 'hidden';
 	input.name = "userinfo_seq";
-	input.value = document.getElementById("TESTseq").value;
+	input.value = document.getElementById("seq").value;
 	
 	form.appendChild(input);
 	 
 	document.body.appendChild(form);
-	window.open('','supportchat','width=450, height=450');
+	window.open('','supportchat','width=456, height=510');
 
 	form.submit();
 	 
