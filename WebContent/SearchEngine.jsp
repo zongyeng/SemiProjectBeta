@@ -115,7 +115,7 @@ if(searchcontent.length()<2){
 <%
 			}
 %>
-				<a href=""><%=searchartist.get(i).getUserinfo_nickname()%></a>
+				<a href="pagemoving.do?command=userportfolio&userseq=<%=searchartist.get(i).getUserinfo_seq()%>"><%=searchartist.get(i).getUserinfo_nickname()%></a>
 			</div>
 <%
 			if(i==9){
@@ -268,7 +268,7 @@ if(searchcontent.length()<2){
 					$("#artists>.line>.more").remove();
 					
 					for(var i=0; i<5; i++){
-						$("#artists>.line").append("<div id = 'artists"+(i+10)+"' ><img alt='artistimg"+(i+10)+"' src='artistimg/"+data[i+10].artistseq+".png' onerror='this.src=\"artistimg/artistnoimg.png\"' ><a href=''>"+data[i+10].artistnickname+"</a></div>");
+						$("#artists>.line").append("<div id = 'artists"+(i+10)+"' ><img alt='artistimg"+(i+10)+"' src='artistimg/"+data[i+10].artistseq+".png' onerror='this.src=\"artistimg/artistnoimg.png\"' ><a href='pagemoving.do?command=userportfolio&userseq="+data[i+10].artistseq+"'>"+data[i+10].artistnickname+"</a></div>");
 					}
 					
 					artistdataArr = data;
@@ -291,7 +291,7 @@ if(searchcontent.length()<2){
 			
 			$("#artists>.line>.more").remove();
 			for(var i=(divseq); i<(divseq+5); i++){
-				$("#artists>.line").append("<div id = 'artists"+(i)+"' ><img alt='artistimg"+(i)+"' src='artistimg/"+artistdataArr[i].artistseq+".png' onerror='this.src=\"artistimg/artistnoimg.png\"' ><a href=''>"+artistdataArr[i].artistnickname+"</a></div>");
+				$("#artists>.line").append("<div id = 'artists"+(i)+"' ><img alt='artistimg"+(i)+"' src='artistimg/"+artistdataArr[i].artistseq+".png' onerror='this.src=\"artistimg/artistnoimg.png\"' ><a href='pagemoving.do?command=userportfolio&userseq="+artistdataArr[i].artistseq+"'>"+artistdataArr[i].artistnickname+"</a></div>");
 				if((i+1)==artistdataArr.length){
 					break;
 				}

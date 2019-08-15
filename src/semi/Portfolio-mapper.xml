@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Portfolio_mapper">
+
+<select id ="basicuserinfo" parameterType="int" resultType="dto">
+	SELECT USERINFO_SEQ, USERINFO_NICKNAME, USERINFO_SEX, USERINFO_AGE, USERINFO_VIDEOID
+	FROM USERINFO
+	WHERE USERINFO_SEQ = #{userseq}
+</select>
+
+<select id ="usersongsinfo" parameterType="int" resultType="dto1">
+	SELECT MUSIC_SEQ, MUSIC_ARTIST, MUSIC_NO, MUSIC_TITLE, MUSIC_SIZE, MUSIC_LENGTH, MUSIC_HL_TIME, MUSIC_CONTENT, MUSIC_COMPOSER, MUSIC_LYRICIST, MUSIC_REGDATE, MUSIC_TAG, MUSIC_ALBUM
+	FROM MUSIC
+	WHERE MUSIC_ARTIST = #{userseq} AND MUSIC_ENABLE = 'Y'
+	ORDER BY MUSIC_NO ASC
+</select>
+
+<select id ="useralbumsinfo" parameterType="int" resultType="dto2">
+	SELECT ALBUM_SEQ, ALBUM_ARTIST, ALBUM_NO, ALBUM_TITLE, ALBUM_TRACKS, ALBUM_LENGTH, ALBUM_CONTENT, ALBUM_REGDATE, ALBUM_TAG
+	FROM ALBUM
+	WHERE ALBUM_ARTIST = #{userseq} AND ALBUM_ENABLE = 'Y'
+	ORDER BY ALBUM_NO ASC
+</select>
+
+</mapper>

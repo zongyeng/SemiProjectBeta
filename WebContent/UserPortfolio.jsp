@@ -1,3 +1,6 @@
+<%@page import="semi.dto.AlbumDto"%>
+<%@page import="semi.dto.MusicDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,7 +9,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%
-	String videoid=request.getParameter("videoid");
+	List<MusicDto> usersongs = (List<MusicDto>)request.getAttribute("usersongs");
+	List<AlbumDto> useralbums = (List<AlbumDto>)request.getAttribute("useralbums");
+	loginDto basicuserinfo = (loginDto)request.getAttribute("basicuserinfo");
 %>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/statistics.js" ></script>
@@ -70,7 +75,7 @@
       player = new YT.Player('player', {
         height: '360',
         width: '640',
-        videoId: '<%=videoid%>',
+        videoId: '<%=basicuserinfo.getUserinfo_videoid()%>',
         events: {
           'onReady': onPlayerReady,
           'onStateChange': onPlayerStateChange
@@ -199,6 +204,13 @@
 				</tr>
 				<tr>
 					<td colspan="4">
+						<p>닉네임 : <%=basicuserinfo.getUserinfo_nickname()%></p>
+						<p>성별 : <%=basicuserinfo.getUserinfo_sex()%></p>
+						<p>나이대 : <%=basicuserinfo.getUserinfo_age()%></p>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
 						<div id="player"></div>
 					</td>
 				</tr>
@@ -209,22 +221,34 @@
 					<td>작곡가</td>
 				</tr>
 				<tbody>
-				<% for(int a=1; a<=5; a++) {%> <!-- 자기 앨범 갯수만큼 들고오기 -->
+<% 
+
+				for(int i = 0; i<useralbums.size(); i++) {
+%> 
 					<tr height = 100px;>
-						<td><%= a %></td> <!-- 앨범 순서 알아서 들고오기~ -->
+						<td><%=useralbums.get(i).getAlbum_no()%></td> <!-- 앨범 순서 알아서 들고오기~ -->
 						<td>
-							<img alt="앨범이미지" src=""/>
+							<img alt="앨범이미지<%=useralbums.get(i).getAlbum_no()%>" src="albumimg/<%=useralbums.get(i).getAlbum_seq()%>.png" onerror="this.src='albumimg/albumnoimg.png'" />
 						</td>
-						<td>앨범dto가서 where 앨범번호로 이름가져오기</td>
-						<td>session.userid</td>
+						<td><%=useralbums.get(i).getAlbum_title()%></td>
+						<td><%=basicuserinfo.getUserinfo_nickname()%></td>
 					</tr>
-					<% for(int b=1; b<=5; b++) {%> <!-- 해당 앨범이 들고있는 곡수만큼 돌리기 -->
+<% 
+					int k=0;
+					for(int j = 0; j<usersongs.size();j++) {
+						if(usersongs.get(j).getMusic_album()==useralbums.get(i).getAlbum_seq()){
+%>
 						<tr height = 30px;>
-							<td><%= b %></td> <!-- 앨범 순서 알아서 들고오기~ -->
-							<td colspan="2">앨범dto가서 where 앨범번호로 이름가져오기</td>
+							<td><%=++k%></td> <!-- 앨범 순서 알아서 들고오기~ -->
+							<td colspan="2"><%=usersongs.get(j).getMusic_title().substring(usersongs.get(j).getMusic_title().indexOf('_')+1)%></td>
 							<td> 재생버튼 / 플레이리스트에 담기 버튼 / 추천버튼 </td>
 						</tr>
-					<%}}%>
+<%							
+						}
+					}
+					k=0;
+				}
+%>
 
 				</tbody>
 			</table>

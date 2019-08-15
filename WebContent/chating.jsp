@@ -45,7 +45,7 @@
 
 	var textarea = document.getElementById("messageWindow");
 
-	var webSocket = new WebSocket('ws://192.168.10.170:8787/SemiProjectBeta/broadcasting?seq=<%=dto.getUserinfo_seq()%>');
+	var webSocket = new WebSocket('ws://127.0.0.1:8787/SemiProjectBeta/broadcasting?seq=<%=dto.getUserinfo_seq()%>');
 	var inputMessage = document.getElementById('inputMessage');
 
 	webSocket.onerror = function(event) {

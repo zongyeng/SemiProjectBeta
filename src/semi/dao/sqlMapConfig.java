@@ -71,4 +71,19 @@ public class sqlMapConfig {
 		return sqlSessionFactory;
 	}
 	
+	public SqlSessionFactory getPortfolioSessionFactory() {
+
+		String resource = "semi/Portfolio-config.xml";
+		
+		try {
+			Reader reader = Resources.getResourceAsReader(resource);
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+		
+			reader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sqlSessionFactory;
+	}
+	
 }

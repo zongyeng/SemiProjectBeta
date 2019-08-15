@@ -52,6 +52,7 @@ a {
 			<div>
 				<button type="submit" id="submit">수정하기</button>
 				<button type="button" onclick="location.href='login.do?command=withdrawal&seq=<%=userinfo.getUserinfo_seq()%>'">탈퇴하기</button>
+				<button type="button" onclick="location.href='pagemoving.do?command=userportfolioupdate&userseq=<%=userinfo.getUserinfo_seq()%>'">포트폴리오 수정</button>
 				<button type="button" onclick="window.history.go(-1); return false;" >뒤로가기</button>
 			</div>
 			<div class="spacer"></div>
