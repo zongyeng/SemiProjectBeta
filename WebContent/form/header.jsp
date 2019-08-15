@@ -85,10 +85,8 @@ function search(){
     .searchbardivbtn:hover {background-color: #B6B6B6; transition: .8s; cursor: pointer;}
     .searchbardivbtn:focus {outline : none;}
     
-    .logindiv {padding-top:35px; padding-bottom: 35px; padding-right: 5px; width : 20%;}
-    .logindivdiv {display : flex; width:80%; margin : 0 auto;}
-    .logindivdivbtn { width : 100px; height: 30px; background-color: rgba(200,200,200,0.5);
-  				  margin-left: 15px;border: none; border-radius: 10px; }
+    .logindiv {padding-top:35px; padding-right: 5px; width : 15%;}
+    .logindivdiv { width:80%; margin : 0 auto;}
     .logindivdivbtn { width : 100px; height: 30px; background-color: rgba(200,200,200,0.5);
   				  margin-left: 15px;border: none; border-radius: 10px; }
   	.logindivdivbtn:hover {background-color: #B6B6B6; transition: .8s; cursor: pointer;}			  
@@ -110,7 +108,7 @@ function search(){
 						</div>
 						
 						<div class="logindiv" style="float : right;">
-  							<div class="logindivdiv">   
+  							<div class="logindivdiv" style ="margin-top : -30px;">   
   							
 								<%
 								if(userinfo == null) {
@@ -123,7 +121,10 @@ function search(){
    									</button> 
    							    
 						       <%}else{ %>
-									<%=userinfo.getUserinfo_name()%>님 반갑습니다. 보유캐쉬 : <%=userinfo.getUserinfo_cash()%>원
+						       		<div style ="font-size : 10px;">
+									<%=userinfo.getUserinfo_name()%>님 반갑습니다.  <br>
+									보유캐쉬 : <%=userinfo.getUserinfo_cash()%>원 
+									</div>
 									<button onclick="location.href='pagemoving.do?command=userinformation'" class="logindivdivbtn">
      								내정보보기  
    							  		</button>

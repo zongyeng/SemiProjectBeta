@@ -110,8 +110,10 @@ public class pagemovingServlet extends HttpServlet {
 			
 			dispatch(request, response, "UserPortfolioUpdate.jsp");
 		}
-		
-		
+		else if(command.equals("cashcharge")) {
+			dispatch(request, response, "PayRule.jsp");
+		}
+
 
 	}
 		public void dispatch(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {

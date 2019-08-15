@@ -1,13 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="semi.dto.MusicDto"%>
+<%@page import="semi.biz.MusicBiz"%>
+<%@page import="semi.dto.loginDto"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>AllPopular</title>
+<% 
+String Musicname = "";
+MusicBiz musicbiz = new MusicBiz();
+MusicDto musicdto = new MusicDto();
+List<MusicDto> list = musicbiz.selectList_music();
+loginDto userinfo = (loginDto)session.getAttribute("userdto");
+%>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-var num=0; var pr=0;
+	var num=0; var pr=0;
 </script>
 <script type="text/javascript" src="js/genre.js" ></script>
 <link href="resources/genre.css" rel="stylesheet" type="text/css">
@@ -72,23 +83,23 @@ var num=0; var pr=0;
 						<td>♡</td>
 					</tr>
 				</thead>
-				
 				<tbody> <!-- 100개 까지만 출력 -->
-				<% for(int b=1; b<=10; b++) {%>
-					<tr height = 70px;>
+				<% for(int b=0; b<list.size(); b++) {%>
+					<tr height = 70px class="musicrow">
 						<td><%= b %></td>
 						<td>앨범이미지<%= b %></td>
-						<td>곡 이름출력<%= b %></td>
-						<td>작곡가이름<%= b %></td>
-						<td>앨범이름<%= b %></td>
-						<td>재생</td>
-						<td>담기</td>
-						<td>좋아</td>
+						<td class="musicname"><%= list.get(b).getMusic_title() %></td>
+						<td>작곡가이름<%= list.get(b).getMusic_composer() %></td>
+						<td>앨범이름<%= list.get(b).getMusic_title() %></td>
+						<td><img class ="musicstart" alt =""; src="images/headseticon.png" width="30px" height="30px"></td>
+						<td><img class ="musicplus" alt =""; src="images/plusicon.jpg" width="30px" height="30px"  onclick="musiclistplus()"></td>
+						<td><a>♡</a></td>
 					</tr>
 				<%}%>
 				</tbody>
 			</table>
 		</div>
+		<input id ="throwmusic" type ="hidden" value="123"/>
 	</section>
 </section>
 <%@ include file="./form/footer.jsp"%>
