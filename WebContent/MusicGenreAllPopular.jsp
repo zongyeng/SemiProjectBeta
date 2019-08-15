@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@page import="semi.dto.MusicDto"%>
 <%@page import="semi.biz.MusicBiz"%>
-<%@page import="semi.dto.loginDto"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
@@ -11,14 +10,21 @@
 <title>AllPopular</title>
 <% 
 String Musicname = "";
-MusicBiz musicbiz = new MusicBiz();
-MusicDto musicdto = new MusicDto();
-List<MusicDto> list = musicbiz.selectList_music();
-loginDto userinfo = (loginDto)session.getAttribute("userdto");
+MusicDto dto = new MusicDto();
+MusicBiz biz = new MusicBiz();
+List<MusicDto> list = biz.selectList_music();
+
+for(int a=0; a<list.size(); a++) {
+	String artist_name = biz.artist_name(list.get(a).getMusic_seq());
+	list.get(a).setArtist_name(artist_name);
+	System.out.println(list.get(a).getArtist_name());
+}
 %>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	var num=0; var pr=0;
+	var num=0; var pr=0; var cnt=0;
+	
 </script>
 <script type="text/javascript" src="js/genre.js" ></script>
 <link href="resources/genre.css" rel="stylesheet" type="text/css">
@@ -87,12 +93,12 @@ loginDto userinfo = (loginDto)session.getAttribute("userdto");
 				<% for(int b=0; b<list.size(); b++) {%>
 					<tr height = 70px class="musicrow">
 						<td><%= b %></td>
-						<td>앨범이미지<%= b %></td>
+						<td> <img class ="musicimage" alt ="" src="musicimg/album_<%=list.get(b).getMusic_seq() %>.jpg" width="70px" height="70px"></td>
 						<td class="musicname"><%= list.get(b).getMusic_title() %></td>
-						<td>작곡가이름<%= list.get(b).getMusic_composer() %></td>
-						<td>앨범이름<%= list.get(b).getMusic_title() %></td>
-						<td><img class ="musicstart" alt =""; src="images/headseticon.png" width="30px" height="30px"></td>
-						<td><img class ="musicplus" alt =""; src="images/plusicon.jpg" width="30px" height="30px"  onclick="musiclistplus()"></td>
+						<td><%= list.get(b).getArtist_name() %></td>
+						<td><%= list.get(b).getAlbum_title() %></td>
+						<td><img class ="musicstart" alt ="" src="images/headseticon.png" width="30px" height="30px"></td>
+						<td><img class ="musicplus" alt ="" src="images/plusicon.jpg" width="30px" height="30px"  onclick="musiclistplus()"></td>
 						<td><a>♡</a></td>
 					</tr>
 				<%}%>

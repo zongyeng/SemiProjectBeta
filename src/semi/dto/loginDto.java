@@ -17,16 +17,14 @@ public class loginDto {
 	private Date userinfo_signdate;
 	private char userinfo_enable;
 	private int userinfo_cash;
-
-	
+	private String userinfo_videoid;
 	
 	public loginDto() { super(); }
 
-
-
 	public loginDto(int userinfo_seq, int userinfo_controlno, String userinfo_name, String userinfo_nickname,
-			String userinfo_id, String userinfo_password, char userinfo_sex, int userinfo_age, String userinfo_phonenumber,
-			String userinfo_email, Date userinfo_signdate, char userinfo_enable, int userinfo_cash) {
+			String userinfo_id, String userinfo_password, char userinfo_sex, int userinfo_age,
+			String userinfo_phonenumber, String userinfo_email, Date userinfo_signdate, char userinfo_enable,
+			int userinfo_cash, String userinfo_videoid) {
 		super();
 		this.userinfo_seq = userinfo_seq;
 		this.userinfo_controlno = userinfo_controlno;
@@ -41,6 +39,7 @@ public class loginDto {
 		this.userinfo_signdate = userinfo_signdate;
 		this.userinfo_enable = userinfo_enable;
 		this.userinfo_cash = userinfo_cash;
+		this.userinfo_videoid = userinfo_videoid;
 	}
 
 	public int getUserinfo_seq() {
@@ -147,6 +146,14 @@ public class loginDto {
 		this.userinfo_cash = userinfo_cash;
 	}
 
+	public String getUserinfo_videoid() {
+		return userinfo_videoid;
+	}
+
+	public void setUserinfo_videoid(String userinfo_videoid) {
+		this.userinfo_videoid = userinfo_videoid;
+	}
+
 	@Override
 	public String toString() {
 		return "loginDto [userinfo_seq=" + userinfo_seq + ", userinfo_controlno=" + userinfo_controlno
@@ -154,7 +161,8 @@ public class loginDto {
 				+ userinfo_id + ", userinfo_password=" + userinfo_password + ", userinfo_sex=" + userinfo_sex
 				+ ", userinfo_age=" + userinfo_age + ", userinfo_phonenumber=" + userinfo_phonenumber
 				+ ", userinfo_email=" + userinfo_email + ", userinfo_signdate=" + userinfo_signdate
-				+ ", userinfo_enable=" + userinfo_enable + ", userinfo_cash=" + userinfo_cash + "]";
+				+ ", userinfo_enable=" + userinfo_enable + ", userinfo_cash=" + userinfo_cash + ", userinfo_videoid="
+				+ userinfo_videoid + "]";
 	}
 	
 }

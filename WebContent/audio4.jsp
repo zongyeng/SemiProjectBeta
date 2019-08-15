@@ -16,7 +16,7 @@
 $(function(){
 
 		var name = opener.document.getElementById("throwmusic").value;
-		$('#myaudio source').attr('src', "music/"+name);
+		$('#myaudio source').attr('src', "music/"+name+".mp3");
         $("#myaudio")[0].load();
 		$("#myaudio")[0].play();
 });

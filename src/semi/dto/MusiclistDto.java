@@ -2,7 +2,7 @@ package semi.dto;
 
 import java.util.Date;
 
-public class MusicDto {
+public class MusiclistDto {
 	
 	private int music_seq;
 	private int music_artist;
@@ -18,56 +18,37 @@ public class MusicDto {
 	private String music_tag;
 	private char music_enable;
 	private int music_album;
-	private String artist_name;
-	private String album_title;
+	private String userinfo_nickname;
 	
-	public MusicDto() { }
-	public MusicDto(int seq, int artist, int no, String title, int size, int length,
-			int hl_time, String content, String composer, String lyricist, 
-			Date regdate, String tag, char enable, int album) {
-		this.music_seq = seq;
-		this.music_artist = artist;
-		this.music_no = no;
-		this.music_title = title;
-		this.music_size = size;
-		this.music_length = length;
-		this.music_hl_time = hl_time;
-		this.music_composer = composer;
-		this.music_lyricist = lyricist;
-		this.music_regdate = regdate;
-		this.music_tag = tag;
-		this.music_enable = enable;
-		this.music_album = album;
+	public MusiclistDto(int music_seq, int music_artist, int music_no, String music_title, int music_size,
+			int music_length, int music_hl_time, String music_content, String music_composer, String music_lyricist,
+			Date music_regdate, String music_tag, char music_enable, int music_album, String userinfo_nickname) {
+		this.music_seq = music_seq;
+		this.music_artist = music_artist;
+		this.music_no = music_no;
+		this.music_title = music_title;
+		this.music_size = music_size;
+		this.music_length = music_length;
+		this.music_hl_time = music_hl_time;
+		this.music_content = music_content;
+		this.music_composer = music_composer;
+		this.music_lyricist = music_lyricist;
+		this.music_regdate = music_regdate;
+		this.music_tag = music_tag;
+		this.music_enable = music_enable;
+		this.music_album = music_album;
+		this.userinfo_nickname = userinfo_nickname;
 	}
-	public MusicDto(int artist, int no, String title, int size, int length,
-			int hl_time, String content, String composer, String lyricist, 
-			String tag, char enable, int album) {
-		this.music_artist = artist;
-		this.music_no = no;
-		this.music_title = title;
-		this.music_size = size;
-		this.music_length = length;
-		this.music_hl_time = hl_time;
-		this.music_content = content;
-		this.music_composer = composer;
-		this.music_lyricist = lyricist;
-		this.music_tag = tag;
-		this.music_enable = enable;
-		this.music_album = album;
+
+	public String getuserinfo_nickname() {
+		return userinfo_nickname;
 	}
+
+	public void setuserinfo_nickname(String userinfo_nickname) {
+		this.userinfo_nickname = userinfo_nickname;
+	}
+	public MusiclistDto() { }
 	
-	public String getAlbum_title() {
-		return album_title;
-	}
-	public void setAlbum_title(String album_title) {
-		this.album_title = album_title;
-	}
-	public String getArtist_name() {
-		return artist_name;
-	}
-	public void setArtist_name(String artist_name) {
-		this.artist_name = artist_name;
-	}
 	public int getMusic_seq() {
 		return music_seq;
 	}
@@ -151,14 +132,6 @@ public class MusicDto {
 	}
 	public void setMusic_album(int music_album) {
 		this.music_album = music_album;
-	}
-	@Override
-	public String toString() {
-		return "MusicDto [music_seq=" + music_seq + ", music_artist=" + music_artist + ", music_no=" + music_no
-				+ ", music_title=" + music_title + ", music_size=" + music_size + ", music_length=" + music_length
-				+ ", music_hl_time=" + music_hl_time + ", music_content=" + music_content + ", music_composer="
-				+ music_composer + ", music_lyricist=" + music_lyricist + ", music_regdate=" + music_regdate
-				+ ", music_tag=" + music_tag + ", music_enable=" + music_enable + ", music_album=" + music_album + "]";
 	}
 	
 }
