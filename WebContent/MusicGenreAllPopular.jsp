@@ -58,7 +58,7 @@ for(int a=0; a<list.size(); a++) {
 					border-top-right-radius: 5px;" onclick="ganre6()">wind</button>
 				</div>
 				<div class="buttongroupdiv3">
-					<button id="ganre0" onclick="search()" 
+					<button id="ganre0" onclick="search2()" 
 							style = "border-radius: 5px; ">검색</button>
 				</div>
 			</div>
@@ -92,7 +92,7 @@ for(int a=0; a<list.size(); a++) {
 				<tbody> <!-- 100개 까지만 출력 -->
 				<% for(int b=0; b<list.size(); b++) {%>
 					<tr height = 70px class="musicrow">
-						<td><%= b %></td>
+						<td><%= b+1 %></td>
 						<td> <img class ="musicimage" alt ="" src="musicimg/album_<%=list.get(b).getMusic_seq() %>.jpg" width="70px" height="70px"></td>
 						<td class="musicname"><%= list.get(b).getMusic_title() %></td>
 						<td><%= list.get(b).getArtist_name() %></td>

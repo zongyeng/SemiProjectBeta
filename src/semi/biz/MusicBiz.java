@@ -13,6 +13,14 @@ public class MusicBiz {
 		return dao.selectList_music();
 	}
 	
+	public List<MusicDto> selectList_genremusicasc(String genre_name){
+		return dao.selectList_genremusicasc(genre_name);
+	}
+	
+	public List<MusicDto> selectList_genremusicdesc(String genre_name){
+		return dao.selectList_genremusicdesc(genre_name);
+	}
+	
 	public String artist_name(int music_seq){
 		return dao.artist_name(music_seq);
 	}

@@ -107,6 +107,6 @@
 		}	
 	}
 	
-	function search(){
+	function search2(){
 		location.href ="musicgenre.do?command="+destination;
 	}

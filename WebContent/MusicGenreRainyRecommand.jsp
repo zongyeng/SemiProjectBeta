@@ -1,10 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="semi.dto.MusicDto"%>
+<%@page import="semi.biz.MusicBiz"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>RainyRecommand</title>
+<% 
+String Musicname = "";
+MusicDto dto = new MusicDto();
+MusicBiz biz = new MusicBiz();
+List<MusicDto> list = biz.selectList_genremusicasc("Rainy");
+
+for(int a=0; a<list.size(); a++) {
+	String artist_name = biz.artist_name(list.get(a).getMusic_seq());
+	list.get(a).setArtist_name(artist_name);
+	System.out.println(list.get(a).getArtist_name());
+}
+%>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/genre.js" ></script>
 <script type="text/javascript">
@@ -41,7 +56,7 @@ var pr=1; var num=3;
 					border-top-right-radius: 5px;" onclick="ganre6()">wind</button>
 				</div>
 				<div class="buttongroupdiv3">
-					<button id="ganre0" onclick="search()" 
+					<button id="ganre0" onclick="search2()" 
 							style = "border-radius: 5px; ">검색</button>
 				</div>
 			</div>
@@ -74,16 +89,16 @@ var pr=1; var num=3;
 				</thead>
 				
 				<tbody> <!-- 100개 까지만 출력 -->
-				<% for(int a=1; a<=10; a++) {%>
-					<tr height = 70px;>
-						<td><%= a %></td>
-						<td>앨범이미지<%= a %></td>
-						<td>곡 이름출력<%= a %></td>
-						<td>작곡가이름<%= a %></td>
-						<td>앨범이름<%= a %></td>
-						<td>재생</td>
-						<td>담기</td>
-						<td>좋아</td>
+				<% for(int b=0; b<list.size(); b++) {%>
+					<tr height = 70px class="musicrow">
+						<td><%= b+1 %></td>
+						<td> <img class ="musicimage" alt ="" src="musicimg/album_<%=list.get(b).getMusic_seq() %>.jpg" width="70px" height="70px"></td>
+						<td class="musicname"><%= list.get(b).getMusic_title() %></td>
+						<td><%= list.get(b).getArtist_name() %></td>
+						<td><%= list.get(b).getAlbum_title() %></td>
+						<td><img class ="musicstart" alt ="" src="images/headseticon.png" width="30px" height="30px"></td>
+						<td><img class ="musicplus" alt ="" src="images/plusicon.jpg" width="30px" height="30px"  onclick="musiclistplus()"></td>
+						<td><a>♡</a></td>
 					</tr>
 				<%}%>
 				</tbody>

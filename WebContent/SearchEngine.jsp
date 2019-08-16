@@ -151,14 +151,14 @@ if(searchcontent.length()<2){
 %>		
 			<div id = "songs<%=i%>" >
 <%
-			File f = new File("C:\\Workspace_Semi2\\SemiProjectBeta\\WebContent\\musicimg\\"+searchmusic.get(i).getMusic_seq()+".png");
+			File f = new File("C:\\Workspace_Semi2\\SemiProjectBeta\\WebContent\\musicimg\\album_"+searchmusic.get(i).getMusic_seq()+".jpg");
 			if(!f.isFile()){
 %>
 				<img alt="songimg<%=i%>" src="musicimg/musicnoimg.png">
 <%
 			} else {
 %>				
-				<img alt="songimg<%=i%>" src="musicimg/<%=searchmusic.get(i).getMusic_seq()%>.png">
+				<img alt="songimg<%=i%>" src="musicimg/album_<%=searchmusic.get(i).getMusic_seq()%>.jpg">
 <%
 			}
 %>
@@ -197,14 +197,14 @@ if(searchcontent.length()<2){
 %>		
 			<div id = "albums<%=i%>" >
 <%
-			File f = new File("C:\\Workspace_Semi2\\SemiProjectBeta\\WebContent\\musicimg\\"+searchalbum.get(i).getAlbum_seq()+".png");
+			File f = new File("C:\\Workspace_Semi2\\SemiProjectBeta\\WebContent\\musicimg\\album_"+searchalbum.get(i).getAlbum_seq()+".jpg");
 			if(!f.isFile()){
 %>
 				<img alt="albumimg<%=i%>" src="albumimg/albumnoimg.png">
 <%
 			} else {
 %>
-				<img alt="albumimg<%=i%>" src="albumimg/<%=searchalbum.get(i).getAlbum_seq()%>.png">
+				<img alt="albumimg<%=i%>" src="albumimg/album_<%=searchalbum.get(i).getAlbum_seq()%>.jpg">
 <%
 			}
 %>				

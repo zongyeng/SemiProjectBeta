@@ -30,6 +30,41 @@ public class MusicDao extends SqlMapConfig_Music {
 		return list;
 	}
 	
+public List<MusicDto> selectList_genremusicdesc(String genre_name){
+		
+		SqlSession session = null;
+		List<MusicDto> list = new ArrayList<MusicDto>();
+		
+		try {
+			session = getSqlSessionFactory().openSession();
+			list = session.selectList(namespace + "selectList_genremusicdesc",genre_name);
+			System.out.println("selectList_music 실행" + list.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("selectList_music 실행 Error");
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+public List<MusicDto> selectList_genremusicasc(String genre_name){
+	
+	SqlSession session = null;
+	List<MusicDto> list = new ArrayList<MusicDto>();
+	
+	try {
+		session = getSqlSessionFactory().openSession();
+		list = session.selectList(namespace + "selectList_genremusicasc",genre_name);
+		System.out.println("selectList_music 실행" + list.size());
+	} catch (Exception e) {
+		e.printStackTrace();
+		System.out.println("selectList_music 실행 Error");
+	} finally {
+		session.close();
+	}
+	return list;
+}
+	
 public String artist_name(int music_seq){
 		
 		SqlSession session = null;
