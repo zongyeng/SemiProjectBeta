@@ -152,7 +152,7 @@ function search(){
 					<col width = "20%"> <!-- 작곡가 이름 -->
 				</colgroup>
 				<thead>
-					<tr style="color: rgba(0,0,0,0.6); font-size: 8px;"  height = 30px;>
+					<tr style="color: rgba(0,0,0,0.6); font-size: 9px;"  height = 30px;>
 						<td>순위</td>
 						<td>앨범이미지</td>
 						<td>앨범이름</td>

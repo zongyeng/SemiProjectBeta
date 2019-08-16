@@ -49,31 +49,35 @@
 			<div>
 				<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
+				<a id="kakao-login-btn"></a> 
+<a href="http://developers.kakao.com/logout"></a>
+	<script type='text/javascript'>
+	
+Kakao.init('8e6d53d7202906065b4fa4f403a2bee0');
 
-				<a id="kakao-login-btn"></a> <a
-					href="http://developers.kakao.com/logout"></a>
-				<script type='text/javascript'>
-					//<![CDATA[
-					// 사용할 앱의 JavaScript 키를 설정해 주세요.
-					Kakao.init('fc8ab3698db7ab3ac3d09a0c9bc4a2e4');
-					// 카카오 로그인 버튼을 생성합니다.
-					Kakao.Auth.createLoginButton({
-						container : '#kakao-login-btn',
-						success : function(authObj) {
-							alert(JSON.stringify(authObj));
-						},
-						fail : function(err) {
-							alert(JSON.stringify(err));
-						}
-					});
-					//]]>
+	Kakao.Auth.createLoginButton({
+	container : '#kakao-login-btn',
+	success : function(authObj) {
+	Kakao.API.request({
+
+		url: '/v2/user/me',
+
+		success: function(res) {
+			   
+			location.href="login.do?command=snslogin&id="+res.properties['nickname'];
+      
+		}
+	})
+
+},fail : function(err) {alert("로그인 실패 했습니다. 고객센터에 문의해 주세요.");}});
+
 				</script>
 			</div>
 		</div>
 		<div class="sub">
 			<ul>
-				<li><a href="#">아이디 찾기</a></li>
-				<li><a href="#">비밀번호 찾기</a></li>
+				<li><a href="#" onclick="window.open('useridsearch.jsp','searchid','width=456, height=510')">아이디 찾기</a></li>
+				<li><a href="#" onclick="window.open('userpasswordsearch.jsp','searchpassword','width=456, height=510')">비밀번호 찾기</a></li>
 				<li><a href="#" onclick="location.href='UserSignUp.jsp'">회원가입</a></li>
 
 			</ul>

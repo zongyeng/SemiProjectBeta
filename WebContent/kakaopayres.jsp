@@ -43,7 +43,7 @@
             pg : 'kakaopay',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
-            name : '여자친구',
+            name : 'KHQ2',
             amount : <%=usercash%>,
             buyer_name : '<%=seq%>',
             buyer_postcode : '123-456',

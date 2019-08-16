@@ -138,4 +138,49 @@ private String namespace = "loginmapper.";
 		
 		return res>0;
 	}
+	public loginDto snslogin() {
+		SqlSession session = null;
+		loginDto dto = new loginDto();
+		
+		try {
+			session = getSqlSessionFactory.getLoginSessionFactory().openSession();
+			dto = session.selectOne(namespace+"snslogin");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+	public loginDto searchid(loginDto dto) {
+		SqlSession session = null;
+		loginDto searchdto = new loginDto();
+		
+		try {
+			session = getSqlSessionFactory.getLoginSessionFactory().openSession();
+			searchdto = session.selectOne(namespace+"searchid",dto);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return searchdto;
+	}
+	public loginDto searchpassword(loginDto dto) {
+		SqlSession session = null;
+		loginDto searchdto = new loginDto();
+		
+		try {
+			session = getSqlSessionFactory.getLoginSessionFactory().openSession();
+			searchdto = session.selectOne(namespace+"searchpassword",dto);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return searchdto;
+	}
 }

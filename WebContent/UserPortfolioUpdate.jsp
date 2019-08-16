@@ -1,3 +1,6 @@
+<%@page import="semi.dto.AlbumDto"%>
+<%@page import="semi.dto.MusicDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,6 +12,9 @@
 	String youtubeid="";
 	int albumamount = 0;
 	int musicamount = 0;
+	List<MusicDto> usersongs = (List<MusicDto>)request.getAttribute("usersongs");
+	List<AlbumDto> useralbums = (List<AlbumDto>)request.getAttribute("useralbums");
+	loginDto basicuserinfo = (loginDto)request.getAttribute("basicuserinfo");
 %>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
@@ -118,6 +124,10 @@
 <body>	
 <%@ include file="./form/header.jsp"%>
 
+<form action="">
+	<input type = "hidden" name = "command" value="PortfolioUpdate" >
+</form>
+
 <section class ="wholesection">
 	<section class ="section1"> 
 		<div class = "section1div">
@@ -127,8 +137,8 @@
 			<div class = "section1divtablediv2">
 				<table class = "section1divtable" border= "1" >
 					<colgroup>
-						<col width = "30%"> <!-- 순위 -->
-						<col width = "70%"> <!-- 앨범이미지  -->
+						<col width = "30%">
+						<col width = "70%">
 					</colgroup>
 					<tr>
 						<td>
@@ -160,49 +170,60 @@
 				</thead>
 				<tbody>
 				<!-- 여기서는 자기가 가지고 있는 앨범 수 까지 돌린다. -->
-				<% for(albumamount=1; albumamount<=5; albumamount++) {%>
+<% 
+	for(int i = 0; i<useralbums.size(); i++) {
+%>
 					<tr height = 100px;>
-						<td><%= albumamount %></td>
+						<td><%=useralbums.get(i).getAlbum_no()%></td>
 						<td>
-							<img src="" alt ="앨범이미지 <%=albumamount%>"/>
-							<input type="button" onclick="updateAlbumpicture;" value="앨범이미지 수정하기"/>
+							<img src="albumimg/<%=useralbums.get(i).getAlbum_seq()%>.png" onerror="this.src='albumimg/albumnoimg.png'" alt ="앨범이미지 <%=useralbums.get(i).getAlbum_no()%>"/>
+							<input type="button" onclick="" value="앨범이미지 수정하기"/>
 						</td>
 						<td>
-							<input type="text" class ="registalbumname" value="" readonly="readonly"/>
-							<input type="button" onclick="updateAlbumname();" value="앨범이름 수정하기"/>
+							<input type="text" class ="registalbumname" value="<%=useralbums.get(i).getAlbum_title()%>" />
+							<input type="button" onclick="" value="앨범이름 수정하기"/>
 						</td>
-						<td>session.UserName</td> <!-- 여기서 작곡가는 세션 dto의 user이름  -->
+						<td><%=basicuserinfo.getUserinfo_nickname()%></td>
 						<td>
-							<input type="button" onclick="updateAlbum();" value="수정본 등록하기"/>
+							<input type="button" onclick="" value="수정본 등록하기"/>
+							<input type="button" onclick="" value="앨범 삭제하기" title="<%=useralbums.get(i).getAlbum_seq()%>" />
 						</td>
 					</tr>
 					
-						<% for(musicamount=1; musicamount<=5; musicamount++) {%> <!-- 해당 앨범이 들고있는 곡수만큼 돌리기 -->
+<%
+		int k=0;
+		for(int j = 0; j<usersongs.size(); j++) {
+			if(usersongs.get(j).getMusic_album()==useralbums.get(i).getAlbum_seq()){
+%>
 						<tr height = 30px;>
-							<td><%= musicamount %></td> <!-- 앨범 순서 알아서 들고오기~ -->
-							<td colspan="3">앨범dto가서 where 앨범번호로 이름가져오기</td>
-							<td> <input type="button" onclick="deletemusic();" value="곡 삭제하기"/> </td>
+							<td><%=++k%></td> <!-- 앨범 순서 알아서 들고오기~ -->
+							<td colspan="3"><%=usersongs.get(j).getMusic_title().substring(usersongs.get(j).getMusic_title().indexOf('_')+1)%></td>
+							<td> <input type="button" onclick="" value="곡 삭제하기" title="<%=usersongs.get(j).getMusic_seq()%>" /> </td>
 						</tr>
-						<%}%>
+<%
+			}
+		}
+%>
 					<tr height = 30px;>
-						<td><%= musicamount %></td> <!-- 앨범 순서 알아서 들고오기~ -->
-						<td colspan ="4"> <input type="button" onclick="insertmusic();" value="곡 추가하기"/> </td>
+						<td></td>
+						<td colspan ="4"> <input type="button" onclick="" value="곡 추가하기"/> </td>
 					</tr>
-		
-				<%}%>
+<%
+	}
+%>
 					<tr height = 100px;>
-						<td> <%= albumamount %></td>
+						<td></td>
 						<td>
-							<img alt ="앨범이미지 <%=albumamount%>"/>
-							<input type="button" onclick="registalbumpicture;" value="앨범이미지 등록하기"/>
+							<img alt ="앨범이미지 "/>
+							<input type="button" onclick="" value="앨범이미지 등록하기"/>
 						</td>
 						<td>
 							<input type="text" class ="registalbumname" value=""/>
-							<input type="button" onclick="registAlbumname;" value="앨범이름 등록하기"/>
+							<input type="button" onclick="" value="앨범이름 등록하기"/>
 						</td>
-						<td>session.UserName</td> <!-- 여기서 작곡가는 세션 dto의 user이름  -->
+						<td>session.UserName</td>
 						<td>
-							<input type="button" onclick="registalbumpicture;" value="앨범 등록하기"/>
+							<input type="button" onclick="" value="앨범 등록하기"/>
 						</td>
 					</tr>
 				
@@ -217,6 +238,7 @@
 		</div>
 	</section>
 </section>
+
 <%@ include file="./form/footer.jsp"%>
 </body>
 </html>

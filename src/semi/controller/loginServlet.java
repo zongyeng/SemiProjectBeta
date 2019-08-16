@@ -49,25 +49,23 @@ public class loginServlet extends HttpServlet {
 			
 			try{
 				dto.getUserinfo_seq();
+				
+				HttpSession session=request.getSession();
+				
+				session.setAttribute("userdto", dto);
+				session.setMaxInactiveInterval(10*60);
+				
+				response.sendRedirect("MainHome.jsp");
+				
 			} catch (NullPointerException e) {
-				response.sendRedirect("login.do?command=login");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('로그인 실패 : 아이디 또는 비밀번호를 확인해 주십시요.')");
-				out.println("location.href='login.do?command=login'");
+				out.println("window.history.go(-1);");
 				out.println("</script>");
-				
-				return;
-
 			}
 			
-			HttpSession session=request.getSession();
 			
-			session.setAttribute("userdto", dto);
-			session.setMaxInactiveInterval(10*60);
-			
-			//성공일시 send리엑티브 또는 디스패치 포워드
-			response.sendRedirect("MainHome.jsp");
 			
 		}else if(command.equals("signup")) {
 			
@@ -212,6 +210,65 @@ public class loginServlet extends HttpServlet {
 				out.println("사용 가능한 닉네임 입니다.");
 			} else {
 				out.println("이미 사용한 닉네임 입니다.");
+			}
+			
+		} else if(command.equals("PortfolioUpdate")) {
+			
+		} else if(command.equals("snslogin")) {
+			loginDto dto = biz.snslogin();
+			String id = request.getParameter("id");
+			System.out.println(id);
+			dto.setUserinfo_nickname(id);
+			dto.setUserinfo_id(id);
+			dto.setUserinfo_name(id);
+			
+			HttpSession session=request.getSession();
+			
+			session.setAttribute("userdto", dto);
+			session.setMaxInactiveInterval(10*60);
+				
+			response.sendRedirect("MainHome.jsp");
+			
+		} else if(command.equals("searchid")) {
+			PrintWriter out = response.getWriter();
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			
+			loginDto dto = new loginDto();
+			dto.setUserinfo_name(name);
+			dto.setUserinfo_phonenumber(phone);
+			
+			loginDto searchdto = biz.searchid(dto);
+			
+			if(searchdto.getUserinfo_id().isEmpty()) {
+				out.println("<script>");
+				out.println("alert('아이디가 없습니다.');");
+				out.println("window.history.go(-1);");
+				out.println("</script>");
+			} else {
+				out.println("<script>");
+				out.println("alert('아이디는 "+searchdto.getUserinfo_id()+" 입니다.');");
+				out.println("window.history.go(-1);");
+				out.println("</script>");
+			}
+			
+			
+		} else if(command.equals("searchpassword")) {
+			PrintWriter out = response.getWriter();
+			String ID = request.getParameter("ID");
+			String email = request.getParameter("email");
+			
+			loginDto dto = new loginDto();
+			dto.setUserinfo_id(ID);
+			dto.setUserinfo_email(email);
+			
+			loginDto searchdto = biz.searchpassword(dto);
+			
+			try {
+				searchdto.getUserinfo_email().isEmpty();
+				out.println("email:"+searchdto.getUserinfo_email()+",password:"+searchdto.getUserinfo_password());
+			} catch (NullPointerException e) {
+				out.println("false");
 			}
 			
 		}

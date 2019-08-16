@@ -18,6 +18,8 @@ public class MusicDto {
 	private String music_tag;
 	private char music_enable;
 	private int music_album;
+	private String artist_name;
+	private String album_title;
 	
 	public MusicDto() { }
 	public MusicDto(int seq, int artist, int no, String title, int size, int length,
@@ -52,6 +54,19 @@ public class MusicDto {
 		this.music_tag = tag;
 		this.music_enable = enable;
 		this.music_album = album;
+	}
+	
+	public String getAlbum_title() {
+		return album_title;
+	}
+	public void setAlbum_title(String album_title) {
+		this.album_title = album_title;
+	}
+	public String getArtist_name() {
+		return artist_name;
+	}
+	public void setArtist_name(String artist_name) {
+		this.artist_name = artist_name;
 	}
 	public int getMusic_seq() {
 		return music_seq;

@@ -115,7 +115,7 @@ if(searchcontent.length()<2){
 <%
 			}
 %>
-				<a href=""><%=searchartist.get(i).getUserinfo_nickname()%></a>
+				<a href="pagemoving.do?command=userportfolio&userseq=<%=searchartist.get(i).getUserinfo_seq()%>"><%=searchartist.get(i).getUserinfo_nickname()%></a>
 			</div>
 <%
 			if(i==9){
@@ -151,14 +151,14 @@ if(searchcontent.length()<2){
 %>		
 			<div id = "songs<%=i%>" >
 <%
-			File f = new File("C:\\Workspace_Semi2\\SemiProjectBeta\\WebContent\\musicimg\\"+searchmusic.get(i).getMusic_seq()+".png");
+			File f = new File("C:\\Workspace_Semi2\\SemiProjectBeta\\WebContent\\musicimg\\album_"+searchmusic.get(i).getMusic_seq()+".jpg");
 			if(!f.isFile()){
 %>
 				<img alt="songimg<%=i%>" src="musicimg/musicnoimg.png">
 <%
 			} else {
 %>				
-				<img alt="songimg<%=i%>" src="musicimg/<%=searchmusic.get(i).getMusic_seq()%>.png">
+				<img alt="songimg<%=i%>" src="musicimg/album_<%=searchmusic.get(i).getMusic_seq()%>.jpg">
 <%
 			}
 %>
@@ -197,14 +197,14 @@ if(searchcontent.length()<2){
 %>		
 			<div id = "albums<%=i%>" >
 <%
-			File f = new File("C:\\Workspace_Semi2\\SemiProjectBeta\\WebContent\\musicimg\\"+searchalbum.get(i).getAlbum_seq()+".png");
+			File f = new File("C:\\Workspace_Semi2\\SemiProjectBeta\\WebContent\\musicimg\\album_"+searchalbum.get(i).getAlbum_seq()+".jpg");
 			if(!f.isFile()){
 %>
 				<img alt="albumimg<%=i%>" src="albumimg/albumnoimg.png">
 <%
 			} else {
 %>
-				<img alt="albumimg<%=i%>" src="albumimg/<%=searchalbum.get(i).getAlbum_seq()%>.png">
+				<img alt="albumimg<%=i%>" src="albumimg/album_<%=searchalbum.get(i).getAlbum_seq()%>.jpg">
 <%
 			}
 %>				
@@ -268,7 +268,7 @@ if(searchcontent.length()<2){
 					$("#artists>.line>.more").remove();
 					
 					for(var i=0; i<5; i++){
-						$("#artists>.line").append("<div id = 'artists"+(i+10)+"' ><img alt='artistimg"+(i+10)+"' src='artistimg/"+data[i+10].artistseq+".png' onerror='this.src=\"artistimg/artistnoimg.png\"' ><a href=''>"+data[i+10].artistnickname+"</a></div>");
+						$("#artists>.line").append("<div id = 'artists"+(i+10)+"' ><img alt='artistimg"+(i+10)+"' src='artistimg/"+data[i+10].artistseq+".png' onerror='this.src=\"artistimg/artistnoimg.png\"' ><a href='pagemoving.do?command=userportfolio&userseq="+data[i+10].artistseq+"'>"+data[i+10].artistnickname+"</a></div>");
 					}
 					
 					artistdataArr = data;
@@ -291,7 +291,7 @@ if(searchcontent.length()<2){
 			
 			$("#artists>.line>.more").remove();
 			for(var i=(divseq); i<(divseq+5); i++){
-				$("#artists>.line").append("<div id = 'artists"+(i)+"' ><img alt='artistimg"+(i)+"' src='artistimg/"+artistdataArr[i].artistseq+".png' onerror='this.src=\"artistimg/artistnoimg.png\"' ><a href=''>"+artistdataArr[i].artistnickname+"</a></div>");
+				$("#artists>.line").append("<div id = 'artists"+(i)+"' ><img alt='artistimg"+(i)+"' src='artistimg/"+artistdataArr[i].artistseq+".png' onerror='this.src=\"artistimg/artistnoimg.png\"' ><a href='pagemoving.do?command=userportfolio&userseq="+artistdataArr[i].artistseq+"'>"+artistdataArr[i].artistnickname+"</a></div>");
 				if((i+1)==artistdataArr.length){
 					break;
 				}

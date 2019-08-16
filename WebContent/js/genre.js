@@ -3,6 +3,12 @@
 	var destination="";
 	$(function(){
 		pagemovemove();
+		$(".musicstart").click(function(){
+		var name = $(this).parent().parent().children(".musicname").html();
+		var artist = $(this).parent().parent().children(".musicname").html();
+		 $("#throwmusic").val(name);
+		var openwin = window.open('audio4.jsp', 'search', 'top=100px, left=100px, height=80px, width=320px');
+		}) 
 	})
 	function select1(){
 		document.getElementById("popular").style.background="rgba(0,0,0,0.6)";
@@ -101,6 +107,6 @@
 		}	
 	}
 	
-	function search(){
+	function search2(){
 		location.href ="musicgenre.do?command="+destination;
 	}

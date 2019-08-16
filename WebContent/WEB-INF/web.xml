@@ -71,5 +71,14 @@
     <url-pattern>/musicgenre.do</url-pattern>
   </servlet-mapping>
  
+	<servlet>
+    <servlet-name>EmailCheck</servlet-name>
+    <servlet-class>semi.controller.EmailCheck</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmailCheck</servlet-name>
+    <url-pattern>/emailCheck.do</url-pattern>
+  </servlet-mapping>
+ 
 
 </web-app>
