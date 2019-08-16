@@ -3,6 +3,7 @@ package semi.biz;
 import java.util.List;
 import semi.dao.MusicDao;
 import semi.dto.MusicDto;
+import semi.dto.MusiclistDto;
 
 public class MusicBiz {
 		
@@ -10,6 +11,10 @@ public class MusicBiz {
 	
 	public List<MusicDto> selectList_music(){
 		return dao.selectList_music();
+	}
+	
+	public String artist_name(int music_seq){
+		return dao.artist_name(music_seq);
 	}
 	
 	public MusicDto selectOne_music(int seq) {
