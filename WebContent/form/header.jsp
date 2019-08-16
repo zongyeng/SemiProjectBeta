@@ -122,12 +122,19 @@ function search(){
    							    
 						       <%}else{ %>
 						       		<div style ="font-size : 10px;">
+						       		<%if(userinfo.getUserinfo_enable()=='N'){ %>
+						       		게스트 로그인입니다. 전곡듣기와 댓글쓰기가 가능합니다.
+						       		<%} %>
 									<%=userinfo.getUserinfo_name()%>님 반갑습니다.  <br>
+									<%if(userinfo.getUserinfo_enable()!='N'){ %>
 									보유캐쉬 : <%=userinfo.getUserinfo_cash()%>원 
+									<%} %>
 									</div>
+									<%if(userinfo.getUserinfo_enable()!='N'){ %>
 									<button onclick="location.href='pagemoving.do?command=userinformation'" class="logindivdivbtn">
      								내정보보기  
    							  		</button>
+   							  		<%} %>
    							    	<button onclick="logout()" class="logindivdivbtn">
      								로그아웃
    							    	</button>

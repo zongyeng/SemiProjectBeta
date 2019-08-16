@@ -42,6 +42,15 @@ public class loginBiz {
 		return dao.withdrawal(userseq);
 	}
 	
+	public loginDto snslogin() {
+		return dao.snslogin();
+	}
+	public loginDto searchid(loginDto dto) {
+		return dao.searchid(dto);
+	}
+	public loginDto searchpassword(loginDto dto) {
+		return dao.searchpassword(dto);
+	}
 }
 
 	

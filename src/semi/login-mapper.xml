@@ -41,4 +41,24 @@ VALUES(USERINFOSEQ.NEXTVAL,1,#{userinfo_name},
 	WHERE USERINFO_NICKNAME = #{nickname}
 </select>
 
+<select id="snslogin" resultType="dto1">
+SELECT USERINFO_SEQ, USERINFO_CONTROLNO, USERINFO_NAME, USERINFO_NICKNAME,
+	USERINFO_ID, USERINFO_PASSWORD, USERINFO_SEX, USERINFO_AGE, USERINFO_PHONENUMBER, 
+	USERINFO_EMAIL,USERINFO_SIGNDATE, USERINFO_ENABLE, USERINFO_CASH 
+FROM USERINFO 
+WHERE USERINFO_SEQ='0'
+</select>
+
+<select id="searchid" parameterType="dto1" resultType="dto1">
+SELECT USERINFO_ID
+FROM USERINFO 
+WHERE USERINFO_NAME = #{userinfo_name} AND USERINFO_PHONENUMBER = #{userinfo_phonenumber}
+</select>
+
+<select id="searchpassword" parameterType="dto1" resultType="dto1">
+SELECT USERINFO_PASSWORD, USERINFO_EMAIL
+FROM USERINFO 
+WHERE USERINFO_ID= #{userinfo_id} AND USERINFO_EMAIL = #{userinfo_email}
+</select>
+
 </mapper>

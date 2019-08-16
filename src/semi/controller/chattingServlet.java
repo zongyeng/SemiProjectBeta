@@ -1,6 +1,5 @@
 package semi.controller;
 
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.biz.chattingBiz;
-import semi.dao.chattingDao;
 
 @WebServlet("/chattingServlet")
 public class chattingServlet extends HttpServlet {
